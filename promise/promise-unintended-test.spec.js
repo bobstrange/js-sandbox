@@ -36,9 +36,13 @@ const myFunc = (bool) => {
 };
 
 it('correct test', () => {
+　// http://azu.github.io/promises-book/#controllable-tests
   // myFunc(true) -> Fulfillの場合 想定していないので 例外になってテストは落ちてほしい
   // myFunc(false) -> Rejectの場合 error.message のassetをしてほしい
   // then ブロックに, onResolveとonReject両方を渡すことで実現
+
+  // このテスト内容は、 rejected になることを期待しており、その際に、 assetionで error.message === 'woops'
+  // になることを期待している
   return myFunc(false).then((result) => {
     throw new Error('Expected promise to be rejected but it was fulfilled');
   }, (error) => {
