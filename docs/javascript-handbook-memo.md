@@ -75,5 +75,22 @@ undefined
 'Bob'
 > lastName
 'Strange'
+```
+
+### ObjectのMethod
+JSではObjectのプロパティとして設定されている関数をメソッドと呼ぶらしい
 
 ```
+> const car = {
+... brand: 'Toyota',
+... start() {
+..... console.log('Car started')
+..... }
+... }
+undefined
+> car.start()
+Car started
+```
+
+
+
