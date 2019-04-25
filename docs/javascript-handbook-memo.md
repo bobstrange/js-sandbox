@@ -42,3 +42,38 @@ TypeError: Cannot destructure property `arg1` of 'undefined' or 'null'.
     at myFunction (repl:1:20)
 )
 ```
+
+## 関数の戻り値について
+
+- 複数の戻り値を返したい場合は、ArrayかObjectを返す
+    - 呼び出し側でdestructureできる
+
+### Arrayの例
+```
+> const someFunc = () => {
+... return ['Bob', 'Strange']
+... }
+undefined
+> const [firstName, lastName] = someFunc()
+undefined
+> firstName
+'Bob'
+> lastName
+'Strange'
+>
+```
+
+### Objectの例
+```
+> const objectFunc = () => {
+...     return { firstName: 'Bob', lastName: 'Strange' }
+... }
+undefined
+> let { firstName, lastName } = objectFunc()
+undefined
+> firstName
+'Bob'
+> lastName
+'Strange'
+
+```
