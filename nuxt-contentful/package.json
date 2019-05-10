@@ -13,6 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "contentful": "^7.5.1",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
