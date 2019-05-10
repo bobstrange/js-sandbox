@@ -1,3 +1,5 @@
+const contentfulConfig = require('./.contentful.json')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -12,6 +14,9 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+  env: {
+    ...contentfulConfig
   },
   /*
   ** Customize the progress bar color

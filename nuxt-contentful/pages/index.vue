@@ -1,35 +1,37 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        nuxt-contentful
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div>
+    <h1>{{ person.fields.name }}</h1>
+    <ul>
+      <li v-for="post in posts" :key="post.fields.id">
+        {{ post.fields.title }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import { createClient } from '~/plugins/contentful.js'
+const client = createClient()
 
 export default {
-  components: {
-    AppLogo
+  asyncData ({ env }) {
+    return Promise.all([
+      client.getEntries({
+        'sys.id': env.CTF_PERSON_ID
+      }),
+      client.getEntries({
+        'content_type': env.CTF_BLOG_POST_TYPE_ID,
+        order: '-sys.createdAt'
+      })
+    ]).then(([entries, posts]) => {
+      return {
+        person: entries.items[0],
+        posts:  posts.items
+      }
+    }).catch(console.error)
   }
 }
+
 </script>
 
 <style>
