@@ -4,6 +4,16 @@
       <h1 class="title">{{ this.post.title }}</h1>
       <p>{{ this.post.content }}</p>
     </article>
+    <aside>
+      <h3>Posts you might enjoy</h3>
+      <ul>
+        <li v-for="related in relatedPosts">
+          <nuxt-link :to="{ name: 'posts-id', params: { id: related.id } }">
+            {{ related.title }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </aside>
   </div>
 </template>
 
@@ -29,6 +39,9 @@ export default {
   computed: {
     post() {
       return this.posts.find(post => post.id === this.id)
+    },
+    relatedPosts() {
+      return this.posts.filter(post => post.id !== this.id)
     }
   }
 }
