@@ -21,27 +21,15 @@
 export default {
   data() {
     return {
-      id: this.$route.params.id,
-      posts: [
-        {
-          id: 'foo',
-          title: 'Foo',
-          content: 'Foo content'
-        },
-        {
-          id: 'bar',
-          title: 'Bar',
-          content: 'Bar content'
-        }
-      ]
+      id: this.$route.params.id
     }
   },
   computed: {
     post() {
-      return this.posts.find(post => post.id === this.id)
+      return this.$store.state.posts.all.find(post => post.id === this.id)
     },
     relatedPosts() {
-      return this.posts.filter(post => post.id !== this.id)
+      return this.$store.state.posts.all.filter(post => post.id !== this.id)
     }
   }
 }
