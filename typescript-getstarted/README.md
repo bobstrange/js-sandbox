@@ -76,3 +76,15 @@ tsc -b src test
 tsc -b src/tsconfig.something.json
 # tsconfig.json 出ない場合は、configファイルをフルパスで指定
 ```
+
+## Unknown型
+
+any型に比べると型安全
+
+```ts
+const sampleAny: any[] = [1, 2]
+const sampleUnknown: unknown[] = [1, 2]
+
+sampleAny[0].toUpperCase() // ランタイムでエラーになる toUpperCase is not a function
+sampleUnknown[0].toUpperCase() // コンパイルタイムでエラーになる
+```
