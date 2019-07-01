@@ -23,3 +23,16 @@ sample.ts:1:22 - error TS7006: Parameter 'arg' implicitly has an 'any' type.
 
 `any`型を期待するパラメータは、明示的に`any`を指定する必要がある
 
+## Change input and output dir
+
+```json
+{
+    "compilerOptions": {
+        "outDir": "dist"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
+```
+
