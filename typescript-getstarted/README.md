@@ -36,3 +36,13 @@ sample.ts:1:22 - error TS7006: Parameter 'arg' implicitly has an 'any' type.
 }
 ```
 
+## Output *.d.ts
+
+```json
+{
+    "compilerOptions": {
+        "declaration": true
+    }
+}
+```
+
