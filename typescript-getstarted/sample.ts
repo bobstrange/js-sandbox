@@ -1,3 +1,3 @@
-export const test = (arg) => {
+export const test = (arg: any) => {
   return arg
 }
