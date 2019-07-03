@@ -99,4 +99,35 @@ interface User {
   age: number
   gender: string | null
 }
+let user: User
+user = {
+  name: 'Bob',
+  age: 20,
+}
+```
+
+## 型クエリ
+`typeof` キーワードで、変数の型を取得できる
+
+```ts
+let myObject = { foo: 'foo' }
+let anotherObject: typeof myObject = { foo: '' }
+
+anotherObject['foo'] = 'value'
+anotherObject['bar'] = 'value' // Error { foo: string } には、barというプロパティが無い
+```
+
+`keyof` キーワードでオブジェクトのプロパティを取得できる
+`typeof` と組み合わせて、変数の型を取得 => 型のプロパティを取得できる
+
+```ts
+let myObject2 = {
+   foo: 'Foo',
+   bar: 'Bar',
+   baz: 'Baz'
+}
+
+let myObjectKey: keyof typeof myObject2
+myObjectKey = 'bar'  // myObjectKey: "foo" | "bar" | "baz"
+myObjectKey = 'hoge' // Error
 ```

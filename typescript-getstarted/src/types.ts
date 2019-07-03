@@ -42,4 +42,29 @@ unionTypedUser = {
   age: 27
 }
 
-unionTypedUser['gender'] = 1
+unionTypedUser['gender'] = 1 // error Type '1' is not assignable to type 'string | null'
+
+/**
+ * typeof
+ */
+
+let myObject = { foo: 'foo' }
+let anotherObject: typeof myObject = { foo: '' }
+
+anotherObject['foo'] = 'value'
+anotherObject['bar'] = 'value'
+
+/**
+ * keyof
+ */
+
+let myObject2 = {
+   foo: 'Foo',
+   bar: 'Bar',
+   baz: 'Baz'
+ }
+
+
+let myObjectKey: keyof typeof myObject2
+myObjectKey = 'bar'  // myObjectKey: "foo" | "bar" | "baz"
+myObjectKey = 'hoge' // Error
