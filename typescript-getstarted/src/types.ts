@@ -24,3 +24,22 @@ const unknownNumbers: unknown[] = ['0'] // OK
 numbers[0].toFixed(1) // OK
 anyNumbers[0].toFixed(1) // OK
 unknownNumbers[1].toFixed(1) // Error
+
+/**
+ * Union
+ */
+
+interface User {
+  name: string
+  age: number
+  gender: string | null
+}
+
+let unionTypedUser: User
+
+unionTypedUser = {
+  name: 'Bob',
+  age: 27
+}
+
+unionTypedUser['gender'] = 1

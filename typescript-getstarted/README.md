@@ -88,3 +88,15 @@ const sampleUnknown: unknown[] = [1, 2]
 sampleAny[0].toUpperCase() // ランタイムでエラーになる toUpperCase is not a function
 sampleUnknown[0].toUpperCase() // コンパイルタイムでエラーになる
 ```
+
+## Union型
+複数の型の可能性
+Nullableもこれで表せる
+
+```ts
+interface User {
+  name: string
+  age: number
+  gender: string | null
+}
+```
