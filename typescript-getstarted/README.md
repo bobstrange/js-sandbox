@@ -147,3 +147,27 @@ let strLength2: number = (someValue2 as string).length
 ```
 
 `<>`はJSXとの区別が曖昧になるので、JSXでアサーションを使用する場合は `as` を使う
+
+## Enum
+
+数値列挙と、文字列列挙の二種類がある
+
+
+```ts
+enum Direction {
+  Up = 1, // 初期化しない場合は 0が入る
+  Down,
+  Left,
+  Right
+}
+
+console.log(Direction.Up)  // 1
+console.log(Direction.Right) // 4
+```
+```ts
+enum Characters {
+  BOB = 'Bob',
+  TOM = 'Tom'
+}
+Characters.BOB
+```
