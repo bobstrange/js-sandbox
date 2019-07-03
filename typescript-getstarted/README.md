@@ -131,3 +131,19 @@ let myObjectKey: keyof typeof myObject2
 myObjectKey = 'bar'  // myObjectKey: "foo" | "bar" | "baz"
 myObjectKey = 'hoge' // Error
 ```
+
+## アサーション
+
+```ts
+// <> を使ったアサーション
+let someValue: any = 'this is a string'
+let strLength: number = (<string>someValue).length
+```
+
+```ts
+// as を使ったアサーション
+let someValue2: any = 'this is a string'
+let strLength2: number = (someValue2 as string).length
+```
+
+`<>`はJSXとの区別が曖昧になるので、JSXでアサーションを使用する場合は `as` を使う
