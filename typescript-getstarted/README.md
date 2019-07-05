@@ -21,7 +21,7 @@ sample.ts:1:22 - error TS7006: Parameter 'arg' implicitly has an 'any' type.
                        ~~~
 ```
 
-`any`型を期待するパラメータは、明示的に`any`を指定する必要がある
+`any`型を期待するパラメータは、明示的に`any`を指定する必要がrる
 
 ## Change input and output dir
 
