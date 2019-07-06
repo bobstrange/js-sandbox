@@ -152,7 +152,6 @@ let strLength2: number = (someValue2 as string).length
 
 数値列挙と、文字列列挙の二種類がある
 
-
 ```ts
 enum Direction {
   Up = 1, // 初期化しない場合は 0が入る

@@ -83,3 +83,31 @@ function waitRace() {
     waitThenString(10000)
   ])
 }
+
+/**
+ * Json
+ */
+
+import UserJson from './user.json'
+type User = typeof UserJson
+
+/**
+ * 型推論される
+ * let user: {
+    "id": number;
+    "created_at": string;
+    "profile": {
+        "name": {
+            "first": string;
+            "last": string;
+        };
+        "age": number;
+        "gender": string;
+        "enabled": boolean;
+    };
+ */
+let user: User = {
+
+}
+
+console.log(user)
