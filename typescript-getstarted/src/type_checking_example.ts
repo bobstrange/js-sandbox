@@ -32,3 +32,19 @@ registerUser(notUser) // Error
 registerUser(maybeUser2) // OK
 registerUser({}) // OK
 
+/**
+ * Excess property check
+ */
+
+registerUser(maybeUser) // No Error
+registerUser({
+  name: 'Foo',
+  age: 24,
+  gender: 'male'
+}) // Error (Excess property check is working)
+
+registerUser({...{
+  name: 'Foo',
+  age: 24,
+  gender: 'male'
+}}) // OK (Suppressed excess error check)
