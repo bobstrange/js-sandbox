@@ -170,3 +170,23 @@ enum Characters {
 }
 Characters.BOB
 ```
+
+## Nullable型を使う
+
+```ts
+function getFormattedValue(value: number | null) {
+  return `${value.toFixed(1)}` // Error
+}
+```
+
+value は null である可能性があるので、コンパイルタイムでエラーになってくれる
+
+```ts
+function fixedGetFormattedValue(value: number | null) {
+  if (value == null) return '- point'
+  // ここでは、 value は null になりえないので `(parameter) value: number` となっている
+  return `${value.toFixed(1)} point`
+}
+```
+
+if による guard 節で、 非null が確定しているので、Compilerは if 以降では `value: number` と扱ってくれる
