@@ -315,3 +315,65 @@ function toNumber(value: string): any {
 
 // string -> any にアップキャスト
 ```
+
+## オブジェクトに動的に値を追加する
+### `インデックスシグネチャ`
+例えば、`User`に `name` は必須だが、それ以外のプロパティを動的に設定したい場合、
+↓だとコンパイルタイムでエラーになる
+
+```ts
+type User = {
+  name: string
+}
+
+const user1: User = {
+  name: 'Bob',
+  age: 32 // Type '{ name: string; age: number; }' is not assignable to type 'User'.
+}
+```
+
+`インデックスシグネチャ` を使うことで、任意のプロパティを動的に設定できる
+
+```ts
+type Tyre = {
+  name: string
+  [k: string]: any
+}
+
+const tyre1: Tyre = {
+  name: 'Grandprix 4000',
+  size: 25
+}
+tyre1.name // string
+tyre1.size // any ..
+```
+
+が、この例だと、 `size` は `any` 型になってしまうので、 `number` 型にしてみる
+
+```ts
+type Tyre2 = {
+  name: string // property 'name' of type 'string' is not assignable to string
+  [k: string]: number
+}
+```
+
+コンパイルタイムで、エラーになる。
+理由は、 `name` が `string` 型なので、 `インデックスシグネチャ` で指定している `number` 型と互換出ないため。
+
+```ts
+
+type Tyre3 = {
+  name: string // OK
+  [k: string]: number | string
+}
+
+const tyre3: Tyre3 = {
+  name: "Yksion pro ust",
+  size: 28
+};
+
+tyre3.name // string
+tyre3.size // number | string
+```
+
+`インデックスシグネチャ` Union型を設定することで回避する
