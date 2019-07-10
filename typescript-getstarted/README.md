@@ -274,3 +274,34 @@ const address1: Readonly<Address> = {
 address1.id = 2
 address1.city = 'Chiba'
 ```
+
+## アップキャスト・ダウンキャスト
+### ダウンキャスト
+```ts
+const defaultTheme = {
+  backgroundColor: 'orange',
+  borderColor: 'red'
+}
+/**
+ * Inferred to
+ * const defaultTheme: {
+ *   backgroundColor: string;
+ *   borderColor: string;
+ * };
+ */
+```
+
+`defaultTheme` は オブジェクトで、プロパティに再代入可能なため、 プロパティは、`string` と推論される.
+Typescriptより、プログラマーのほうが型について詳しいので、アサーションで型宣言をする。
+
+```ts
+ const defaultThemeWithDowncast = {
+   backgroundColor: 'orange' as 'orange',
+   borderColor: 'red' as 'red'
+ }
+```
+
+抽象的な型(この場合`string`)から、具体的な型 (この場合 `orange` `red` など)を付与することをダウンキャストという.
+互換の無い型を付与することはできない。
+(`string` -> `1` など)
+
