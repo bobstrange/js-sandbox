@@ -40,3 +40,41 @@ const tyre3: Tyre3 = {
 
 tyre3.name // string
 tyre3.size // number | string
+
+type Answer = 'like' | 'dislike' | 'unknown'
+
+type UserHobby = {
+  name: string
+  hobbies: { [k: string]: Answer }
+}
+
+const example: UserHobby = {
+  name: 'Bob',
+  hobbies: {
+    bike: 'like',
+    swim: 'like',
+    dance: 'unknown'
+  }
+}
+
+const hobby1 = example.hobbies.bike
+const hobby2 = example.hobbies.run
+
+type Sports = 'swim' | 'run' | 'soccer'
+type Player = {
+  name: string
+  sports: { [K in Sports]?: Answer }
+}
+
+const player1: Player = {
+  name: 'Jane',
+  sports: {
+    swim: 'like',
+    run: 'dislike'
+    pingpong: 'unknown' // Error
+  }
+}
+
+player1.sports.run
+player1.sports.soccer
+player1.sports.climbing // Error

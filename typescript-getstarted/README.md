@@ -377,3 +377,64 @@ tyre3.size // number | string
 ```
 
 `インデックスシグネチャ` Union型を設定することで回避する
+
+### インデックスシグネチャのプロパティ型を制限する
+
+```ts
+type Answer = 'like' | 'dislike' | 'unknown'
+
+type UserHobby = {
+  name: string
+  hobbies: { [k: string]: Answer }
+}
+
+const example: UserHobby = {
+  name: 'Bob',
+  hobbies: {
+    bike: 'like',
+    swim: 'like',
+    dance: 'unknown'
+  }
+}
+
+const hobby1 = example.hobbies.bike
+const hobby2 = example.hobbies.run // 存在しないプロパティだがAnswer型として扱われる, 実際は undefined
+```
+
+```ts
+type UserHobby = {
+  name: string
+  hobbies: { [k: string]: Answer | undefined }
+}
+```
+
+Union型で、`undefined` を追加して、想定外の挙動を回避する
+
+### インデックスシグネチャのプロパティ名称を制限する:
+
+```ts
+type Answer = 'like' | 'dislike' | 'unknown'
+type Sports = 'swim' | 'run' | 'soccer'
+type Player = {
+  name: string
+  sports: { [K in Sports]?: Answer }
+}
+```
+
+`[K in Sports]` は、 `Sports` 型で定義されているもののいずれか
+`?`を付与することで、オプショナルであることを表せる　-> `Answer | undefined` とする必要がない
+
+```ts
+const player1: Player = {
+  name: 'Jane',
+  sports: {
+    swim: 'like',
+    run: 'dislike'
+    pingpong: 'unknown' // Error
+  }
+}
+
+player1.sports.run
+player1.sports.soccer
+player1.sports.climbing // Error
+```
