@@ -305,3 +305,13 @@ Typescriptより、プログラマーのほうが型について詳しいので�
 互換の無い型を付与することはできない。
 (`string` -> `1` など)
 
+### アップキャスト
+ダウンキャストの反対に、抽象度を上げる型の付与をアップキャストという。
+
+```ts
+function toNumber(value: string): any {
+  return value
+}
+
+// string -> any にアップキャスト
+```

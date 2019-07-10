@@ -79,5 +79,5 @@ const defaultTheme = {
    return value
  }
 
- const fiction: number = toNumber('1000') // We assume number is returnd but actual any
+ const fiction: number = toNumber('1000') // We assume number is return but actual any
  fiction.toFixed // Error
