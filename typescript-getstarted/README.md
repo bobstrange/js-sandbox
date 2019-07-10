@@ -241,3 +241,36 @@ addUser(user4) // このときだけError
 ```ts
 addUser({ age: 25, name: 'Bob', other: 'aaa' }) // Error
 ```
+
+## Readonly
+readonly property
+
+```ts
+type State = {
+  readonly id: number
+  name: string
+}
+
+const state: State = {
+  id:   1,
+  name: 'Active'
+}
+
+state.name = 'Paused'
+state.id = 2
+```
+
+readonly type
+
+```ts
+type Address = {
+  id: number
+  city: string
+}
+const address1: Readonly<Address> = {
+  id: 1,
+  city: 'Tokyo'
+}
+address1.id = 2
+address1.city = 'Chiba'
+```
