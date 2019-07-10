@@ -190,3 +190,23 @@ function fixedGetFormattedValue(value: number | null) {
 ```
 
 if による guard 節で、 非null が確定しているので、Compilerは if 以降では `value: number` と扱ってくれる
+
+## Optinalな引数を使う
+
+nullableと似ているが、optionalな引数は、 `undefined` 型が付加される
+
+```ts
+function optionalExample(value?: string) {
+  // (parameter) value: string | undefined
+  return value
+}
+```
+
+よって、引数が非undefinedであることを確定されてから、引数の型に対する処理を書く必要がある
+
+```ts
+function toUpperCase(value?: string) {
+  if (value == null) return ''
+  return value.toUpperCase()
+}
+```

@@ -12,6 +12,39 @@ function fixedGetFormattedValue(value: number | null) {
   return `${value.toFixed(1)} point`
 }
 
+/**
+ * Optional argument
+ */
+
+function greet(name: string) {
+  return `Hello ${name}`
+}
+
+ greet('Bob') // Hello Bob
+ greet(1) // NG as 1 is not a string
+ greet() // NG as greet requires a string argument
+
+// Make an argument optional
+function greet2(name?: string) {
+  return `Hello ${name}`
+}
+
+greet2('Jane') // Hello Jane
+greet2() // Hello undefined
+
+function greet3(name?: string) {
+  return `Hello ${name.toUpperCase()}` // Error `Object is possibly 'undefined'`
+}
+
+function greet4(name?: string) {
+
+  if (name == null) return 'Hello'
+  return `Hello ${name.toUpperCase()}`
+}
+
+greet4() // Hello
+greet4('Mike') // Hello Mike
+
 
 /**
  * Downcast example
