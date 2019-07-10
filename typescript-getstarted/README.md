@@ -191,7 +191,7 @@ function fixedGetFormattedValue(value: number | null) {
 
 if による guard 節で、 非null が確定しているので、Compilerは if 以降では `value: number` と扱ってくれる
 
-## Optinalな引数を使う
+## Optionalな引数を使う
 
 nullableと似ているが、optionalな引数は、 `undefined` 型が付加される
 
@@ -209,4 +209,35 @@ function toUpperCase(value?: string) {
   if (value == null) return ''
   return value.toUpperCase()
 }
+```
+
+## Weak typeの型安全
+すべてのプロパティがオプショナルな型 -> `Weak type`
+
+```ts
+type User = {
+  age?: number,
+  name?: string
+}
+```
+
+基本的には、 `age` or `name` を持つオブジェクトであれば `User` 型であると判定される
+```ts
+function addUser(user: User) {}
+const user1 = { age: 25 }
+const user2 = { name: 'foo' }
+const user3 = { age: 25, name: 'foo', other: 'aaa' }
+const invalidUser = { other: 'bbb' }
+
+addUser(user1)
+addUser(user2)
+addUser(user3)
+addUser(user4) // このときだけError
+```
+
+ただし、関数の引数に `User` 型を要求されている際に、直接 オブジェクトリテラルを使用する際には、
+プロパティを厳しくチェックする(`Excess Property Checks`)
+
+```ts
+addUser({ age: 25, name: 'Bob', other: 'aaa' }) // Error
 ```
