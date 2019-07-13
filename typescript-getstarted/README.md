@@ -480,3 +480,51 @@ function greet(name?: string) {
 
 - `name` に `null` or `undefined` が入ってきた場合に Runtime error になる.
 - 基本的には使わなほうが良い
+
+## typeof/in/instanceof
+### typeof
+`typeof` で 変数の型情報を得ることができる
+
+```ts
+function reset(value: number | string | boolean) {
+  const v0 = value
+  // inferred with const v0: string | number | boolean
+
+  if (typeof value === 'number') {
+    value // (parameter) value: number
+    return value
+  }
+  // ここでは number型はありえない
+  value // (parameter) value: string | boolean
+
+  if (typeof value === 'string') {
+    value // (parameter) value: string
+    return value
+  }
+  // ここでは number型/string型はありえない
+  value // (parameter) value: boolean
+  return value
+}
+```
+
+### in
+`in` で変数の型が持つプロパティの情報が存在するかどうかを得ることができる
+
+```ts
+type User = { gender: string }
+type UserA = User & { name: string }
+type UserB = User & { age: number; gratitude: string }
+
+function userType(user: UserA | UserB) {
+  if ('gender' in user) {
+    user // (parameter) user: UserA | UserB
+  }
+
+  if ('name' in user) {
+    user // (parameter) user: UserA
+    return
+  }
+  user // (parameter) user: UserB
+  return
+}
+```
