@@ -460,5 +460,12 @@ let b = a
 const c = 'other' as const
 let d = c
 // d is inferred other
-
 ```
+
+```ts
+export const CONST = {
+  increment: 'INCREMENT',
+  decrement: 'DECREMENT'
+} as const
+```
+

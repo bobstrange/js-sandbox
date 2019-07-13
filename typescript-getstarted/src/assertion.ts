@@ -43,3 +43,8 @@ decrement()
 // function decrement(): {
 //   readonly type: "DECREMENT";
 // }
+
+export const CONST = {
+  increment: 'INCREMENT',
+  decrement: 'DECREMENT'
+} as const
