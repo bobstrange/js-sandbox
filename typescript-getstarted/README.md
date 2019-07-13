@@ -469,3 +469,14 @@ export const CONST = {
 } as const
 ```
 
+## non-null assertion
+
+```ts
+function greet(name?: string) {
+  // console.log(`Hello ${name.toUpperCase()}`) // Compile time error
+  console.log(`Hello ${name!.toUpperCase()}`) // non-null assertion
+}
+```
+
+- `name` に `null` or `undefined` が入ってきた場合に Runtime error になる.
+- 基本的には使わなほうが良い
