@@ -70,7 +70,7 @@ const player1: Player = {
   name: 'Jane',
   sports: {
     swim: 'like',
-    run: 'dislike'
+    run: 'dislike',
     pingpong: 'unknown' // Error
   }
 }
@@ -78,3 +78,4 @@ const player1: Player = {
 player1.sports.run
 player1.sports.soccer
 player1.sports.climbing // Error
+

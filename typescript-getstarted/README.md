@@ -438,3 +438,22 @@ player1.sports.run
 player1.sports.soccer
 player1.sports.climbing // Error
 ```
+
+## const assertion
+
+```ts
+const tuple1 = [false, 1, '2']
+// inferred const tuple1: (string | number | boolean)[]
+
+const tuple2 = [false, 1, '2'] as [false, 1, '2']
+// inferred const tuple2: [false, 1, "2"]
+
+const tuple3 = [false, 1, '2'] as const
+// inferred const tuple2: [false, 1, "2"]
+```
+
+```ts
+const a = 'some'
+// inferred const a: "some"
+const b = a
+```
