@@ -454,6 +454,11 @@ const tuple3 = [false, 1, '2'] as const
 
 ```ts
 const a = 'some'
-// inferred const a: "some"
-const b = a
+let b = a
+// b is inferred string
+
+const c = 'other' as const
+let d = c
+// d is inferred other
+
 ```
