@@ -59,3 +59,27 @@ function action(creature: Animal | Human | Creature) {
   creature // (parameter) creature: Creature
   return creature.breathe()
 }
+
+type Person = { gender: string; [k: string]: any }
+type PersonA = Person & { name: string }
+type PersonB = Person & { age: number }
+
+function isPersonA(person: PersonA | PersonB): person is PersonA {
+  return person.name !== undefined
+}
+
+function isPersonB(person: PersonA | PersonB): person is PersonB {
+  return person.age !== undefined
+}
+
+function getPersonType(person: any) {
+  if (isPersonA(person)) {
+    person // (parameter) person: PersonA
+    return 'A'
+  }
+  if (isPersonB(person)) {
+    person // (parameter) person: PersonB
+    return 'B'
+  }
+  return 'unknown'
+}

@@ -560,3 +560,38 @@ function action(creature: Animal | Human | Creature) {
   return creature.breathe()
 }
 ```
+
+### is
+
+`引数 is type` と記述することで、戻り値に型アノテーションを付加できる
+
+
+```ts
+type Person = { gender: string; [k: string]: any }
+type PersonA = Person & { name: string }
+type PersonB = Person & { age: number }
+
+function isPersonA(person: PersonA | PersonB): person is PersonA {
+  return person.name !== undefined
+}
+
+function isPersonB(person: PersonA | PersonB): person is PersonB {
+  return person.age !== undefined
+}
+
+function getPersonType(person: any) {
+  person // (paramter) person: any
+  if (isPersonA(person)) {
+    person // (parameter) person: PersonA
+    // ここできっちり絞り込まれている
+    return 'A'
+  }
+  if (isPersonB(person)) {
+    person // (parameter) person: PersonB
+    // ここできっちり絞り込まれている
+    return 'A'
+    return 'B'
+  }
+  return 'unknown'
+}
+```
