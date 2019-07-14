@@ -528,3 +528,35 @@ function userType(user: UserA | UserB) {
   return
 }
 ```
+
+### instanceof
+
+`instanceof` を使っても `typeof` と同じように型の絞り込みができる
+
+```ts
+class Creature {
+  breathe() {}
+}
+
+class Animal extends Creature {
+  snakeTail() {}
+}
+
+class Human extends Creature {
+  greet() {}
+}
+
+function action(creature: Animal | Human | Creature) {
+  creature.breathe() // OK
+  if (creature instanceof Animal) {
+    creature // (parameter) creature: Animal
+    return creature.snakeTail()
+  }
+  if (creature instanceof Human) {
+    creature // (parameter) creature: Human
+    return creature.greet()
+  }
+  creature // (parameter) creature: Creature
+  return creature.breathe()
+}
+```
