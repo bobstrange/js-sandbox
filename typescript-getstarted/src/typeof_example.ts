@@ -83,3 +83,26 @@ function getPersonType(person: any) {
   }
   return 'unknown'
 }
+
+type People = { name: string }
+type PeopleA = People & { gender: 'male' | 'female' | 'other' }
+type PeopleB = People & { graduate: string }
+const peoples: (PeopleA | PeopleB)[] = [
+  { name: 'Taro', gender: 'male' },
+  { name: 'Hanako', graduate: 'Tokyo' }
+]
+
+const filteredPeoples = peoples.filter(people => 'graduate' in people)
+filteredPeoples // const filteredPeoples: (PeopleA | PeopleB)[]
+
+function filterPeople(people: PeopleA | PeopleB): people is PeopleB {
+  return 'graduate' in people
+}
+const filteredPeoples2 = peoples.filter(filterPeople)
+filteredPeoples2 // const filteredPeoples2: PeopleB[]
+
+const filteredPeoples3 = peoples.filter((people: PeopleA | PeopleB): people is PeopleB => {
+  return 'graduate' in people
+})
+filteredPeoples3 // const filteredPeoples3: PeopleB[]
+
