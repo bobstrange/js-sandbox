@@ -651,3 +651,39 @@ const value = 'bbb' // Error
 function greet() { return 'Hello' } // Error
 const greet = 'Hello' // Error
 ```
+
+### Type
+
+interfaceはopen endedなので
+
+```ts
+// OK
+interface Country {
+  name: string
+}
+
+interface Country {
+  id: number
+}
+```
+
+↓と一緒
+```ts
+interface Country {
+  id: number
+  name: string
+}
+```
+
+`type alias` はopen endedでないので、↓はエラーになる
+
+```ts
+// Error
+type Union = {
+  name: string
+}
+
+type Union = {
+  id: number
+}
+```
