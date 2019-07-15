@@ -736,3 +736,23 @@ const boxB = boxed(0)      // boxB: { value: number; }
 const boxC = boxed(false)  // boxC: { value: boolean; }
 const boxD = boxed(null)   // boxD: { value: any; }
 ```
+
+## 複数のGenericsの関連付け
+`keyof` を使って、複数のGenericsを関連付けられる
+`<T, K extends keyof T>` -> `K`は`T`のプロパティの名称のいずれかである
+
+```ts
+unction pick<T, K extends keyof T>(props: T, key: K) {
+  return props[key]
+}
+
+const obj = {
+  name: 'Taro',
+  amount: 0,
+  flag: false
+}
+pick(obj, 'name')
+pick(obj, 'flag')
+pick(obj, 'age') // Error
+```
+

@@ -29,3 +29,16 @@ const boxed3 = <T extends number | string>(props: T) => {
 const boxAA = boxed3('test')
 const boxBB = boxed3(100)
 const boxCC = boxed3(true) // Error
+
+function pick<T, K extends keyof T>(props: T, key: K) {
+  return props[key]
+}
+
+const obj = {
+  name: 'Taro',
+  amount: 0,
+  flag: false
+}
+pick(obj, 'name')
+pick(obj, 'flag')
+pick(obj, 'age') // Error
