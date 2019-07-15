@@ -626,3 +626,28 @@ filteredPeoples3 // const filteredPeoples3: PeopleB[]
 ```
 
 is を使うことで、結果の型を絞り込むことができる
+
+## declaration space
+
+3種類の declaration space
+
+- `Value`
+- `Type`
+- `Namespace`
+
+この例はエラーにならない
+
+```ts
+const Test = {}    // Value
+interface Test {}  // Type
+namespace Test {}  // Namespace
+```
+
+### Value
+
+```ts
+const value = 'aaa' // Error
+const value = 'bbb' // Error
+function greet() { return 'Hello' } // Error
+const greet = 'Hello' // Error
+```
