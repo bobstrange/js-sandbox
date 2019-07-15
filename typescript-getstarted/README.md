@@ -687,3 +687,35 @@ type Union = {
   id: number
 }
 ```
+
+## Generics
+### 宣言
+`型名称 <T>` で宣言できる
+(`T` `U` `K` `E` などが慣習的によく使われる)
+
+```ts
+interface Box<T> {
+  value: T
+}
+
+const box0: Box = { value: "test" } // Generic type 'Box<T>' requires 1 type argument(s)
+const box1: Box<string> = { value: "test" }
+const box2: Box<number> = { value: "test" } // Type 'string' is not assignable to type 'number'
+```
+
+### 初期型を指定
+```ts
+interface Box2<T = string> {
+  value: T
+}
+
+const box3 = { value: "test" }
+```
+
+### 指定できる型を絞る
+`extends` を使って、指定可能な型を絞ることができる
+```ts
+interface Box3<T extends number | string> {
+  value: T
+}
+```
