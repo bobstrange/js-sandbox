@@ -719,3 +719,20 @@ interface Box3<T extends number | string> {
   value: T
 }
 ```
+
+## 関数のGenerics
+
+```ts
+function boxed<T>(props: T) {
+  return { value: props }
+}
+
+const boxed2 = <T>(props: T) => {
+  return { value: props }
+}
+
+const boxA = boxed('test') // boxA: { value: string; }
+const boxB = boxed(0)      // boxB: { value: number; }
+const boxC = boxed(false)  // boxC: { value: boolean; }
+const boxD = boxed(null)   // boxD: { value: any; }
+```
