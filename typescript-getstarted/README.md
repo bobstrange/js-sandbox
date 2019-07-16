@@ -756,3 +756,34 @@ pick(obj, 'flag')
 pick(obj, 'age') // Error
 ```
 
+## クラスのGenerics
+
+```ts
+interface PersonProps {
+  name: string
+  age: number
+  gender: 'male' | 'female' | 'other'
+}
+
+class PersonWithProps<T extends PersonProps> {
+  // Indexed Access Type を使って型を付与できる
+  name: T['name']
+  age: T['age']
+  gender: T['gender']
+
+  constructor(props: T) {
+    this.name = props.name
+    this.age = props.age
+    this.gender = props.gender
+  }
+}
+
+const personA = new PersonWithProps({
+  name: 'Taro',
+  age: 28,
+  gender: 'male'
+})
+```
+
+## Conditional Types
+現時点では使いみちがよくわからなかったので飛ばす :-(
