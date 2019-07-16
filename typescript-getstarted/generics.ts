@@ -42,3 +42,38 @@ const obj = {
 pick(obj, 'name')
 pick(obj, 'flag')
 pick(obj, 'age') // Error
+
+
+class Person<T extends string> {
+  name: T
+  constructor(name: T) {
+    this.name = name
+  }
+}
+
+const person = new Person('Bob')
+const personName = person.name // const personName: "Bob"
+
+interface PersonProps {
+  name: string
+  age: number
+  gender: 'male' | 'female' | 'other'
+}
+
+class PersonWithProps<T extends PersonProps> {
+  name: T['name']
+  age: T['age']
+  gender: T['gender']
+
+  constructor(props: T) {
+    this.name = props.name
+    this.age = props.age
+    this.gender = props.gender
+  }
+}
+
+const personA = new PersonWithProps({
+  name: 'Taro',
+  age: 28,
+  gender: 'male'
+})
