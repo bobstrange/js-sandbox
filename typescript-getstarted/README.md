@@ -787,3 +787,110 @@ const personA = new PersonWithProps({
 
 ## Conditional Types
 現時点では使いみちがよくわからなかったので飛ばす :-(
+既存の型の一部のみを使いたい場合に使用するらしい 🤔
+
+## Utility Types
+
+既存の型の一部のみを使いたい場合に使用する
+
+### Readonly
+既存の型のプロパティをすべて `readonly` にして、新しい型を作る
+
+```ts
+type ReadonlyUser = Readonly<User>
+// type ReadonlyUser = {
+//   readonly name: string;
+//   readonly age: number;
+//   readonly gender: "male" | "female" | "other";
+//   readonly birthplace?: string;
+// }
+```
+
+### Partial
+既存の型のプロパティをすべて `optional` にして、新しい型を作る
+
+```ts
+type PartialUser = Partial<User>
+// type PartialUser = {
+//   name?: string;
+//   age?: number;
+//   gender?: "male" | "female" | "other";
+//   birthplace?: string;
+// }
+```
+
+### Required
+既存の型のプロパティから、全て `optional` を取り除いて、新しい型を作る
+
+```ts
+type RequiredUser = Required<User>
+// type RequiredUser = {
+//   name: string;
+//   age: number;
+//   gender: "male" | "female" | "other";
+//   birthplace: string;
+// }
+```
+
+### Record
+第一Genericsに指定したプロパティ名称で新しいObject型を作る
+
+```ts
+type UserRecord = Record<'user', User>
+// type UserRecord = {
+//   user: User;
+// }
+```
+
+### Pick
+第二Genericsに指定したプロパティ型を、第一Genericsに指定した型から取得し新しいObject型を作る
+
+```ts
+type Gender = Pick<User, 'gender'>
+// type Gender = {
+//   gender: "male" | "female" | "other";
+// }
+```
+
+### Omit
+第二Genericsに指定したプロパティ型を、第一Genericsに指定した型から取り除き、新しいObject型を作る
+
+```ts
+type UserWithoutBirthplace = Omit<User, 'birthplace'>
+// type UserWithoutBirthplace = {
+//   name: string;
+//   age: number;
+//   gender: "male" | "female" | "other";
+// }
+```
+
+### Exclude
+第一Genericsから、第二Genericsに指定された型と互換性のある方を除き、新しい型を作る
+
+```ts
+type True = Exclude<true | false, false>
+// type True = true
+
+type Value = Exclude<'a' | (() => {}), Function>
+// type Value = "a"
+```
+
+### NonNullable
+`NonNullable<T>` T型から、`null` と `undefined` を取り除いた新しい型を作る
+
+```ts
+type SomeType = NonNullable<string | null | undefined | number>
+// type SomeType = string | number
+```
+
+### ReturnType
+`ReturnType<T>` 関数型である `T型` の戻り型を抽出し、新しい型を作る
+`T`が関数型出ない場合エラーになる
+
+```ts
+const someFunc = () => { return 'test' }
+type TestReturnType = ReturnType<typeof someFunc>
+// type TestReturnType = string
+
+type ErrorReturnType = ReturnType<string> // Error
+```
