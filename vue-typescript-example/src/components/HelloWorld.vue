@@ -31,11 +31,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropType } from 'vue';
 
 export default Vue.extend({
   name: 'HelloWorld',
   props: {
+    obj: {
+      type: Object as PropType<{ name: string }>,
+      required: true
+    },
+    arr: {
+      type: Array as PropType<{ task: string }[]>
+    },
     msg: String,
   },
 });
