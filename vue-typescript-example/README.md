@@ -102,4 +102,25 @@ export default Vue.extend({
 })
 ```
 
-##
+## computedの型
+
+**`computed` の各関数は戻り値のアノテーションが必須**
+
+```ts
+data() {
+  return {
+    defaultDateLabel: '1980-01-01',
+    dateLabel: null as string | null
+  }
+},
+computed: {
+  dateFromDateLabel(): Date {
+    let label = this.defaultDateLabel
+    // this.dateLabel は nullable なので null チェック必須
+    if (this.dateLabel !== null) {
+      label = this.dateLabel
+    }
+    return new Date(label)
+  }
+}
+```
