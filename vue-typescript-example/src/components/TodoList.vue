@@ -1,14 +1,16 @@
+<template>
+  <div class="todos">
+    <div v-for="todo in todos" :key="todo.id">
+      <TodoItem :todo="todo">
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 import Vue from 'vue'
-export type Todo = {
-  id: string,
-  task: string,
-  done: boolean
-}
+import TodoItem, { Todo } from './TodoItem.vue'
 
 export type Data = {
-  firstName: string,
-  lastName: string,
   todos: Todo[]
 }
 
@@ -43,10 +45,11 @@ export default Vue.extend({
 
   data(): Data {
     return {
-      firstName: 'Taro',
-      lastName: 'Yamada',
-      todos: []
+      todos: [] // (property) todos: Todo[]
     }
+  },
+  components: {
+    TodoItem
   }
 })
 </script>
