@@ -15,7 +15,7 @@ export interface MutationPayload extends Payload {
 
 export interface ActionPayload extends Payload {
   payload: any
-}
+}i
 ```
 
 ## vuexの型として必要なもの
@@ -25,3 +25,16 @@ export interface ActionPayload extends Payload {
 - RootState, RootGettersの参照
 - MutationType/ActionTypeと, 実装の名前の整合性
 - mutationと、actionのpayload
+
+### stateの参照
+stateの`interface`を定義する
+
+```ts
+interface State {
+  count: number
+}
+
+const state: State = {
+  count: 1000
+}
+```
