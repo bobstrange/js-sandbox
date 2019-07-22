@@ -38,3 +38,23 @@ const state: State = {
   count: 1000
 }
 ```
+
+### getterの関数同士の参照
+Getterの`interface`を定義する
+
+```ts
+interface CounterGetters {
+  double: number
+  expo2: number
+  expo: (amount: number) => number
+}
+
+interface Getters<S, G> {
+  [K in keyof G]: (state: S, getters: G) => G[K]
+}
+
+const getters: Getters<State, CounterGetters> = {
+  // declare getters here
+  // CounterGettersのInterfaceと齟齬があるとエラーになる
+}
+```
