@@ -47,6 +47,7 @@ export default new Vuex.Store({
         await(() => {
           new Promise(resolve => { setTimeout(resolve, 1000) })
         })()
+        // Problem undefined action
         ctx.dispatch('increment')
       }
     }
