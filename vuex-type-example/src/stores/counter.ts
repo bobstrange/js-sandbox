@@ -69,3 +69,25 @@ const getters3: Getters2<State, CounterGetters> = {
     return amount => state.count ** amount
   }
 }
+
+interface CounterMutations {
+  setCount: { amount: number }
+  multi: number
+  increment: void
+}
+
+type Mutations<S, M> = {
+  [K in keyof M]: (state: S, payload: M[K]) => void
+}
+
+const mutations: Mutations<State, CounterMutations> = {
+  setCount(state, payload) {
+    state.count = payload.amount
+  },
+  multi(state, payload) {
+    state.count = state.count * payload
+  },
+  increment(state) {
+    state.count += 1
+  }
+}

@@ -49,12 +49,30 @@ interface CounterGetters {
   expo: (amount: number) => number
 }
 
-interface Getters<S, G> {
+type Getters<S, G> = {
   [K in keyof G]: (state: S, getters: G) => G[K]
 }
 
 const getters: Getters<State, CounterGetters> = {
   // declare getters here
-  // CounterGettersのInterfaceと齟齬があるとエラーになる
+  // CounterGettersのInterfaceと齟齬があるとコンパイルエラーを得られる
+}
+```
+
+### mutationの型
+
+```ts
+interface CounterMutations {
+  setCount: { amount: number }
+  multi: number
+  increment: void
+}
+
+type Mutations<S, M> = {
+  [K in keyof M]: (state: S, payload: M[K]) => void
+}
+
+const mutations: Mutations<State, CounterMutations> = {
+  // declare mutations here
 }
 ```
