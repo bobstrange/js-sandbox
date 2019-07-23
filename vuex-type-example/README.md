@@ -60,6 +60,7 @@ const getters: Getters<State, CounterGetters> = {
 ```
 
 ### mutationの型
+同様にMutationの`interface`と、Mutationsのtypeを定義する
 
 ```ts
 interface CounterMutations {
@@ -76,3 +77,65 @@ const mutations: Mutations<State, CounterMutations> = {
   // declare mutations here
 }
 ```
+
+### actionの型
+- Actionの`interface` と Actionの type を定義する
+    - Actionのtypeには
+      - Context
+      - Commit
+      - Dispatch の typeが必要なのでそれも定義する
+
+```ts
+interface CounterActions {
+  asyncSetCount: { amount: number }
+  asyncMulti: number
+  asyncIncrement: void
+}
+
+type Actions<S, A, G = {}, M = {}, RS = {}, RG = {}> = {
+  [K in keyof A]: (ctx: Context<S, A, G, M, RS, RG>, payload: A[K]) => any
+}
+
+/**
+ * S -> State
+ * A -> CounterActions
+ * G -> CounterGetters
+ * M -> CounterMutations
+ * RS -> RootState
+ * RG -> RooteGetters
+ */
+type Context<S, A, G, M, RS, RG> = {
+  commit: Commit<M>,
+  dispatch: Dispatch<A>,
+  state: S,
+  getters: G,
+  rootState: RS,
+  rootGetters: RG
+}
+
+/**
+ * T extends keyof M -> T型は、'setCouunt' | 'multi' | 'increment' のみに絞られる
+ */
+type Commit<M> = <T extends keyof M>(type: T, payload?: M[T]) => void
+
+type Dispatch<A> = <T extends keyof A>(type: T, payload?: A[T]) => any
+
+const actions: Actions<
+  State,
+  CounterActions,
+  CounterGetters,
+  CounterMutations
+> = {
+  asyncSetCount(ctx, payload) {
+    ctx.commit('setCount', { amount: payload.amount })
+  },
+  asyncMulti(ctx, payload) {
+    ctx.commit('multi', payload)
+  },
+  asyncIncrement(ctx) {
+    ctx.commit('increment')
+  }
+}
+```
+
+一旦 `Dispatch` の戻り値の型は Promiseではなく `any` とする
