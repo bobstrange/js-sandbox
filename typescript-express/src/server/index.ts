@@ -1,5 +1,6 @@
 import Express from 'express'
 import cors from 'cors'
+import { Health } from '../types/api'
 
 const app = Express()
 
