@@ -7,7 +7,8 @@ const app = Express()
 app.use(cors())
 
 app.get('/api/health', (req, res) => {
-  res.send({ message: 'pong' })
+  const data: Health = { message: 'pong' }
+  res.send(data)
 })
 
 app.use((req, res, next) => {
