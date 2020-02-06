@@ -34,3 +34,24 @@
   }
 }
 
+/** Array filter */
+
+type Person = { name: string }
+type PersonWithGender = Person & { gender: 'male' | 'female' | 'other' }
+type PersonWithGraduate = Person & { graduate: string }
+
+const people: (PersonWithGender|PersonWithGraduate)[] = [
+  { name: 'Taro' , gender: 'male' },
+  { name: 'Hanako', graduate: 'Tokyo' }
+]
+
+const filteredPeople = people.filter(people => 'graduate' in people)
+/** Inferred as (PersonWithGender|PersonWithGraduate)[]  */
+
+const filter = (people: PersonWithGender|PersonWithGraduate): people is PersonWithGraduate => {
+  return 'graduate' in people
+}
+
+const filteredPeople2 = people.filter(filter)
+/** Inferred as PersonWithGraduate[] */
+
