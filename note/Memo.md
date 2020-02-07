@@ -110,3 +110,38 @@ const lastEvent = get(activityLog, 'lastEvent')
 
 ### Record Type
 TODO: RecordTypeの良いUseCaseを探してくる
+
+### Mapped Types
+
+mapped types は index signature に似た構文を持っていて,
+型の変換ができる
+
+↓は、BuiltInでもあるMappedTypeを自前で書いた例
+
+```ts
+type Account = {
+  id: number
+  isEmployee: boolean
+  notes: string[]
+}
+
+type OptionalAccount = {
+  [K in keyof Account]?: Account[K]
+}
+
+type NullableAccount = {
+  [K in keyof Account]: Account[K] | null
+}
+
+type ReadonlyAccount = {
+  readonly [K in keyof Account]: Account[K]
+}
+
+type WritableAccount = {
+  -readonly [K in keyof ReadonlyAccount]: Account[K]
+}
+
+type RequiredAccount = {
+  [K in keyof OptionalAccount]-?: Account[K]
+}
+```
