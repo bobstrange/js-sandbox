@@ -145,3 +145,9 @@ type RequiredAccount = {
   [K in keyof OptionalAccount]-?: Account[K]
 }
 ```
+
+### Companion Object Pattern
+
+TODO: 例を調べる
+
+
