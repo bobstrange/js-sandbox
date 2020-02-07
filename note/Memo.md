@@ -94,7 +94,18 @@ function get<O extends Object, K extends keyof O>(o: O, k: K): O[K] {
   return o[k]
 }
 
-get({ foo: '1', bar: true }, 'foo')
-get({ foo: '1', bar: true }, 'bar')
-get({ foo: '1', bar: true }, 'baz') // Error
+type ActivityLog = {
+  lastEvent: Date
+  events: {
+    id: string
+    timestamp: Date
+    type: 'Read' | 'Write'
+  }[]
+}
+let activityLog: ActivityLog = {
+  // ...
+}
+const lastEvent = get(activityLog, 'lastEvent')
 ```
+
+
