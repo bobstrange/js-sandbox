@@ -108,4 +108,5 @@ let activityLog: ActivityLog = {
 const lastEvent = get(activityLog, 'lastEvent')
 ```
 
-
+### Record Type
+TODO: RecordTypeの良いUseCaseを探してくる
