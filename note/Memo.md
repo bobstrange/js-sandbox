@@ -78,3 +78,23 @@ type FriendList = APIResponse['user']['friendList']
 ```ts
 type Friend = FriendList['friends'][number]
 ```
+
+### The keyof operator
+
+`keyof`を使うことで、オブジェクトのキーをstringのUnionTypeとして取得できる
+
+```ts
+type ResponseKeys = keyof APIResponse // 'user'
+type UserKeys = keyof APIResponse['user'] // 'userId' | 'friendList'
+```
+
+`keyof`to,`keying-in`を組み合わせて、型安全なgetterを作ることができる
+```ts
+function get<O extends Object, K extends keyof O>(o: O, k: K): O[K] {
+  return o[k]
+}
+
+get({ foo: '1', bar: true }, 'foo')
+get({ foo: '1', bar: true }, 'bar')
+get({ foo: '1', bar: true }, 'baz') // Error
+```
