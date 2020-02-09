@@ -145,9 +145,45 @@ type RequiredAccount = {
   [K in keyof OptionalAccount]-?: Account[K]
 }
 ```
+#### Mapped Typeの例
+↓のようなredisのclientを提供する場合
+
+```ts
+import Redis from 'redis'
+
+const client = Redis.createClient()
+client.on('ready', () => console.info('Ready'))
+client.on('error', e => console.error(`Error: ${e}`))
+client.on('reconnecting', params =>  console.info('Reconnect'))
+```
+
+型情報として↓を提供することもできるが、
+
+```ts
+type RedisClient = {
+  on(event: 'ready', f: () => void): void
+  on(event: 'error', f: (e: Error) => void): void
+  on(event: 'reconnecting', f: (params: { attempt: number, delay: number }) => void): void
+}
+```
+
+MappedTypeを使って、RedisClientの型を抽象的に表現することもできる
+```ts
+type Events = {
+  ready: void
+  error: Error
+  reconnecting: { attempt: number, delay: number }
+}
+
+type RedisClient = {
+  on<E extends keyof Events>(event: E, f: (arg: Events[E]) => void): void
+}
+```
 
 ### Companion Object Pattern
 
 TODO: 例を調べる
 
+### User-Defined Type Guards
 
+### Typesafe APIs
