@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "bobStrange <bob.is.strange.1983@gmail.com> (https://github.com/bob1983)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.7.5"
+  }
 }
