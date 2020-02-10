@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:watch": "tsc -w",
+    "dev:run": "nodemon dist/index.js",
+    "dev": "concurrently npm:dev:*"
   },
   "keywords": [],
   "author": "bobStrange <bob.is.strange.1983@gmail.com> (https://github.com/bob1983)",
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2",
     "typescript": "^3.7.5"
-  }
+  },
+  "dependencies": {}
 }
