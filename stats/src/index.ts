@@ -1,7 +1,7 @@
-import { CSVFileReader } from "./CSVFileReader"
 import { MatchResult } from "./MatchResult"
+import { MatchReader } from "./MatchReader"
 
-const reader = new CSVFileReader('input.csv')
+const reader = new MatchReader('input.csv')
 reader.read()
 
 const dateOfFirstMatch = reader.data[0][0]
