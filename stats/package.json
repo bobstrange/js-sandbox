@@ -1,0 +1,19 @@
+{
+  "name": "stats",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:build": "tsc -w",
+    "dev:run": "nodemon dist/index.js",
+    "dev": "concurrently npm:dev:*"
+  },
+  "keywords": [],
+  "author": "bobStrange <bob.is.strange.1983@gmail.com> (https://github.com/bob1983)",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2",
+    "typescript": "^3.7.5"
+  }
+}
