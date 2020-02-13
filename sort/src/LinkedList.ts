@@ -4,7 +4,7 @@ class ListNode {
   constructor(public data: number) {}
 }
 
-class LinkedList {
+export class LinkedList {
   head: ListNode | null = null
 
   add(data: number): void {
