@@ -21,3 +21,20 @@ interface UserProps {
 ```
 
 なぜ type ではなく interface なのか？
+
+### Server
+Use JSON Server
+
+Install
+
+```shell
+npm install -D json-server
+```
+
+Create data (./db.json)
+
+
+Serve
+```shell
+npx json-server -w db.json
+```
