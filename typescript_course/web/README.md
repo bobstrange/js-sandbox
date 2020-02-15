@@ -37,6 +37,49 @@ interface UserProps {
   - Compositionのメリット(他の依存との切り替え)が失われる
   - ただ、Eventsを切り替えたい場合はあまりないのでこの方法が良いのでは？
 
+### SyncとUserのやりとりをどのようにするべきか？
+#### 1
+Syncが引数を受け取るようにする
+
+```ts
+class Sync {
+  save(id: number, data: UserProps): void
+  fetch(id: number): UserProps
+}
+```
+
+`Sync`が、`User`と強く結合してしまう
+
+#### 2
+`Sync`の引数に`Serializable`, `Deserializable`を実装したオブジェクトを受け取れるようにする
+
+```ts
+interface Serializable {
+  serialize(): {}
+}
+
+interface Deserializable {
+  deserialize(json: {}): void
+}
+
+class Sync {
+  save(id: number, serialize: Serializable): void
+  fetch(id: number, deserialize: Desirializable): void
+}
+```
+
+`Serializable`の`serialize`の戻り値がobject型
+
+#### 3
+Genericsを使用して、`Sync`を汎用的に定義する
+
+```ts
+class Sync<T> {
+  save(id: number, data: T): AxiosPromise<T>
+  fetch(id: number): AxiosPromise<T>
+}
+```
+
 ## Server
 Use JSON Server
 
