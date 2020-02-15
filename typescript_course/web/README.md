@@ -15,7 +15,9 @@ class User {
 }
 
 /* classとは別にPropsを定義する */
-type UserProps {
+interface UserProps {
 
 }
 ```
+
+なぜ type ではなく interface なのか？
