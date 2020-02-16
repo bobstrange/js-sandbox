@@ -26,6 +26,8 @@ interface UserProps {
 ## Composition based design
 - User
 - Eventing
+- Sync
+- Attributes
 
 ### Eventingをどのように注入するか？
 1. constructorの引数に追加
@@ -87,6 +89,51 @@ class Sync<T> {
 
 ### UserへのSyncの注入について
 `Eventing`とは異なり、`Sync`は切り替える需要がありそう(httpリクエスト, json-server, db, ...)
+
+### Userの使い方について
+
+Compositionベースの実装にしたあとには、Userの呼び出し元は、
+Compositionのことを知らないようにすべき
+
+悪い例
+
+```ts
+const name  = user.attributes.get('name')
+const id  = user.attributes.get('id')
+const age  = user.attributes.get('age')
+
+user.sync.save({ name, id, age })
+```
+
+```ts
+class User {
+  // ...
+  //  内部で関数を実行するのではなく
+  on(eventName: string, callback: Callback) {
+    this.events.on(eventName, callback)
+  }
+
+  // GetterでCompositionの参照を渡す
+  get on() {
+    return this.events.on
+  }
+}
+```
+
+内部で関数を実行する場合は、`events.on`のインターフェースが変更された場合に、
+`user`自体の実装を変える必要がある
+
+getterでCompositionの参照を渡す場合は、`events.on` のインターフェースが変更された場合に
+`user`の実装は変更しなくても良い
+(ただ、実装がUserを超えて露出しているのでUserはInterfaceとして振る舞えていないような気が、、、)
+
+## Composition base での問題
+- 内部に保持しているオブジェクトがInterfaceではなくClassである
+    - 実装を切り替えづらい
+- 保持しているオブジェクトがpublicである
+    - Method経由でのみ触れるようにしたい
+- 新しくModelを作成したときに `get`, `set`, `on`, `trigger`, `fetch`, `save` を
+　そちらのクラスで再度実装する必要がある
 
 ## Server
 Use JSON Server
