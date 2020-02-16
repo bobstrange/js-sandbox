@@ -80,6 +80,14 @@ class Sync<T> {
 }
 ```
 
+### Sync.fetchの責務について
+
+リクエストを実行しているが、受け取ったデータについては何もしていない
+-> 受け取ったデータの処理は呼び出し側の責務
+
+### UserへのSyncの注入について
+`Eventing`とは異なり、`Sync`は切り替える需要がありそう(httpリクエスト, json-server, db, ...)
+
 ## Server
 Use JSON Server
 
