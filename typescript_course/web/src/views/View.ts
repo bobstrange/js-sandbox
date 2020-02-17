@@ -1,9 +1,9 @@
-import { User } from "../models/User"
+import { Model } from "../models/Model"
 
-export abstract class View {
+export abstract class View<T extends Model<K>, K> {
   constructor(
     public parent: Element,
-    public model: User
+    public model: T
   ) {
     this.bindModel()
   }
