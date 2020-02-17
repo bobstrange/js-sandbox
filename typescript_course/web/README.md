@@ -135,6 +135,15 @@ getterでCompositionの参照を渡す場合は、`events.on` のインターフ
 - 新しくModelを作成したときに `get`, `set`, `on`, `trigger`, `fetch`, `save` を
 　そちらのクラスで再度実装する必要がある
 
+### 改善
+- baseのModelクラスを作ってUserクラスはModelを継承する
+- Composition用のInterfaceを作って、Modelクラスはそれに依存するようにする
+- ModelクラスのconstructorでCompositionの依存を注入するようにする
+    - これにより振る舞いを変えたいときは、異なるクラスを注入すれば振る舞いを変更できるようになる
+- Userクラスのインスタンス生成のstaticメソッドを作成する
+
+## Collection
+
 ## Server
 Use JSON Server
 
