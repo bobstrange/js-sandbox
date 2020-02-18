@@ -61,6 +61,9 @@ console.log(user.name) // => 'Tom'
 Object.defineProperty(user, 'name', { writable: false })
 user.name = 'Mike'
 console.log(user.name) // => !!!'Tom'
-
-
 ```
+
+### decorator limitation
+
+We cannot access to instance variable via decorator.
+(As first arg is prototype and decorator executed once before instance is created)

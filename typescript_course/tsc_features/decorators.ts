@@ -1,4 +1,5 @@
 class Boat {
+  @testDecorator
   color: string = 'red'
 
   get formattedColor(): string {
@@ -22,10 +23,10 @@ function logError(errorMessage: string) {
         console.log(errorMessage)
       }
     }
-    console.log('Target:', target)
-    console.log('Key:', key)
   }
 }
 
-const boat = new Boat
-boat.pilot()
+function testDecorator(target: any, key: string): void {
+  console.log('Target:', target)
+  console.log('Key:', key)
+}
