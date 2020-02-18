@@ -1,9 +1,24 @@
 import 'reflect-metadata'
-import express from 'express'
+import express, { Request, Response, RequestHandler, NextFunction } from 'express'
 import { Methods } from './Methods'
 import { MetadataKeys } from './MetadataKeys'
 
 export const router = express.Router()
+
+function bodyValidators(keys: string[]): RequestHandler {
+  return function(req: Request, res: Response, next: NextFunction) {
+    if (!req.body) {
+      res.status(422).send('Invalid request')
+      return
+    }
+    for (let key of keys) {
+      if (!req.body[key]) {
+        res.status(422).send(`Missing key: ${key}`)
+      }
+    }
+    next()
+  }
+}
 
 export function Controller(routePrefix: string) {
   return function(target: Function) {
@@ -14,6 +29,7 @@ export function Controller(routePrefix: string) {
         target.prototype,
         key
       )
+
       const method = Reflect.getMetadata(
         MetadataKeys.method,
         target.prototype,
@@ -26,8 +42,21 @@ export function Controller(routePrefix: string) {
         key
       ) || []
 
+      const requiredBodyProps = Reflect.getMetadata(
+        MetadataKeys.validator,
+        target.prototype,
+        key
+      ) || []
+
+      const validator = bodyValidators(requiredBodyProps)
+
       if (path) {
-        router[method](`${routePrefix}${path}`, ...middlewares, routeHandler)
+        router[method](
+          `${routePrefix}${path}`,
+          ...middlewares,
+          validator,
+          routeHandler
+        )
       }
     }
   }
