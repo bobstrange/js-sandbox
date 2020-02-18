@@ -9,7 +9,9 @@ npx ts-node decorators.ts
 ```
 
 ### decorator
-
+- Method
+- Class
+- Method parameter
 
 > npx ts-node decorators.ts
 > Target: Boat { formattedColor: [Getter], pilot: [Function] }
@@ -67,3 +69,5 @@ console.log(user.name) // => !!!'Tom'
 
 We cannot access to instance variable via decorator.
 (As first arg is prototype and decorator executed once before instance is created)
+
+We can use decorator for static variable, static method, static accessor.

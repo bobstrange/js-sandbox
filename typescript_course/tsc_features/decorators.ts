@@ -1,16 +1,32 @@
+@classDecorator
 class Boat {
   @testDecorator
   color: string = 'red'
 
+  @testDecorator
   get formattedColor(): string {
     return `This boart color is ${this.color}`
   }
 
   @logError('Something bad')
-  pilot(): void {
-    throw new Error()
-    console.log('swish')
+  pilot(
+    @parameterDecorator speed: string,
+    @parameterDecorator generateWake: boolean
+  ): void {
+    if (speed === 'fast') {
+      console.log('swish')
+    } else {
+      console.log('nothing')
+    }
   }
+}
+
+function parameterDecorator(target: any, key: string, index: number) {
+  console.log(key, index)
+}
+
+function classDecorator(constructor: typeof Boat) {
+  console.log(constructor)
 }
 
 function logError(errorMessage: string) {
