@@ -78,4 +78,6 @@ We can use decorator for static variable, static method, static accessor.
 npm install reflect-metadata
 ```
 
+metadataはオブジェクトにセットできる
+metadataはオブジェクトのプロパティにもセットできる
 
