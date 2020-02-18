@@ -9,16 +9,25 @@ export function Controller(routePrefix: string) {
   return function(target: Function) {
     for (let key in target.prototype) {
       const routeHandler = target.prototype[key]
-      const path = Reflect.getMetadata(MetadataKeys.path, target.prototype, key)
-      const method = Reflect.getMetadata(MetadataKeys.method, target.prototype, key) as  Methods
+      const path = Reflect.getMetadata(
+        MetadataKeys.path,
+        target.prototype,
+        key
+      )
+      const method = Reflect.getMetadata(
+        MetadataKeys.method,
+        target.prototype,
+        key
+      ) as  Methods
 
-      console.log('Controller target: ', target, ' key: ', key, ' prototype: ', target.prototype)
-
-      console.log('path: ', path)
-      console.log('method: ', method)
+      const middlewares = Reflect.getMetadata(
+        MetadataKeys.middleware,
+        target,
+        key
+      ) || []
 
       if (path) {
-        router[method](`${routePrefix}${path}`, routeHandler)
+        router[method](`${routePrefix}${path}`, ...middlewares, routeHandler)
       }
     }
   }
