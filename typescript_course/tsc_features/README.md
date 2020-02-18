@@ -71,3 +71,11 @@ We cannot access to instance variable via decorator.
 (As first arg is prototype and decorator executed once before instance is created)
 
 We can use decorator for static variable, static method, static accessor.
+
+## metadata.ts
+
+```shell
+npm install reflect-metadata
+```
+
+
