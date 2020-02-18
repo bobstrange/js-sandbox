@@ -22,7 +22,7 @@ export function Controller(routePrefix: string) {
 
       const middlewares = Reflect.getMetadata(
         MetadataKeys.middleware,
-        target,
+        target.prototype,
         key
       ) || []
 
