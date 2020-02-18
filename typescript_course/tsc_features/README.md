@@ -35,3 +35,32 @@ var __decorate = function (decorators, target, key, desc) {
     }
 }
 ```
+
+### PropertyDescriptor ?
+
+```ts
+interface PropertyDescriptor {
+    configurable?: boolean;
+    enumerable?: boolean;
+    value?: any;
+    writable?: boolean;
+    get?(): any;
+    set?(v: any): void;
+}
+```
+
+```js
+const user = {
+  name: 'John',
+  age: 20
+}
+
+Object.getOwnPropertyDescriptor(user, 'name')
+user.name = 'Tom'
+console.log(user.name) // => 'Tom'
+Object.defineProperty(user, 'name', { writable: false })
+user.name = 'Mike'
+console.log(user.name) // => !!!'Tom'
+
+
+```
