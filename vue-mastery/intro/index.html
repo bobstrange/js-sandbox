@@ -9,12 +9,10 @@
   <div id="app">
     <div class="product">
       <div class="product-image">
-        <a :href="link">
-          <img
-            :src="image"
-            :alt="altText"
-          >
-        </a>
+        <img
+           :src="image"
+           :alt="altText"
+        >
       </div>
 
       <div class="product-info">
@@ -23,13 +21,21 @@
           <li v-for="detail of details">{{ detail }}</li>
         </ul>
 
-        <div v-for="variant of variants" :key="variant.variantId">
-          <p @mouseover="updateProduct(variant.variantImage)">
-            {{ variant.variantColor }}
-          </p>
+        <div
+          class="color-box"
+          v-for="variant of variants"
+          :key="variant.variantId"
+          :style="{ backgroundColor: variant.variantColor }"
+          @mouseover="updateProduct(variant.variantImage)"
+        >
+
         </div>
       </div>
-      <button @click="addToCart">Add to cart</button>
+      <button
+        @click="addToCart"
+        :disabled="!inStock"
+        :class="{ disabledButton: !inStock }"
+      >Add to cart</button>
     </div>
 
     <div class="cart">
