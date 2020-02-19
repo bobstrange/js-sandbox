@@ -7,24 +7,33 @@
 <body>
   <div class="nav-bar"></div>
   <div id="app">
-    <div class="product-image">
-      <a :href="link">
-        <img
-          :src="image"
-          :alt="altText"
-        >
-      </a>
+    <div class="product">
+      <div class="product-image">
+        <a :href="link">
+          <img
+            :src="image"
+            :alt="altText"
+          >
+        </a>
+      </div>
+
+      <div class="product-info">
+        <h1>{{ product }}</h1>
+        <ul>
+          <li v-for="detail of details">{{ detail }}</li>
+        </ul>
+
+        <div v-for="variant of variants" :key="variant.variantId">
+          <p @mouseover="updateProduct(variant.variantImage)">
+            {{ variant.variantColor }}
+          </p>
+        </div>
+      </div>
+      <button @click="addToCart">Add to cart</button>
     </div>
 
-    <div class="product-info">
-      <h1>{{ product }}</h1>
-      <ul>
-        <li v-for="detail of details">{{ detail }}</li>
-      </ul>
-
-      <div v-for="variant of variants" :key="variant.variantId">
-        {{ variant.variantColor }}
-      </div>
+    <div class="cart">
+      <p>Cart({{ cart  }})</p>
     </div>
   </div>
 
