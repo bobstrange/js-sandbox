@@ -18,6 +18,13 @@
 
     <div class="product-info">
       <h1>{{ product }}</h1>
+      <ul>
+        <li v-for="detail of details">{{ detail }}</li>
+      </ul>
+
+      <div v-for="variant of variants" :key="variant.variantId">
+        {{ variant.variantColor }}
+      </div>
     </div>
   </div>
 
