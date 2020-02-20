@@ -23,10 +23,10 @@
 
         <div
           class="color-box"
-          v-for="variant of variants"
+          v-for="(variant, index) in variants"
           :key="variant.variantId"
           :style="{ backgroundColor: variant.variantColor }"
-          @mouseover="updateProduct(variant.variantImage)"
+          @mouseover="updateProduct(index)"
         >
 
         </div>

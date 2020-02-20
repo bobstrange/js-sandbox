@@ -6,6 +6,7 @@ const app = new Vue({
     image: './assets/vmSocks-green-onWhite.jpg',
     details: ['80% cotton', '20% polyester', 'Gender-neutral'],
     inStock: true,
+    selectedVariant: 0,
     variants: [
       {
         variantId: 2234,
@@ -24,8 +25,9 @@ const app = new Vue({
     addToCart() {
       this.cart = this.cart + 1
     },
-    updateProduct(variantImage) {
-      this.image = variantImage
+    updateProduct(index) {
+      const selectedVariant = this.variants[index]
+      this.image = selectedVariant.variantImage
     }
   },
   computed: {
