@@ -7,39 +7,15 @@
 <body>
   <div class="nav-bar"></div>
   <div id="app">
-    <div class="product">
-      <div class="product-image">
-        <img
-           :src="image"
-           :alt="altText"
-        >
-      </div>
 
-      <div class="product-info">
-        <h1>{{ title }}</h1>
-        <ul>
-          <li v-for="detail of details">{{ detail }}</li>
-        </ul>
-
-        <div
-          class="color-box"
-          v-for="(variant, index) in variants"
-          :key="variant.variantId"
-          :style="{ backgroundColor: variant.variantColor }"
-          @mouseover="updateProduct(index)"
-        >
-
-        </div>
-      </div>
-      <button
-        @click="addToCart"
-        :disabled="!inStock"
-        :class="{ disabledButton: !inStock }"
-      >Add to cart</button>
-    </div>
+    <product
+      :premium="premium"
+      @add-to-cart="updateCart"
+    ></product>
+    <product-review></product-review>
 
     <div class="cart">
-      <p>Cart({{ cart  }})</p>
+      <p>Cart({{ cart.length }})</p>
     </div>
   </div>
 
