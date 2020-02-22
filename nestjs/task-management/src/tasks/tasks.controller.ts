@@ -10,7 +10,7 @@ export class TasksController {
   constructor(private tasksService: TasksService) {}
 
   @Get()
-  getTasks(@Query() filterDTO: GetTasksFilterDTO): Task[] {
+  getTasks(@Query(new ValidationPipe()) filterDTO: GetTasksFilterDTO): Task[] {
     if (Object.keys(filterDTO).length) {
       return this.tasksService.getTasksWithFilters(filterDTO)
     }
