@@ -44,17 +44,11 @@ export class TasksService {
   async createTask(createTaskDTO: CreateTaskDTO): Promise<Task> {
     return this.taskRepository.createTask(createTaskDTO)
   }
-  // createTask(createTaskDTO: CreateTaskDTO): Task {
-  //   const { title, description } = createTaskDTO
-  //   const task: Task = {
-  //     id: uuid(),
-  //     title,
-  //     description,
-  //     status: TaskStatus.OPEN
-  //   }
-  //   this.tasks.push(task)
-  //   return task
-  // }
+
+  async deleteTask(id: number): Promise<Task> {
+    const found = await this.getTaskById(id)
+    return await this.taskRepository.remove(found)
+  }
 
   // deleteTask(id: string): Task {
   //   const found = this.getTaskById(id)
