@@ -10,6 +10,11 @@ npm install -D \
   ts-loader
 ```
 
+For production
+```shell
+npm install -D \
+  clean-webpack-plugin
+```
 ## tsconfig.json
 `tsconfig.json`作成
 
