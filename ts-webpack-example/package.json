@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "dev:start": "webpack-dev-server"
   },
   "keywords": [],
   "author": "bobStrange <bob.is.strange.1983@gmail.com> (https://github.com/bob1983)",
