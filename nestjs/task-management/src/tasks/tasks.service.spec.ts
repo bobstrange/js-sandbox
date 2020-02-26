@@ -110,7 +110,7 @@ describe('TasksService', () => {
         title: 'Mock task title',
         description: 'Mock task desc',
         status: TaskStatus.OPEN,
-        save: jest.fn()
+        save: jest.fn().mockResolvedValue(true)
       }
       tasksService.getTaskById = jest.fn().mockResolvedValue(mockTask)
       expect(tasksService.getTaskById).not.toHaveBeenCalled()
@@ -119,7 +119,7 @@ describe('TasksService', () => {
 
       expect(tasksService.getTaskById).toHaveBeenCalledWith(2, mockUser)
       expect(mockTask.save).toHaveBeenCalled()
-      expect(result).toEqual({ ...mockTask, status: TaskStatus.IN_PROGRESS })
+      expect(result.status).toEqual(TaskStatus.IN_PROGRESS)
     })
   })
 })
