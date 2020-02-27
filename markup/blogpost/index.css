@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Helvetica Neue, Arial;
   font-size: 18px;
@@ -15,6 +20,9 @@ h2 {
   font-size: 24px;
 }
 
-p {
+.main-text {
   text-align: justify;
+  margin-bottom: 20px;
 }
+
+
