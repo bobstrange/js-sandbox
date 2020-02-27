@@ -8,6 +8,24 @@ body {
   font-size: 18px;
 }
 
+.container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-post {
+  background-color: #0000ff;
+}
+
+.other-posts {
+  background-color: #00ff00;
+}
+
+.author-box {
+  background-color: #ffff00;
+}
+
 h1, h2 {
   color: green;
 }
@@ -24,5 +42,4 @@ h2 {
   text-align: justify;
   margin-bottom: 20px;
 }
-
 
