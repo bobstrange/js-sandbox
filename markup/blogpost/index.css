@@ -24,11 +24,18 @@ body {
   width: 75%;
   float: left;
   padding-right: 20px;
+  position: relative;
 }
 
 .blog-post img {
   height: 150px;
   width: auto;
+}
+
+.post-date {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .other-posts {
