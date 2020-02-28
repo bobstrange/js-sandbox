@@ -1,3 +1,5 @@
+/* Setup */
+
 * {
   margin: 0;
   padding: 0;
@@ -13,24 +15,11 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+/* Reusable contents */
+
 .row {
   max-width: 1140px;
   margin: 0 auto;
-}
-
-header {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(images/hero.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-}
-
-.text-box {
-  position: absolute;
-  width: 1140px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 h1 {
@@ -44,6 +33,7 @@ h1 {
   word-spacing: 5px;
 }
 
+/* Buttons */
 .btn:link,
 .btn:visited {
   display: inline-block;
@@ -82,6 +72,23 @@ h1 {
 .btn-ghost:active {
   border: 1px solid #e67e22;
   color: #fff;
+}
+
+/* Headers */
+
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(images/hero.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.text-box {
+  position: absolute;
+  width: 1140px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
