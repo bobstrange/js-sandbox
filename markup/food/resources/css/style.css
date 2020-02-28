@@ -231,6 +231,78 @@ header {
   border-bottom: 2px solid #e67e22;
 }
 
+/* Footer */
+footer {
+  background-color: #333;
+  padding: 10px;
+  font-size: 80%;
+}
+
+footer p {
+  color: #888;
+  text-align: center;
+  margin-top: 5px
+}
+
+.footer-nav {
+  list-style: none;
+  float: left;
+}
+
+.social-links {
+  list-style: none;
+  float: right;
+}
+
+.footer-nav li,
+.social-links li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+  text-decoration: none;
+  border: 0;
+  color: #999;
+  transition: color 0.3s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+  color: #ddd;
+}
+
+.social-links li a:link,
+.social-links li a:visited
+{
+  font-size: 130%;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+  margin-right: 0;
+}
+.fa-facebook,
+.fa-twitter,
+.fa-instagram {
+  transition: color 0.3s;
+}
+
+.fa-facebook:hover {
+  color: #3b5998;
+}
+
+.fa-twitter:hover {
+  color: #00aced;
+}
+
+.fa-instagram:hover {
+  color: #517fa4;
+}
+
 /* Features */
 .features .long-copy {
   margin-bottom: 30px;
