@@ -239,6 +239,9 @@ header {
 }
 
 /* How it works */
+.steps {
+  background-color: #f4f4f4
+}
 
 .steps-box {
   margin-top: 30px;
