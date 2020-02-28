@@ -189,6 +189,9 @@ header {
 }
 
 /* Features */
+.features .long-copy {
+  margin-bottom: 30px;
+}
 
 /* Meals */
 .meals {
