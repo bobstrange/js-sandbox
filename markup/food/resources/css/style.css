@@ -188,7 +188,13 @@ header {
   border-bottom: 2px solid #e67e22;
 }
 
+/* Features */
+
 /* Meals */
+.meals {
+  padding: 0;
+}
+
 .meals-showcase {
   list-style: none;
   width: 100%;
@@ -203,10 +209,19 @@ header {
 .meal-photo {
   width: 100%;
   margin: 0;
+  overflow: hidden;
+  background-color: #000;
 }
 
 .meal-photo img {
+  opacity: 0.8;
   width: 100%;
   height: auto;
-  margin: 0;
+  transform: scale(1.2);
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.meal-photo img:hover {
+  opacity: 1;
+  transform: scale(1.05);
 }
