@@ -78,8 +78,7 @@ h2 { font-size: 140% }
   font-size: 120%;
   margin-right: 15px;
 }
+
+.contact-form { width: 100% }
 }
 
-
-@media only screen and (max-width: 480px) {
-}
