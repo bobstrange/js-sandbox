@@ -54,6 +54,7 @@
     &:visited {
       font-size: 3rem;
       font-weight: 300;
+      display: inline-block;
       padding: 1rem 2rem;
       color: $color-white;
       text-decoration: none;
@@ -68,16 +69,12 @@
       );
       background-size: 240%;
       transition: all .5s;
-    }
 
-    /*
-     * background-sizeを拡大する
-     *  -> 背景の切れ目が移動する
-     *
-     * gradientの切れ目は50%にしているので、
-     * background自体の位置を100%左にずらすことで、
-     * 切れ目を制御
-     */
+      span {
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
 
     &:hover,
     &:active {
