@@ -1,6 +1,8 @@
 .navigation {
-  &__checkbox {
+  position: relative;
 
+  &__checkbox {
+    display: none;
   }
 
   &__button {
