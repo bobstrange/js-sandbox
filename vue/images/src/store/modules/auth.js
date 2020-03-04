@@ -2,7 +2,7 @@ import qs from 'qs'
 import api from '../../api/imgur'
 
 const state = {
-  token: null
+  token: window.localStorage.getItem('imgur_token')
 }
 
 const getters = {
@@ -15,11 +15,12 @@ const actions = {
     const queryString = hash.replace('#', '')
     const query = qs.parse(queryString)
     const accessToken = query.access_token
-    console.log('accessToken: ', accessToken)
     commit('setToken', accessToken)
+    window.localStorage.setItem('imgur_token', accessToken)
   },
   logout: ({ commit }) => {
     commit('setToken', null)
+    window.localStorage.removeItem('imgur_token')
   }
 }
 const mutations = {
