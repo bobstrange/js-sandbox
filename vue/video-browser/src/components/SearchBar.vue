@@ -22,7 +22,6 @@ export default {
 
 <style scoped>
 .search-bar {
-  text-align: center;
 }
 
 .search-bar__input {
