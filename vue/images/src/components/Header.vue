@@ -5,11 +5,12 @@
     </a>
 
     <div class="right menu">
-      <a class="item">
-        Messages
-      </a>
-      <a class="item">
-        Friends
+      <a
+        href="#"
+        class="ui item"
+        @click="login"
+      >
+        Login
       </a>
       <a class="ui item">
         Logout
@@ -19,8 +20,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: "Header"
+  name: "Header",
+  methods: {
+    ...mapActions({ login: 'auth/login' })
+  }
 };
 </script>
 
