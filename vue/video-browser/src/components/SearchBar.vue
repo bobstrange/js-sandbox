@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <input type="text" @input="onInput">
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Seach word"
+      @input="onInput"
+      class="search-bar__input"
+    >
   </div>
 </template>
 
@@ -15,6 +20,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.search-bar {
+  text-align: center;
+}
+
+.search-bar__input {
+  width: 50%;
+  padding: 3px 1rem;
+  font-size: 1rem;
+  border-radius: 10rem;
+  outline-style: none;
+}
 
 </style>
