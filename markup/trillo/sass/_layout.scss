@@ -56,3 +56,15 @@
   flex-direction: column;
   align-items: center;
 }
+
+// CTA
+.cta {
+  padding: 3rem;
+  text-align: center;
+  &__book-now {
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+}
