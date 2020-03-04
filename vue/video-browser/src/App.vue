@@ -18,7 +18,7 @@ export default {
     async onSearchTermChange(searchTerm) {
       console.log('apikey', API_KEY)
       const result = await axios.get(
-        'https://www.google.apis.com/youtube/v3/search',
+        'https://www.googleapis.com/youtube/v3/search',
         {
           params: {
             key: API_KEY,
