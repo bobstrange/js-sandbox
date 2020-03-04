@@ -1,4 +1,5 @@
 import api from '../../api/imgur'
+import { router } from '../../main'
 
 export const state = () => ({
   images: []
@@ -20,9 +21,14 @@ export const actions = {
     const response = await api.fetchImages(token)
     commit('setImages', response.data.data)
   },
-  // uploadImage({}, payload) {
+  // eslint-disable-next-line no-unused-vars
+  async uploadImages({ rootState }, images) {
+    const { token } = rootState.auth
 
-  // }
+    await api.uploadImages(images, token)
+
+    router.push('/')
+  }
 }
 export default {
   namespaced: true,

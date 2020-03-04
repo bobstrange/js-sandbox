@@ -23,5 +23,16 @@ export default {
         'Authorization': `Bearer ${accessToken}`
       }
     })
+  },
+  uploadImages(images, accessToken) {
+    Array.from(images).map(image => {
+      const formData = new FormData()
+      formData.append('image', image)
+      return axios.post(`${rootURL}/3/image`, formData, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      })
+    })
   }
 }

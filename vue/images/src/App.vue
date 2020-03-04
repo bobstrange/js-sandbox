@@ -1,7 +1,9 @@
 <template>
-  <div class="container">
+  <div>
     <Header />
-    <router-view></router-view>
+    <div class="ui container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -17,5 +19,7 @@ export default {
 </script>
 
 <style>
-
+.container {
+  margin: 0 auto;
+}
 </style>
