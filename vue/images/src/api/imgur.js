@@ -1,5 +1,6 @@
 import { IMGUR_CLIENT_ID } from '../../secret'
 import qs from 'qs'
+import axios from 'axios'
 
 const clientID = IMGUR_CLIENT_ID
 // const secret = IMGUR_SECRET
@@ -14,5 +15,13 @@ export default {
 
     console.log('login:', queryString)
     window.location = `${rootURL}/oauth2/authorize?${qs.stringify(queryString)}`
+  },
+  fetchImages(accessToken) {
+    console.log('AccessToken:', accessToken)
+    return axios.get(`${rootURL}/3/account/me/images`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
   }
 }
