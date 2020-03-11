@@ -9,8 +9,26 @@ services:
       - .:/app
     ports:
       - '3000:3000'
+    environment:
+      PGUSER: postgres
+      PGHOST: postgres
+      PGDATABASE: task_management
+      PGPASSWORD: task-management
+      PGPORT: 5432
   api-test:
     build:
       context: .
       dockerfile: Dockerfile.dev
     command: [npm, run, test]
+    environment:
+      PGUSER: postgres
+      PGHOST: postgres
+      PGDATABASE: task_management
+      PGPASSWORD: task-management
+      PGPORT: 5432
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: task-management
