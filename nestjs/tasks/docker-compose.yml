@@ -12,23 +12,14 @@ services:
     environment:
       PGUSER: postgres
       PGHOST: db
-      PGDATABASE: task_management
-      PGPASSWORD: task-management
+      PGDATABASE: taskmanagement
+      PGPASSWORD: taskmanagement
       PGPORT: 5432
-  api-test:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    command: [npm, run, test]
-    environment:
-      PGUSER: postgres
-      PGHOST: postgres
-      PGDATABASE: task_management
-      PGPASSWORD: task-management
-      PGPORT: 5432
-
   db:
     image: postgres
     restart: always
+    ports:
+      - '15432:5432'
     environment:
-      POSTGRES_PASSWORD: task-management
+      POSTGRES_PASSWORD: taskmanagement
+      POSTGRES_DB: taskmanagement
