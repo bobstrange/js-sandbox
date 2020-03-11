@@ -11,7 +11,7 @@ services:
       - '3000:3000'
     environment:
       PGUSER: postgres
-      PGHOST: postgres
+      PGHOST: db
       PGDATABASE: task_management
       PGPASSWORD: task-management
       PGPORT: 5432
