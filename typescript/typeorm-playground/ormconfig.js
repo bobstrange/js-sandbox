@@ -8,7 +8,7 @@ module.exports = {
    password: "postgres",
    database: "postgres",
    synchronize: false,
-   logging: false,
+   logging: true,
    namingStrategy: new SnakeNamingStrategy(),
    entities: [
       "src/entity/**/*.ts"

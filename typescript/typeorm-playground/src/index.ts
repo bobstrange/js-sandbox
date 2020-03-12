@@ -26,11 +26,23 @@ createConnection().then(connection => {
     return res.json(user)
   })
 
-  app.post('/users', (req: Request, res: Response) => {
-    console.log('/users')
+  app.post('/users', async (req: Request, res: Response, next: NextFunction) => {
+    const firstName = req.body.first_name
+    const lastName = req.body.last_name
+    const age = req.body.age
+
+    if (!(firstName && lastName && age)) {
+      const err = new Error('firstName, lastName and age is required')
+      return next(err)
+    }
+    const user = await userRepository.create({ firstName, lastName, age })
+    const results = await userRepository.save(user)
+    console.log('user creation results: ', results)
+    return res.send(results)
   })
 
   app.use((err, req, res, next) => {
+    console.log(err.stack)
     res.status = err.statusCode || 500
     res.send({ error: err })
   })
