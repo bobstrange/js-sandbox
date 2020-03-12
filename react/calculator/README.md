@@ -1,2 +1,0 @@
-# Calculator
-Calculate your BMI.
