@@ -10,6 +10,8 @@
    "author": "bobStrange <bob.is.strange.1983@gmail.com> (https://github.com/bob1983)",
    "license": "MIT",
    "dependencies": {
+      "class-transformer": "^0.2.3",
+      "class-validator": "^0.11.0",
       "express": "^4.17.1",
       "multer": "^1.4.2",
       "pg": "^7.3.0",
