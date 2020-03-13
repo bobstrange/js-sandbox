@@ -3,5 +3,8 @@
 ## Run
 
 ```bash
-npm run start
+npm run dev
 ```
+
+http://localhost:8080/graphql
+

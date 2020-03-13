@@ -28,8 +28,9 @@ const RootQuery = new GraphQLObjectType({
       type: userType,
       args: { id: { type: GraphQLString }},
       resolve(parentValue, args) {
+        console.log(args)
         return users.find(user => {
-          user.id === args.id
+          return user.id === args.id
         })
       }
     }
