@@ -4,8 +4,9 @@ import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt
-} from "graphql";
+} from "graphql"
 
+import axios from 'axios'
 
 const users = [
   { id: '23', firstName: 'John', age: 20 },
@@ -27,11 +28,9 @@ const RootQuery = new GraphQLObjectType({
     user: {
       type: userType,
       args: { id: { type: GraphQLString }},
-      resolve(parentValue, args) {
-        console.log(args)
-        return users.find(user => {
-          return user.id === args.id
-        })
+      async resolve(parentValue, args) {
+        const response = await axios.get(`http://localhost:3000/users/${args.id}`)
+        return response.data
       }
     }
   }

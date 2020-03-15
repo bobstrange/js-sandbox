@@ -12,6 +12,7 @@
   "author": "bobStrange <bob.is.strange.1983@gmail.com> (https://github.com/bob1983)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.6.0",
