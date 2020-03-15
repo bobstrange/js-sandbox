@@ -7,6 +7,7 @@ import {
 } from "graphql"
 
 import axios from 'axios'
+import { resolve } from "dns"
 
 const CompanyType = new GraphQLObjectType({
   name: 'Company',
@@ -42,6 +43,14 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: GraphQLString }},
       async resolve(parentValue, args) {
         const response = await axios.get(`http://localhost:3000/users/${args.id}`)
+        return response.data
+      }
+    },
+    company: {
+      type: CompanyType,
+      args: { id: { type: GraphQLString }},
+      async resolve(parentValue, args) {
+        const response = await axios.get(`http://localhost:3000/companies/${args.id}`)
         return response.data
       }
     }
