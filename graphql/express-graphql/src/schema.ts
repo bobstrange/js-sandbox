@@ -9,6 +9,7 @@ import {
 } from "graphql"
 
 import axios from 'axios'
+import { resolve } from "dns"
 
 const CompanyType = new GraphQLObjectType({
   name: 'Company',
@@ -77,6 +78,16 @@ const mutation = new GraphQLObjectType({
       },
       async resolve(parentValue, { firstName, age }) {
         const response = await axios.post(`http://localhost:3000/users`, { firstName, age })
+        return response.data
+      }
+    },
+    deleteUser: {
+      type: UserType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      async resolve(parentValue, { id }) {
+        const response = await axios.delete(`http://localhost:3000/users/${id}`)
         return response.data
       }
     }
