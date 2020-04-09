@@ -1,0 +1,17 @@
+{
+  "name": "error-handling",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch src --ext ts --exec ts-node ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "bobStrange <bob.is.strange.1983@gmail.com> (https://github.com/bob1983)",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
+  }
+}
