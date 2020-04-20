@@ -1,11 +1,5 @@
+import '../js/first.js'
+import '../js/second.js'
+import '../js/third.js'
 
-import {one, two, three} from '../js/func_list.js'
-
-one()
-
-two()
-
-//three()
-
-
-require('../css/main.css')
+// require('../css/main.css')
