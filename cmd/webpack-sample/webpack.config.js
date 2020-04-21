@@ -1,6 +1,7 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 const rootDir =  path.resolve(__dirname, 'dist')
 
@@ -8,12 +9,14 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: rootDir
+    contentBase: rootDir,
+    port: 8000,
+    hot: true
   },
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: rootDir
+    path: rootDir,
   },
   module: {
     rules: [
@@ -45,6 +48,7 @@ module.exports = {
        title: 'title',
        filename: 'index.html',
        template: './index.html'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
