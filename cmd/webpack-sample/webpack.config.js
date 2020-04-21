@@ -2,14 +2,18 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
-const outputDir = 'dist'
+const rootDir =  path.resolve(__dirname, 'dist')
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: rootDir
+  },
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, outputDir)
+    path: rootDir
   },
   module: {
     rules: [
@@ -39,7 +43,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new htmlWebpackPlugin({
        title: 'title',
-       filename: 'sample.html',
+       filename: 'index.html',
        template: './index.html'
     })
   ]
