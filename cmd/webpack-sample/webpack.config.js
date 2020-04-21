@@ -1,5 +1,7 @@
 const path = require('path')
-const cleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const htmlWebpackPlugin = require('html-webpack-plugin')
+
 const outputDir = 'dist'
 
 module.exports = {
@@ -26,7 +28,7 @@ module.exports = {
             options: {
               name: 'prefix-[hash]-[name].[ext]',
               outputPath: 'images/',
-              publicPath: './dist/images'
+              publicPath: './images'
             }
           }
         ]
@@ -34,6 +36,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new cleanWebpackPlugin(outputDir)
+    new CleanWebpackPlugin(),
+    new htmlWebpackPlugin({
+       title: 'title',
+       filename: 'sample.html',
+       template: './index.html'
+    })
   ]
 }
