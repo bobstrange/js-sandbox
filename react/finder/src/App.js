@@ -1,12 +1,19 @@
-import React from "react"
+import React, { Component, Fragment } from "react"
 import "./App.css"
 
-class App extends React.Component {
+class App extends Component {
   render() {
+    const name = 'John Doe'
+    const loading = false
+
+    const content = loading ?
+      <h4>Loading...</h4> :
+      <h1>Hello {name}</h1>
+
     return (
-      <div className="App">
-        <h1>Hello</h1>
-      </div>
+      <Fragment className="App">
+        {content}
+      </Fragment>
     )
   }
 }
