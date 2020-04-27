@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react"
 import "./App.css"
+import "@fortawesome/fontawesome-free/css/all.min.css"
+
 import { Navbar } from './Navbar'
 
 class App extends Component {
