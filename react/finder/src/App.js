@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react"
 import "./App.css"
+import { Navbar } from './Navbar'
 
 class App extends Component {
   render() {
@@ -8,7 +9,11 @@ class App extends Component {
 
     const content = loading ?
       <h4>Loading...</h4> :
-      <h1>Hello {name}</h1>
+      <Fragment>
+        <Navbar />
+        <h1>Hello {name}</h1>
+      </Fragment>
+
 
     return (
       <Fragment className="App">
