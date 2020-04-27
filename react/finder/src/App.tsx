@@ -3,14 +3,14 @@ import "./App.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
 import { Navbar } from './components/Navbar'
-import { UserItem } from './components/UserItem'
+import { Users } from './components/Users'
 
 class App extends Component {
   render() {
     const content =
       <Fragment>
         <Navbar />
-        <UserItem />
+        <Users />
       </Fragment>
 
     return (

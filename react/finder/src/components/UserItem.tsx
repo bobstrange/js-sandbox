@@ -1,31 +1,13 @@
 import React, { Component } from "react"
 
-type UserItemState = {
-  id: string
-  login: string
-  avatar_url: string
-  html_url: string
+import { User } from '../types/User'
+type UserItemProps = {
+  user: User
 }
 
-export class UserItem extends Component<{}, UserItemState> {
-  state = {
-    id: "id",
-    login: "bob1983",
-    avatar_url: "https://avatars3.githubusercontent.com/u/1381585?s=460&v=4",
-    html_url: "https://github.com/bob1983"
-  }
-  // constructor(props: any) {
-  //   super(props)
-  //   this.state = {
-  //     id: "id",
-  //     login: "bob1983",
-  //     avatar_url: "https://avatars3.githubusercontent.com/u/1381585?s=460&v=4",
-  //     html_url: "https://github.com/bob1983"
-  //   }
-  // }
-
+export class UserItem extends Component<UserItemProps> {
   render() {
-    const { login, avatar_url, html_url } = this.state
+    const { login, avatar_url, html_url } = this.props.user
 
     return <div className="card text-center">
       <img
