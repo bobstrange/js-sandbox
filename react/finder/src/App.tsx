@@ -16,11 +16,10 @@ class App extends Component {
         <h1>Hello {name}</h1>
       </Fragment>
 
-
     return (
-      <Fragment className="App">
+      <div className="App">
         {content}
-      </Fragment>
+      </div>
     )
   }
 }

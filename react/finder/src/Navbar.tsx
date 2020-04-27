@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
-export class Navbar extends Component {
+export type NavbarProps = {
+  icon?: string,
+  title?: string
+}
+
+export class Navbar extends Component<NavbarProps> {
   static defaultProps = {
     title: 'Finder',
     icon: 'fab fa-github'
-  }
-
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired
   }
 
   render() {
