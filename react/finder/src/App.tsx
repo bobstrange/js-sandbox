@@ -2,18 +2,15 @@ import React, { Component, Fragment } from "react"
 import "./App.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
-import { Navbar } from './Navbar'
+import { Navbar } from './components/Navbar'
+import { UserItem } from './components/UserItem'
 
 class App extends Component {
   render() {
-    const name = 'John Doe'
-    const loading = false
-
-    const content = loading ?
-      <h4>Loading...</h4> :
+    const content =
       <Fragment>
         <Navbar />
-        <h1>Hello {name}</h1>
+        <UserItem />
       </Fragment>
 
     return (
