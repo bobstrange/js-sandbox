@@ -1,4 +1,4 @@
-import React, { Component, FC } from 'react'
+import React, { FC } from 'react'
 import { UserItem } from './UserItem'
 import { User } from '../types/User'
 import { Spinner } from './Spinner'
