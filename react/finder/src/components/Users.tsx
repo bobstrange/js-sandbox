@@ -6,6 +6,12 @@ type UsersState = {
   users: User[]
 }
 
+const userStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridGap: '1rem'
+}
+
 export class Users extends Component<{}, UsersState> {
   state = {
     users: [
@@ -32,7 +38,7 @@ export class Users extends Component<{}, UsersState> {
 
   render() {
     return (
-      <div>
+      <div style={userStyle}>
         {this.state.users.map(user => {
           return (
             <UserItem

@@ -10,7 +10,9 @@ class App extends Component {
     const content =
       <Fragment>
         <Navbar />
-        <Users />
+        <div className="container">
+          <Users />
+        </div>
       </Fragment>
 
     return (
