@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react"
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import "./App.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
@@ -58,23 +59,31 @@ class App extends Component<{}, AppState> {
         <Navbar />
         <div className="container">
           <Alert alert={this.state.alert} />
-          <Search
-            searchUsers={this.searchUsers}
-            clearUsers={this.clearUsers}
-            setAlert={this.setAlert}
-            showClear={users.length > 0}
-          />
-          <Users
-            loading={loading}
-            users={users}
-          />
-        </div>
+          <Switch>
+            <Route exact path="/" render={props => (
+              <Fragment>
+                <Search
+                  searchUsers={this.searchUsers}
+                  clearUsers={this.clearUsers}
+                  setAlert={this.setAlert}
+                  showClear={users.length > 0}
+                />
+                <Users
+                  loading={loading}
+                  users={users}
+                />
+              </Fragment>
+            )}></Route>
+          </Switch>
+       </div>
       </Fragment>
 
     return (
-      <div className="App">
-        {content}
-      </div>
+      <Router>
+        <div className="App">
+          {content}
+        </div>
+      </Router>
     )
   }
 }
