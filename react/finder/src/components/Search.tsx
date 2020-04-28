@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 type SearchProps = {
   searchUsers: (searchText: string) => Promise<void>
+  clearUsers: () => void
+  showClear: boolean
 }
 
 type SearchState = {
@@ -41,6 +43,10 @@ export class Search extends Component<SearchProps, SearchState>{
             className="btn btn-dark btn-block"
           />
         </form>
+        {
+          this.props.showClear &&
+          <button className="btn btn-light btn-block" onClick={this.props.clearUsers}>Clear</button>
+        }
       </div>
     )
   }
