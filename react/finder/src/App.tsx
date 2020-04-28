@@ -4,6 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 
 import axios from 'axios'
 import { Navbar } from './components/Navbar'
+import { Search } from './components/Search'
 import { Users } from './components/Users'
 import { User } from './types/User'
 
@@ -38,6 +39,7 @@ class App extends Component {
       <Fragment>
         <Navbar />
         <div className="container">
+          <Search />
           <Users
             loading={loading}
             users={users}
