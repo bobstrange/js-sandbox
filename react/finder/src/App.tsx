@@ -20,18 +20,6 @@ class App extends Component<{}, AppState> {
     loading: false
   }
 
-  async componentDidMount() {
-    this.setState({ loading: true })
-    try {
-      const response = await fetchUsers()
-      this.setState({ users: response.data })
-    } catch (error) {
-      console.log(error)
-    } finally {
-      this.setState({ loading: false })
-    }
-  }
-
   searchUsers = async (searchText: string): Promise<void> => {
     console.log(searchText)
     try {
