@@ -5,9 +5,9 @@ type UserItemProps = {
   user: User
 }
 
-export const UserItem: FC<UserItemProps> = ({ user }) => {
-  const { login, avatar_url, html_url } = user
-
+export const UserItem: FC<UserItemProps> = (
+  { user:{ login, avatar_url, html_url } }
+) => {
   return <div className="card text-center">
     <img
       src={avatar_url}
