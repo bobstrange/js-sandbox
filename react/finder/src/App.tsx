@@ -7,7 +7,7 @@ import { Search } from './components/Search'
 import { Users } from './components/Users'
 import { User } from './types/User'
 
-import { fetchUsers } from './services/githubClient'
+import { fetchUsers, searchUsers } from './services/githubClient'
 
 type AppState = {
   users: User[],
@@ -32,8 +32,16 @@ class App extends Component<{}, AppState> {
     }
   }
 
-  searchUsers = (searchText: string): void => {
+  searchUsers = async (searchText: string): Promise<void> => {
     console.log(searchText)
+    try {
+      const response = await searchUsers(searchText)
+      this.setState({ users: response.data.items })
+    } catch (error) {
+      console.log(error)
+    } finally {
+      this.setState({ loading: false })
+    }
   }
 
   render() {

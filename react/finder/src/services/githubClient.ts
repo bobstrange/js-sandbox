@@ -10,3 +10,7 @@ const baseUrl = 'https://api.github.com'
 export const fetchUsers = (): Promise<AxiosResponse<User[]>> => {
   return axios.get(`${baseUrl}/users?${tokenParams}`)
 }
+
+export const searchUsers = (text: string): Promise<AxiosResponse<{ items: User[] }>> => {
+  return axios.get(`${baseUrl}/search/users?q=${text}&${tokenParams}`)
+}

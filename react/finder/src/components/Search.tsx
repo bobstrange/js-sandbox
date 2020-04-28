@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
 type SearchProps = {
-  searchUsers: (searchText: string) => void
+  searchUsers: (searchText: string) => Promise<void>
 }
+
 type SearchState = {
   text: string
 }
