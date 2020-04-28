@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
-type SearchProps = {
+export type AlertType = 'light' | 'dark'
+export type SearchProps = {
   searchUsers: (searchText: string) => Promise<void>
   clearUsers: () => void
+  setAlert: (message: string, alertType: AlertType) => void
   showClear: boolean
 }
 
@@ -23,6 +25,10 @@ export class Search extends Component<SearchProps, SearchState>{
 
   onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (this.state.text === '') {
+      this.props.setAlert('Please enter something', 'light')
+      return
+    }
     this.props.searchUsers(this.state.text)
   }
 

@@ -3,24 +3,27 @@ import "./App.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
 import { Navbar } from './components/Navbar'
-import { Search } from './components/Search'
+import { Search, AlertType, SearchProps } from './components/Search'
 import { Users } from './components/Users'
+import { Alert } from './components/Alert'
 import { User } from './types/User'
 
-import { fetchUsers, searchUsers } from './services/githubClient'
+import { searchUsers } from './services/githubClient'
 
 type AppState = {
   users: User[],
-  loading: boolean
+  loading: boolean,
+  alert: { message: string, type: AlertType } | null
 }
 
 class App extends Component<{}, AppState> {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   }
 
-  searchUsers = async (searchText: string): Promise<void> => {
+  searchUsers: SearchProps['searchUsers'] = async (searchText) => {
     console.log(searchText)
     try {
       const response = await searchUsers(searchText)
@@ -32,8 +35,20 @@ class App extends Component<{}, AppState> {
     }
   }
 
-  clearUsers = (): void => {
+  clearUsers: SearchProps['clearUsers'] = () => {
     this.setState({ users: [], loading: false })
+  }
+
+  setAlert: SearchProps['setAlert'] = (message, alertType) => {
+    this.setState({
+      alert: {
+        message,
+        type: alertType
+      }
+    })
+    setTimeout(() => {
+      this.setState({ alert: null })
+    }, 5000)
   }
 
   render() {
@@ -42,9 +57,11 @@ class App extends Component<{}, AppState> {
       <Fragment>
         <Navbar />
         <div className="container">
+          <Alert alert={this.state.alert} />
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
+            setAlert={this.setAlert}
             showClear={users.length > 0}
           />
           <Users
