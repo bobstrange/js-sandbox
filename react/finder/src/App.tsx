@@ -45,7 +45,7 @@ class App extends Component<{}, AppState> {
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
-            showClear={this.state.users.length > 0}
+            showClear={users.length > 0}
           />
           <Users
             loading={loading}
