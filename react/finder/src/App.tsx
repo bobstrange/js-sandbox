@@ -2,18 +2,19 @@ import React, { Component, Fragment } from "react"
 import "./App.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
-import axios from 'axios'
 import { Navbar } from './components/Navbar'
 import { Search } from './components/Search'
 import { Users } from './components/Users'
 import { User } from './types/User'
+
+import { fetchUsers } from './services/githubClient'
 
 type AppState = {
   users: User[],
   loading: boolean
 }
 
-class App extends Component {
+class App extends Component<{}, AppState> {
   state = {
     users: [],
     loading: false
@@ -21,10 +22,8 @@ class App extends Component {
 
   async componentDidMount() {
     this.setState({ loading: true })
-    const clientId = process.env.REACT_APP_GITHUB_CLIENT_ID
-    const clientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET
     try {
-      const response = await axios.get(`https://api.github.com/users?client_id=${clientId}&client_secret=${clientSecret}`)
+      const response = await fetchUsers()
       this.setState({ users: response.data })
     } catch (error) {
       console.log(error)
@@ -33,13 +32,17 @@ class App extends Component {
     }
   }
 
+  searchUsers = (searchText: string): void => {
+    console.log(searchText)
+  }
+
   render() {
     const { loading, users } = this.state
     const content =
       <Fragment>
         <Navbar />
         <div className="container">
-          <Search />
+          <Search searchUsers={this.searchUsers} />
           <Users
             loading={loading}
             users={users}

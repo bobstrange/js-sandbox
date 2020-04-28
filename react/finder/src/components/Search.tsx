@@ -1,25 +1,32 @@
-import React, { FC, Component } from 'react'
+import React, { Component } from 'react'
 
-type SearchProps = {}
+type SearchProps = {
+  searchUsers: (searchText: string) => void
+}
 type SearchState = {
   text: string
 }
 
-export class Search<SearchProps, SearchState> extends Component {
+export class Search extends Component<SearchProps, SearchState>{
   state = {
     text: ''
   }
 
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name as keyof SearchState]: e.target.value
     })
+  }
+
+  onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    this.props.searchUsers(this.state.text)
   }
 
   render() {
     return (
       <div>
-        <form className="form">
+        <form className="form" onSubmit={this.onSubmit}>
           <input
             type="text"
             name="text"
