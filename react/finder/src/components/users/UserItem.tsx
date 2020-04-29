@@ -8,7 +8,7 @@ type UserItemProps = {
 }
 
 export const UserItem: FC<UserItemProps> = (
-  { user:{ login, avatar_url, html_url } }
+  { user: { login, avatar_url, html_url } }
 ) => {
   return <div className="card text-center">
     <img

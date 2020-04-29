@@ -96,10 +96,10 @@ class App extends Component<{}, AppState> {
               path="/user/:login"
               render={(props) => (
                 <UserComponent
-                  // {...props}
-                  // getUser={this.getUser}
-                  // user={user}
-                  // loading={loading}
+                  {...props}
+                  getUser={this.getUser}
+                  user={user}
+                  loading={loading}
                 />
               )}
             />
