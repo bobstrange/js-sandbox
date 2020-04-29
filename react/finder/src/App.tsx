@@ -4,17 +4,18 @@ import "./App.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
 import { Navbar } from './components/Navbar'
-import { Search, AlertType, SearchProps } from './components/Search'
-import { Users } from './components/Users'
+import { Search, AlertType, SearchProps } from './components/users/Search'
+import { Users } from './components/users/Users'
 import { Alert } from './components/Alert'
 import { User } from './types/User'
 
 import { About } from './pages/About'
 
-import { searchUsers } from './services/githubClient'
+import { searchUsers, fetchUser } from './services/githubClient'
 
 type AppState = {
   users: User[],
+  user: User | null,
   loading: boolean,
   alert: { message: string, type: AlertType } | null
 }
@@ -22,17 +23,28 @@ type AppState = {
 class App extends Component<{}, AppState> {
   state = {
     users: [],
+    user: null,
     loading: false,
     alert: null
   }
 
   searchUsers: SearchProps['searchUsers'] = async (searchText) => {
-    console.log(searchText)
     try {
       const response = await searchUsers(searchText)
       this.setState({ users: response.data.items })
     } catch (error) {
-      console.log(error)
+      console.error('searchUsers failed: ', error)
+    } finally {
+      this.setState({ loading: false })
+    }
+  }
+
+  getUser = async (username: string) => {
+    try {
+      const response = await fetchUser(username)
+      this.setState({ user: response.data })
+    } catch (error) {
+      console.error('fetchUser failed: ', error)
     } finally {
       this.setState({ loading: false })
     }

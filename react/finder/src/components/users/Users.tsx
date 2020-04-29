@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { UserItem } from './UserItem'
-import { User } from '../types/User'
-import { Spinner } from './Spinner'
+import { User } from '../../types/User'
+import { Spinner } from '../Spinner'
 
 type UsersProps = {
   loading: boolean,
