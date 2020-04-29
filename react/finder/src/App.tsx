@@ -6,6 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 import { Navbar } from './components/Navbar'
 import { Search, AlertType, SearchProps } from './components/users/Search'
 import { Users } from './components/users/Users'
+import { User as UserComponent } from './components/users/User'
 import { Alert } from './components/Alert'
 import { User } from './types/User'
 
@@ -67,31 +68,45 @@ class App extends Component<{}, AppState> {
   }
 
   render() {
-    const { loading, users } = this.state
-    const content =
+    const { loading, users, user } = this.state
+    const content = (
       <Fragment>
         <Navbar />
         <div className="container">
           <Alert alert={this.state.alert} />
           <Switch>
-            <Route exact path="/" render={props => (
-              <Fragment>
-                <Search
-                  searchUsers={this.searchUsers}
-                  clearUsers={this.clearUsers}
-                  setAlert={this.setAlert}
-                  showClear={users.length > 0}
-                />
-                <Users
-                  loading={loading}
-                  users={users}
-                />
-              </Fragment>
-            )} />
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Fragment>
+                  <Search
+                    searchUsers={this.searchUsers}
+                    clearUsers={this.clearUsers}
+                    setAlert={this.setAlert}
+                    showClear={users.length > 0}
+                  />
+                  <Users loading={loading} users={users} />
+                </Fragment>
+              )}
+            />
             <Route exact path="/about" component={About} />
+            <Route
+              exact
+              path="/user/:login"
+              render={(props) => (
+                <UserComponent
+                  // {...props}
+                  // getUser={this.getUser}
+                  // user={user}
+                  // loading={loading}
+                />
+              )}
+            />
           </Switch>
-       </div>
+        </div>
       </Fragment>
+    )
 
     return (
       <Router>
