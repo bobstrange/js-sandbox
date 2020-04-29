@@ -9,6 +9,8 @@ import { Users } from './components/Users'
 import { Alert } from './components/Alert'
 import { User } from './types/User'
 
+import { About } from './pages/About'
+
 import { searchUsers } from './services/githubClient'
 
 type AppState = {
@@ -73,7 +75,8 @@ class App extends Component<{}, AppState> {
                   users={users}
                 />
               </Fragment>
-            )}></Route>
+            )} />
+            <Route exact path="/about" component={About} />
           </Switch>
        </div>
       </Fragment>
