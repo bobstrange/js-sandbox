@@ -8,10 +8,6 @@ export type SearchProps = {
   showClear: boolean
 }
 
-type SearchState = {
-  text: string
-}
-
 export const Search: FC<SearchProps> = ({ searchUsers, showClear, clearUsers, setAlert }) => {
   const [text, setText] = useState('')
 
