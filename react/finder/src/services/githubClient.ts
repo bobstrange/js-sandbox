@@ -18,3 +18,7 @@ export const searchUsers = (text: string): Promise<AxiosResponse<{ items: User[]
 export const fetchUser = (username: string): Promise<AxiosResponse> => {
   return axios.get(`${baseUrl}/users/${username}?${tokenParams}`)
 }
+
+export const fetchRepos = (username: string): Promise<AxiosResponse> => {
+  return axios.get(`${baseUrl}/users/${username}/repos?per_page=5&sort=created:asc&${tokenParams}`)
+}

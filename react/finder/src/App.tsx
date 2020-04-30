@@ -8,16 +8,19 @@ import { Search, AlertType, SearchProps } from './components/users/Search'
 import { Users } from './components/users/Users'
 import { User as UserComponent } from './components/users/User'
 import { Alert } from './components/Alert'
+
 import { User } from './types/User'
+import { Repo } from './types/Repo'
 
 import { About } from './pages/About'
 
-import { searchUsers, fetchUser } from './services/githubClient'
+import { searchUsers, fetchUser, fetchRepos } from './services/githubClient'
 
 type AppState = {
-  users: User[],
-  user: User | null,
-  loading: boolean,
+  users: User[]
+  user: User | null
+  repos: Repo[]
+  loading: boolean
   alert: { message: string, type: AlertType } | null
 }
 
@@ -25,12 +28,14 @@ class App extends Component<{}, AppState> {
   state = {
     users: [],
     user: null,
+    repos: [],
     loading: false,
     alert: null
   }
 
   searchUsers: SearchProps['searchUsers'] = async (searchText) => {
     try {
+      this.setState({ loading: true })
       const response = await searchUsers(searchText)
       this.setState({ users: response.data.items })
     } catch (error) {
@@ -42,6 +47,7 @@ class App extends Component<{}, AppState> {
 
   getUser = async (username: string) => {
     try {
+      this.setState({ loading: true })
       const response = await fetchUser(username)
       this.setState({ user: response.data })
     } catch (error) {
@@ -65,6 +71,18 @@ class App extends Component<{}, AppState> {
     setTimeout(() => {
       this.setState({ alert: null })
     }, 5000)
+  }
+
+  getRepos = async (username: string) => {
+    try {
+      this.setState({ loading: true })
+      const response = await fetchRepos(username)
+      this.setState({ repos: response.data })
+    } catch (error) {
+      console.error('fetchRepos failed: ', error)
+    } finally {
+      this.setState({ loading: false })
+    }
   }
 
   render() {
