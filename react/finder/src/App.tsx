@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar'
 import { Search, AlertType, SearchProps } from './components/users/Search'
 import { Users } from './components/users/Users'
 import { User as UserComponent } from './components/users/User'
+
 import { Alert } from './components/Alert'
 
 import { User } from './types/User'

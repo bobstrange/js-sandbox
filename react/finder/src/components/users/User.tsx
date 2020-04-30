@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react'
+
 import { User as UserType } from '../../types/User'
 import { Repo } from '../../types/Repo'
 import { RouteComponentProps, Link } from 'react-router-dom'
 import { Spinner } from '../Spinner'
+import { Repos } from '../repos/Repos'
 
 export interface UserProps extends RouteComponentProps<{ login: string }> {
   getUser: (loginName: string) => Promise<void>
@@ -20,13 +22,13 @@ export class User extends Component<UserProps> {
   }
 
   render() {
-    const { loading } = this.props
+    const { loading, user, repos } = this.props
 
     if (loading) {
       return <Spinner />
     }
 
-    if (!this.props.user) {
+    if (!user) {
       return null
     }
 
@@ -43,7 +45,7 @@ export class User extends Component<UserProps> {
       following,
       public_repos,
       public_gists,
-    } = this.props.user
+    } = user
 
     return (
       <Fragment>
@@ -100,6 +102,7 @@ export class User extends Component<UserProps> {
           <div className="badge badge-white">Public repos: {public_repos}</div>
           <div className="badge badge-dark">Public gists: {public_gists}</div>
         </div>
+        <Repos repos={repos} />
       </Fragment>
     )
   }
