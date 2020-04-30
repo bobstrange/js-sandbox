@@ -1,18 +1,24 @@
 import React, { Component, Fragment } from 'react'
 import { User as UserType } from '../../types/User'
+import { Repo } from '../../types/Repo'
 import { RouteComponentProps, Link } from 'react-router-dom'
 import { Spinner } from '../Spinner'
 
 export interface UserProps extends RouteComponentProps<{ login: string }> {
   getUser: (loginName: string) => Promise<void>
+  getRepos: (loginName: string) => Promise<void>
   user: UserType | null
+  repos: Repo[]
   loading: boolean
 }
 
 export class User extends Component<UserProps> {
   componentDidMount() {
-    this.props.getUser(this.props.match.params.login)
+    const login = this.props.match.params.login
+    this.props.getUser(login)
+    this.props.getRepos(login)
   }
+
   render() {
     const { loading } = this.props
 

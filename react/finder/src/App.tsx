@@ -86,7 +86,7 @@ class App extends Component<{}, AppState> {
   }
 
   render() {
-    const { loading, users, user } = this.state
+    const { loading, users, user, repos } = this.state
     const content = (
       <Fragment>
         <Navbar />
@@ -116,7 +116,9 @@ class App extends Component<{}, AppState> {
                 <UserComponent
                   {...props}
                   getUser={this.getUser}
+                  getRepos={this.getRepos}
                   user={user}
+                  repos={repos}
                   loading={loading}
                 />
               )}
