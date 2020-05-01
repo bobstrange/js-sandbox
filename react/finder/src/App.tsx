@@ -17,6 +17,8 @@ import { About } from './pages/About'
 
 import { searchUsers as searchUsersData, fetchUser, fetchRepos } from './services/githubClient'
 
+import GithubState from './context/github/GithubState'
+
 const App = () => {
   const [users, setUsers] = useState<User[]>([])
   const [user, setUser] = useState<User|null>(null)
@@ -24,17 +26,6 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [alert, setAlert] = useState<{ message: string, type: AlertType } | null>(null)
 
-  const searchUsers: SearchProps['searchUsers'] = async (searchText) => {
-    try {
-      setLoading(true)
-      const response = await searchUsersData(searchText)
-      setUsers(response.data.items)
-    } catch (error) {
-      console.error('searchUsers failed: ', error)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const getUser = async (username: string) => {
     try {
@@ -117,11 +108,13 @@ const App = () => {
   )
 
   return (
-    <Router>
-      <div className="App">
-        {content}
-      </div>
-    </Router>
+    <GithubState>
+      <Router>
+        <div className="App">
+          {content}
+        </div>
+      </Router>
+    </GithubState>
   )
 }
 
