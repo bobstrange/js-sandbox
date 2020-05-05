@@ -1,4 +1,4 @@
-export type User = {
+export interface User {
   id: string
   login: string
   avatar_url: string
@@ -15,12 +15,24 @@ export type User = {
   hireable: boolean | null
 }
 
-export type Repo = {
+export interface Repo {
   id: string
   name: string
   html_url: string
   description: string | null
   language: string | null
+}
+
+export interface Alert {
+  message: string
+  type: 'light' | 'dark'
+}
+
+export interface GithubState {
+  users: User[]
+  user: User | null
+  repos: Repo[]
+  loading: boolean
 }
 
 export const SEARCH_USERS = 'SEARCH_USERS'
@@ -57,10 +69,7 @@ interface SetLoading {
 
 interface SetAlert {
   type: typeof SET_ALERT,
-  alert: {
-    message: string,
-    type: 'light' | 'dark'
-  }
+  alert: Alert
 }
 
 interface RemoveAlert {
