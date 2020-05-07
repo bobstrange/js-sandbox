@@ -7,12 +7,29 @@ interface InitialProps {
 
 interface Props extends InitialProps {}
 
-const IndexPage: NextPage<Props, InitialProps> = (props) => {
-  return <div>{props.greeting}</div>;
-};
+interface Task {
+  title: string
+}
 
-IndexPage.getInitialProps = async () => ({
-  greeting: "Hello World!",
-});
+interface TasksPageProps {
+  tasks: Task[]
+}
+const TasksPage: NextPage<TasksPageProps> = ({ tasks }) => {
+  return (
+    <ul>
+      {tasks.map((task, i) => {
+        return (
+          <li key={i}>{task.title}</li>
+        )
+      })}
+    </ul>
+  )
+}
 
-export default IndexPage;
+const tasks = [
+  { title: 'Task one' },
+  { title: 'Task two' }
+]
+
+TasksPage.getInitialProps = async () => ({ tasks })
+export default TasksPage
