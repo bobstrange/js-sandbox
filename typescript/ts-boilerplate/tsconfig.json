@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      /* node環境の場合は、domなどは不要 */
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    /* node環境の場合は、commonjs にする */
+    "module": "ESNext",
+    "jsx": "react",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    /* typescriptをModuleBundlerとして使う場合は、falseにする */
+    "noEmit": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
