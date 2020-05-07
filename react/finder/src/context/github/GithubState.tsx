@@ -10,19 +10,13 @@ import {
   CLEAR_USERS,
   GET_USER,
   GET_REPOS
-} from '../types'
+} from './types'
+
 
 const GithubState = props => {
-  const initialState = {
-    users: [],
-    user: null,
-    repos: [],
-    loading: false
-  }
-
   const [state, dispatch] = useReducer(GithubReducer, initialState)
 
-  const searchUsers: SearchProps["searchUsers"] = async (searchText) => {
+  const search = async (searchText: string) => {
     dispatch({
       type: SET_LOADING,
       payload: true
@@ -37,7 +31,6 @@ const GithubState = props => {
       payload: false
     })
   }
-
   return <GithubContext.Provider
     value={{
       users: state.users,

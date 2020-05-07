@@ -50,7 +50,7 @@ interface SearchUsersAction {
 
 interface GetUserAction {
   type: typeof GET_USER
-  payload: User[]
+  payload: User
 }
 
 interface ClearUsers {
