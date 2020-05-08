@@ -1,16 +1,14 @@
 import React, { FC, Component } from 'react'
+import { Task } from '../types/Task'
 
-interface Task {
-  title: string
-}
-interface TasksProps {
+interface TaskListProps {
   tasks: Task[]
 }
-interface TasksState {
+interface TaskListState {
   tasks: Task[]
 }
 
-// export const Tasks: FC<TasksProps> = ({ tasks }) => {
+// export const TaskList: FC<TaskListProps> = ({ tasks }) => {
 //   return (
 //     <ul>
 //       {
@@ -22,12 +20,12 @@ interface TasksState {
 //   )
 // }
 
-export class Tasks extends Component<
-  TasksProps,
-  TasksState
+export class TaskList extends Component<
+  TaskListProps,
+  TaskListState
 > {
 
-  constructor(props: TasksProps) {
+  constructor(props: TaskListProps) {
     super(props)
     this.state = {
       tasks: props.tasks

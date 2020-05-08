@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { Tasks } from './component/Tasks'
+import { TaskList } from './component/TaskList'
 
 const tasks = [
   { title: 'Task 1' },
@@ -11,7 +11,7 @@ const tasks = [
 function App() {
   return (
     <div className="App">
-      <Tasks tasks={tasks} />
+      <TaskList tasks={tasks} />
     </div>
   );
 }
