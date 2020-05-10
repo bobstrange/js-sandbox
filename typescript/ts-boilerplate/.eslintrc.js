@@ -1,15 +1,30 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true
+    es6: true,
+    node: true,
+    'jest/globals': true
   },
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:jest/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'prettier',
+    'prettier/@typescript-eslint',
+    'prettier/react',
+    'prettier/standard',
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
+    '__DEV__': true
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -21,24 +36,91 @@ module.exports = {
   },
   plugins: [
     '@typescript-eslint',
-    'react'
+    'import',
+    'jest',
+    'jsx-a11y',
+    'prefer-arrow',
+    'prettier',
+    'react',
+    'react-hooks',
   ],
   root: true,
   rules: {
+    // eslint official
+    'newline-before-return': 'error',
+    'no-console': 'warn',
+    'no-continue': 'off',
+    'require-yield': 'error',
+    'spaced-comment': [
+      'error',
+      'always',
+      {
+        markers: ['/'],
+      },
+    ],
+
+    // @typescript-eslint
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
-    'indent': 'off',
-    '@typescript-eslint/indent': ['error', 2],
+    indent: 'off',
+    '@typescript-eslint/indent': 'off',
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-    'eol-last': ['error', 'always'],
-    'func-style': ['error', 'expression', { allowArrowFunctions: true }],
-    'newline-before-return': 'error',
-    'no-dupe-class-members': 'error',
-    'no-var': 'error',
-    'object-shorthand': ['error', 'always'],
-    'prefer-arrow-callback': 'error',
-    'prefer-const': 'error',
-    'prefer-spread': 'error',
-    'require-yield': 'error'
-  }
+
+    // prefer-arrow
+    'prefer-arrow/prefer-arrow-functions': [
+      'error',
+      {
+        disallowPrototype: true,
+        singleReturnOnly: true,
+        classPropertiesAllowed: false
+      }
+    ],
+
+    // react
+    'react/jsx-filename-extension': [
+      'error',
+      {
+        extensions: ['jsx', 'tsx']
+      }
+    ],
+    'react/jsx-props-no-spreading': [
+      'warn',
+      {
+        custom: 'ignore',
+      },
+    ],
+    'react/prop-types': 'off',
+    'react/prefer-stateless-function': 'off',
+
+    // react hooks
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+
+    // import
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
+    ],
+    'import/prefer-default-export': 'off',
+  },
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', 'jsx', '.ts', '.tsx'],
+        paths: ['src'],
+      }
+    },
+    react: {
+      version: 'detect'
+    }
+  },
 };
