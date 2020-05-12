@@ -2,6 +2,8 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
+import Confirm from './components/Confirm'
+
 const App = () => (
   <div className="App">
     <header className="App-header">
@@ -18,6 +20,7 @@ const App = () => (
         Learn React
       </a>
     </header>
+    <Confirm />
   </div>
 )
 
