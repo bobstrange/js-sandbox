@@ -20,7 +20,10 @@ const App = () => (
         Learn React
       </a>
     </header>
-    <Confirm />
+    <Confirm
+      title="React and TypeScript"
+      content="Are you sure you want to learn React and TypeScript"
+    />
   </div>
 )
 
