@@ -7,18 +7,28 @@ import Confirm from './components/Confirm'
 interface AppState {
   confirmOpen: boolean
   confirmMessage: string
+  confirmVisible: boolean
+  count: number
 }
 
 export default class App extends Component<{}, AppState> {
-  constructor(props: {}) {
+  public constructor(props: {}) {
     super(props)
     this.state = {
-      confirmOpen: true,
-      confirmMessage: 'Please hit the confirm button'
+      confirmOpen: false,
+      confirmMessage: 'Please hit the confirm button',
+      confirmVisible: true,
+      count: 30
     }
   }
 
-  render() {
+  private timer = 0
+
+  public componentDidMount() {
+    this.timer = window.setInterval(this.handleTimerTick, 1000)
+  }
+
+  public render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -36,7 +46,9 @@ export default class App extends Component<{}, AppState> {
           </a>
         </header>
         <p>{this.state.confirmMessage}</p>
-        <button onClick={this.handleConfirmClick}>Confirm</button>
+        {this.state.confirmVisible && (
+          <button onClick={this.handleConfirmClick}>Confirm</button>
+        )}
         <Confirm
           open={this.state.confirmOpen}
           title="React and TypeScript"
@@ -59,6 +71,7 @@ export default class App extends Component<{}, AppState> {
       confirmOpen: false,
       confirmMessage: ':-('
     })
+    clearInterval(this.timer)
   }
 
   private handleOKClick = () => {
@@ -66,5 +79,24 @@ export default class App extends Component<{}, AppState> {
       confirmOpen: false,
       confirmMessage: 'Thank you ! Carry on reading !'
     })
+    clearInterval(this.timer)
+  }
+
+  private handleTimerTick = () => {
+    this.setState(
+      {
+        confirmMessage: `Please hit the confirm button ${this.state.count} secs to go.`,
+        count: this.state.count - 1
+      },
+      () => {
+        if (this.state.count <= 0) {
+          clearInterval(this.timer)
+          this.setState({
+            confirmMessage: 'Too late to confirm :-(',
+            confirmVisible: false
+          })
+        }
+      }
+    )
   }
 }
