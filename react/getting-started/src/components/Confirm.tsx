@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import './Confirm.css'
 
 interface ConfirmProps {
@@ -12,8 +12,14 @@ interface ConfirmProps {
 }
 
 const Confirm: FC<ConfirmProps> = (props) => {
+  const [cancelClickCount, setCancelClickCount] = useState(0)
+
   const handleCancelClick = () => {
-    props.onCancelClick()
+    const newCount = cancelClickCount + 1
+    setCancelClickCount(newCount)
+    if (newCount >= 2) {
+      props.onCancelClick()
+    }
   }
 
   const handleOkClick = () => {
@@ -35,7 +41,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
         </div>
         <div className="confirm-buttons-container">
           <button className="confirm-cancel" onClick={handleCancelClick}>
-            {props.cancelCaption}
+            {cancelClickCount === 0 ? props.cancelCaption : 'Really !?'}
           </button>
           <button className="confirm-ok" onClick={handleOkClick}>
             {props.okCaption}
