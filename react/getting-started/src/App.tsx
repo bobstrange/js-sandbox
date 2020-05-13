@@ -23,9 +23,52 @@ export default class App extends Component<{}, AppState> {
   }
 
   private timer = 0
+  private renderCount = 0
 
   public componentDidMount() {
     this.timer = window.setInterval(this.handleTimerTick, 1000)
+  }
+
+  public componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
+  public getSnapshotBeforeUpdate(prevProps: {}, prevState: AppState) {
+    this.renderCount += 1
+    console.log(
+      'getSnapshotBeforeUpdate prevProps: ',
+      prevProps,
+      ' prevState: ',
+      prevState
+    )
+
+    return this.renderCount
+  }
+
+  public componentDidUpdate(
+    prevProps: {},
+    prevState: AppState,
+    snapshot: number
+  ) {
+    console.log(
+      'componentDidUpdate prevProps: ',
+      prevProps,
+      ' prevState: ',
+      prevState,
+      ' snapshot: ',
+      snapshot
+    )
+  }
+
+  public shouldComponentUpdate(nextProps: {}, nextState: AppState): boolean {
+    console.log(
+      'shouldComponentUpdate nextProps: ',
+      nextProps,
+      ' nextState: ',
+      nextState
+    )
+
+    return true
   }
 
   public render() {
