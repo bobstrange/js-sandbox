@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { FC } from 'react'
 import './Confirm.css'
 
 interface ConfirmProps {
@@ -11,46 +11,44 @@ interface ConfirmProps {
   onOKClick: () => void
 }
 
-export default class Confirm extends Component<ConfirmProps> {
-  static defaultProps = {
-    cancelCaption: 'Cancel',
-    okCaption: 'OK'
+const Confirm: FC<ConfirmProps> = (props) => {
+  const handleCancelClick = () => {
+    props.onCancelClick()
   }
 
-  render() {
-    return (
-      <div
-        className={
-          this.props.open
-            ? 'confirm-wrapper confirm-visible'
-            : 'confirm-wrapper'
-        }
-      >
-        <div className="confirm-container">
-          <div className="confirm-title-container">
-            <span>{this.props.title}</span>
-          </div>
-          <div className="confirm-content-container">
-            <p>{this.props.content}</p>
-          </div>
-          <div className="confirm-buttons-container">
-            <button className="confirm-cancel" onClick={this.handleCancelClick}>
-              {this.props.cancelCaption}
-            </button>
-            <button className="confirm-ok" onClick={this.handleOkClick}>
-              {this.props.okCaption}
-            </button>
-          </div>
+  const handleOkClick = () => {
+    props.onOKClick()
+  }
+
+  return (
+    <div
+      className={
+        props.open ? 'confirm-wrapper confirm-visible' : 'confirm-wrapper'
+      }
+    >
+      <div className="confirm-container">
+        <div className="confirm-title-container">
+          <span>{props.title}</span>
+        </div>
+        <div className="confirm-content-container">
+          <p>{props.content}</p>
+        </div>
+        <div className="confirm-buttons-container">
+          <button className="confirm-cancel" onClick={handleCancelClick}>
+            {props.cancelCaption}
+          </button>
+          <button className="confirm-ok" onClick={handleOkClick}>
+            {props.okCaption}
+          </button>
         </div>
       </div>
-    )
-  }
-
-  private handleCancelClick = () => {
-    this.props.onCancelClick()
-  }
-
-  private handleOkClick = () => {
-    this.props.onOKClick()
-  }
+    </div>
+  )
 }
+
+Confirm.defaultProps = {
+  cancelCaption: 'Cancel',
+  okCaption: 'OK'
+}
+
+export default Confirm
