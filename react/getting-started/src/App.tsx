@@ -92,13 +92,15 @@ export default class App extends Component<{}, AppState> {
         {this.state.confirmVisible && (
           <button onClick={this.handleConfirmClick}>Confirm</button>
         )}
-        <Confirm
-          open={this.state.confirmOpen}
-          title="React and TypeScript"
-          content="Are you sure you want to learn React and TypeScript"
-          onCancelClick={this.handleCancelClick}
-          onOKClick={this.handleOKClick}
-        />
+        {this.state.count > 0 && (
+          <Confirm
+            open={this.state.confirmOpen}
+            title="React and TypeScript"
+            content="Are you sure you want to learn React and TypeScript"
+            onCancelClick={this.handleCancelClick}
+            onOKClick={this.handleOKClick}
+          />
+        )}
       </div>
     )
   }

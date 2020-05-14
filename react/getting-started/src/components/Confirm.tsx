@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import './Confirm.css'
 
 interface ConfirmProps {
@@ -12,6 +12,11 @@ interface ConfirmProps {
 }
 
 const Confirm: FC<ConfirmProps> = (props) => {
+  useEffect(() => {
+    console.log('Confirm rendering')
+    return () => { console.log('Confirm unmounted') }
+  }, [])
+
   const [cancelClickCount, setCancelClickCount] = useState(0)
 
   const handleCancelClick = () => {
