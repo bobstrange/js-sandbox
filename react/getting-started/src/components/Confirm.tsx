@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, memo } from 'react'
 import './Confirm.css'
 
 interface ConfirmProps {
@@ -13,9 +13,11 @@ interface ConfirmProps {
 
 const Confirm: FC<ConfirmProps> = (props) => {
   useEffect(() => {
-    console.log('Confirm rendering')
+    console.log('Confirm first rendering')
     return () => { console.log('Confirm unmounted') }
   }, [])
+
+  console.log('Confirm rendering')
 
   const [cancelClickCount, setCancelClickCount] = useState(0)
 
@@ -62,4 +64,6 @@ Confirm.defaultProps = {
   okCaption: 'OK'
 }
 
-export default Confirm
+const ConfirmMemo = memo(Confirm)
+
+export default ConfirmMemo
