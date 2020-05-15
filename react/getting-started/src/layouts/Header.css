@@ -1,0 +1,19 @@
+.Header {
+  background-color: #444;
+  height: 50px;
+  padding: 5px 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header-title {
+  font-size: 1.5em;
+}
+
+.Header-link {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+}
