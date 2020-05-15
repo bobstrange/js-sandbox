@@ -14,3 +14,7 @@
 .product-list__item {
   padding: 8px;
 }
+
+.product-list__item a {
+  text-decoration: none;
+}

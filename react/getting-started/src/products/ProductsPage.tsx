@@ -1,7 +1,9 @@
 import React, { FC, useState, useEffect } from 'react'
 import { Product, dummyProducts } from './Product'
 import './ProductsPage.css'
-export const ProductsPage: FC<{}> = () => {
+import { Link } from 'react-router-dom'
+
+const ProductsPage: FC<{}> = () => {
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
@@ -14,7 +16,7 @@ export const ProductsPage: FC<{}> = () => {
       <ul className="product-list">
         {products.map((product) => (
           <li key={product.id} className="product-list__item">
-            {product.name}
+            <Link to={`/products/${product.id}`}>{product.name}</Link>
           </li>
         ))}
       </ul>
