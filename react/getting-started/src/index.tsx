@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import ProductsPage from './products/ProductsPage'
+import Routes from './route/Routes'
 
-ReactDOM.render(<ProductsPage />, document.getElementById('root'))
+ReactDOM.render(<Routes />, document.getElementById('root'))
