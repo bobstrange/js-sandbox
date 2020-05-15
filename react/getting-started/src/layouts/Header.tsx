@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Header.css'
 
 const Header: FC = () => {
@@ -7,12 +7,20 @@ const Header: FC = () => {
     <header className="Header">
       <h1 className="Header-title">TypeScriptBooks</h1>
       <nav>
-        <Link to="/products" className="Header-link">
+        <NavLink
+          to="/products"
+          className="Header-link"
+          activeClassName="Header-link-active"
+        >
           Products
-        </Link>
-        <Link to="/admin" className="Header-link">
+        </NavLink>
+        <NavLink
+          to="/admin"
+          className="Header-link"
+          activeClassName="Header-link-active"
+        >
           Admin
-        </Link>
+        </NavLink>
       </nav>
     </header>
   )

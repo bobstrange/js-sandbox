@@ -17,3 +17,11 @@
   text-decoration: none;
   padding: 5px;
 }
+
+.Header-link:not(:last-child) {
+  margin-right: 10px;
+}
+
+.Header-link-active {
+  border-bottom: #eeeeee solid 2px;
+}
