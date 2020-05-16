@@ -11,7 +11,7 @@ const ProductsPage: FC<{}> = () => {
   }, [])
 
   return (
-    <div className="ProductsPage">
+    <div className="page-container">
       <h1>TypeScriptBooks</h1>
       <ul className="product-list">
         {products.map((product) => (

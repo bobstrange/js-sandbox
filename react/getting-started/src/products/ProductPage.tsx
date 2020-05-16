@@ -29,7 +29,7 @@ class ProductPage extends Component<ProductProps, ProductState> {
     const { product } = this.state
 
     return (
-      <div className="ProductPage">
+      <div className="page-container">
         {product ? (
           <Fragment>
             <h1>{product.name}</h1>
