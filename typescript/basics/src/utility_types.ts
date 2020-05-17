@@ -29,6 +29,20 @@ type StarshipNameOnly = Pick<Starship, 'name'>
 
 type StarshipWithoutName = Omit<Starship, 'name'>
 
+// NonNullable
+
+interface StarshipProperties {
+  color?: 'red' | 'green' | 'blue'
+}
+
+const paintStarship = (
+  id: number,
+  color: NonNullable<StarshipProperties['color']>
+) => {}
+
+// Want to make the following error
+// paintStarship(1, undefined)
+
 // Exclude
 
 type AvailableDrinks = 'Coffee' | 'Tea' | 'Orange Juice' | 'Lemonade' | 'Coke'
