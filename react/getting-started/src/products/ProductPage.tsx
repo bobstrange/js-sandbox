@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps, Prompt } from 'react-router-dom'
 import { Product, dummyProducts } from './Product'
 
 type ProductProps = RouteComponentProps<{ id: string }>
@@ -10,7 +10,7 @@ interface ProductState {
 }
 
 class ProductPage extends Component<ProductProps, ProductState> {
-  public constructor(props: any) {
+  public constructor(props: ProductProps) {
     super(props)
     this.state = {
       added: false
@@ -28,8 +28,12 @@ class ProductPage extends Component<ProductProps, ProductState> {
   public render() {
     const { product } = this.state
 
+    const navAwayMessage =
+      'Are you sure you leave without buying this product ?'
+
     return (
       <div className="page-container">
+        <Prompt when={!this.state.added} message={navAwayMessage} />
         {product ? (
           <Fragment>
             <h1>{product.name}</h1>
