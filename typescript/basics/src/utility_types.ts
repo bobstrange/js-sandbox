@@ -28,3 +28,23 @@ type StarshipNameOnly = Pick<Starship, 'name'>
 // Omit
 
 type StarshipWithoutName = Omit<Starship, 'name'>
+
+// Exclude
+
+type AvailableDrinks = 'Coffee' | 'Tea' | 'Orange Juice' | 'Lemonade' | 'Coke'
+
+let johnsDrink: AvailableDrinks
+johnsDrink = 'Tea'
+
+type DrinksJaneDoesntLike = 'Coffee' | 'Coke'
+let janesDrink: Exclude<AvailableDrinks, DrinksJaneDoesntLike>
+
+janesDrink = 'Orange Juice' // 'Tea' | 'Orange Juice' | 'Lemonade
+
+// Extract
+
+type DrinksJaneLikes = 'Tea' | 'Orange Juice' | 'Red Bull'
+
+let janesDrinkAlter: Extract<AvailableDrinks, DrinksJaneLikes>
+janesDrinkAlter = 'Orange Juice' // 'Tea' | 'Orange Juice' (Red Bull is not here)
+
