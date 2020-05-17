@@ -20,3 +20,11 @@ const starships: Record<string, Starship> = {
     enableHyperjump: false
   }
 }
+
+// Pick
+
+type StarshipNameOnly = Pick<Starship, 'name'>
+
+// Omit
+
+type StarshipWithoutName = Omit<Starship, 'name'>
