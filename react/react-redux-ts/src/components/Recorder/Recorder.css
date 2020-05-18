@@ -1,0 +1,43 @@
+.Recorder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 60px 0 40px;
+}
+
+.Recorder--record {
+  background: #e3f6f5;
+  border: 0;
+  border-radius: 100px;
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+}
+
+.Recorder--record span {
+  background: #f25042;
+  border-radius: 100px;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  transition: all 0.3 ease-out;
+}
+
+.Recorder--started .Recorder--record span{
+  border-radius: 0;
+  height: 18px;
+  width: 18px;
+}
+
+.Recorder__counter {
+  margin-left: 15px;
+  text-align: center;
+  width: 80px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-out;
+}
+
+.Recorder--started .Recorder__counter {
+  opacity: 1;
+}
