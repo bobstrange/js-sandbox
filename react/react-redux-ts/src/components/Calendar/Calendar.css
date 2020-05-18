@@ -1,0 +1,58 @@
+.Calendar {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 0 15px;
+  padding: 20px 0;
+  overflow-x: auto;
+}
+
+.Calender__day {
+  flex: 0 0 300px;
+  padding: 0 20px;
+}
+
+.Calendar__day-label {
+  font-size: 16px;
+  margin: 0 0 15px;
+  text-align: center;
+}
+
+.day-label__text {
+  background: #bae8e8;
+  border-radius: 4px;
+  color: #272343;
+  display: inline-block;
+  font-weight: bold;
+  padding: 4px 8px;
+}
+
+.Calendar__event {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #e3f6f5;
+  border-radius: 4px;
+  flex-wrap: wrap;
+  margin: 0 0 10px;
+  padding: 8px 14px;
+}
+
+.Calender__event-info {
+  flex-grow: 1;
+  flex-basis: 82%;
+  line-height: 23px;
+}
+
+.Calendar__event-delete-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 23px;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0 0 0 10px;
+  padding: 0;
+  width: 23px;
+}
