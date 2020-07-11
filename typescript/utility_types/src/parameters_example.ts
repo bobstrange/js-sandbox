@@ -25,3 +25,33 @@ type Params6 = Parameters<never>;
 
 type Params7 = Parameters<string>; // The 'string' doesn't satisfy the constraint (...args: any) => any
 type Params8 = Parameters<Function>; // The 'Function' doesn't satisfy the constraint (...args: any) => any
+
+/**
+ * ConstructorParameters
+ * The `ConstructorParameters<T>` type lets us extract all parameter types of a constructor function type.
+ * It produces a tuple type with all the parameter types.
+ */
+
+type CParams0 = ConstructorParameters<ErrorConstructor>;
+
+/**
+ * interface ErrorConstructor {
+     new(message?: string): Error;
+     (message?: string): Error;
+     readonly prototype: Error;
+   }
+*/
+
+// type CParams0 = [(string | undefined)?]
+
+type CParams1 = ConstructorParameters<FunctionConstructor>;
+
+/**
+ * interface FunctionConstructor {
+     new(...args: string[]): Function;
+     (...args: string[]): Function;
+     readonly prototype: Function;
+   }
+ */
+
+// type CParams1 = string[]
