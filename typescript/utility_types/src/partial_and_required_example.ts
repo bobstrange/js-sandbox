@@ -1,3 +1,7 @@
+/**
+ * Partial<T>
+ * Constructs a type with all properties of `T` set to optional.
+ */
 interface SampleTodo {
   title: string;
   description: string;
@@ -20,4 +24,12 @@ const todo2 = updateTodo(todo1, {
   description: "Read Advanced Types chapter",
 });
 
-type OptionalTodo = Partial<SampleTodo>;
+/**
+ * Required<T>
+ * Constructs a type consisting of all properties of `T` set to required
+ */
+
+const todo3: Required<Partial<SampleTodo>> = {
+  title: "Test JavaScript",
+  description: "Write jest test",
+};
