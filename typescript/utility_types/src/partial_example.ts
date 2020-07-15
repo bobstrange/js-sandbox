@@ -1,9 +1,9 @@
-interface Todo {
+interface SampleTodo {
   title: string;
   description: string;
 }
 
-function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>) {
+function updateTodo(todo: SampleTodo, fieldsToUpdate: Partial<SampleTodo>) {
   /**
    * Partial<Todo> returns a type which fields are optional
    * { title?: string | undefined, description?: string | undefined}
@@ -20,4 +20,4 @@ const todo2 = updateTodo(todo1, {
   description: "Read Advanced Types chapter",
 });
 
-type OptionalTodo = Partial<Todo>;
+type OptionalTodo = Partial<SampleTodo>;
