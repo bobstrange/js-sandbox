@@ -11,7 +11,6 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Learn{" "}
           <Link href="/posts/first-post">
             <a>This Page</a>
           </Link>
