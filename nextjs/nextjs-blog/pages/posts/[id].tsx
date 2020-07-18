@@ -3,12 +3,21 @@ import Layout from "../../components/layout";
 import utilStyles from "../../styles/utils.module.css";
 import { getPostIds, getPost } from "../../lib/posts";
 import Date from "../../components/date";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 type getPostType = ReturnType<typeof getPost> extends Promise<infer T>
   ? T
   : never;
 
-export default function PostPage({ postData }: { postData: getPostType }) {
+export default function PostPage({
+  postData,
+}: {
+  postData: {
+    title: string;
+    date: string;
+    contentHtml: string;
+  };
+}) {
   return (
     <Layout>
       <Head>
@@ -25,21 +34,19 @@ export default function PostPage({ postData }: { postData: getPostType }) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getPostIds();
   return {
     paths,
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({
-  params,
-}): Promise<{ props: { postData: getPostType } }> {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPost(params.id);
   return {
     props: {
       postData,
     },
   };
-}
+};

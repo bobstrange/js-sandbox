@@ -26,7 +26,7 @@ const renderHead = () => {
   );
 };
 
-const renderHeader = (home) => {
+const renderHeader = (home: boolean | undefined) => {
   if (home) {
     return (
       <>
@@ -59,7 +59,13 @@ const renderHeader = (home) => {
   }
 };
 
-function Layout({ children, home }) {
+function Layout({
+  children,
+  home,
+}: {
+  children: React.ReactNode;
+  home?: boolean;
+}) {
   return (
     <div className={styles.container}>
       {renderHead()}
