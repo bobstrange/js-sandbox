@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout from "../../components/layout";
-import { getPostIds, getPost, Post } from "../../lib/posts";
+import utilStyles from "../../styles/utils.module.css";
+import { getPostIds, getPost } from "../../lib/posts";
 import Date from "../../components/date";
 
 type getPostType = ReturnType<typeof getPost> extends Promise<infer T>
@@ -13,12 +14,13 @@ export default function PostPage({ postData }: { postData: getPostType }) {
       <Head>
         <title>{postData.title}</title>
       </Head>
-      {postData.title}
-      <br />
-      {postData.id}
-      <br />
-      <Date dateString={postData.date} />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <article>
+        <h1 className={utilStyles.headingX1}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </article>
     </Layout>
   );
 }
