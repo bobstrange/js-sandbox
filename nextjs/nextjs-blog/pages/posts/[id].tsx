@@ -1,14 +1,19 @@
 import Layout from "../../components/layout";
 import { getPostIds, getPost, Post } from "../../lib/posts";
 
-export default function PostPage({ post }: { post: Post }) {
+type getPostType = ReturnType<typeof getPost> extends Promise<infer T>
+  ? T
+  : never;
+
+export default function PostPage({ postData }: { postData: getPostType }) {
   return (
     <Layout>
-      {post.title}
+      {postData.title}
       <br />
-      {post.id}
+      {postData.id}
       <br />
-      {post.date}
+      {postData.date}
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
   );
 }
@@ -23,11 +28,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({
   params,
-}): Promise<{ props: { post: Post } }> {
-  const post = getPost(params.id);
+}): Promise<{ props: { postData: getPostType } }> {
+  const postData = await getPost(params.id);
   return {
     props: {
-      post,
+      postData,
     },
   };
 }

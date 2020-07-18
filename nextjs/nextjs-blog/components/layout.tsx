@@ -58,6 +58,7 @@ const renderHeader = (home) => {
     );
   }
 };
+
 function Layout({ children, home }) {
   return (
     <div className={styles.container}>
