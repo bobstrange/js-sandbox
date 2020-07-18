@@ -30,7 +30,7 @@ export default function Home({ posts }: { posts: Post[] }) {
   );
 }
 
-export async function getStaticPrpos() {
+export async function getStaticProps() {
   const posts = getSortedPosts();
   return {
     props: {
