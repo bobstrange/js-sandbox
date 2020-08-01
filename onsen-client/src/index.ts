@@ -1,1 +1,5 @@
-console.log('Hi there')
+import { fetchPrograms } from "./api";
+
+fetchPrograms().then(data => {
+  console.log(data)
+})
