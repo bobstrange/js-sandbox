@@ -1,5 +1,3 @@
-import { fetchPrograms } from "./api";
+import { OnsenClient } from "./OnsenClient";
 
-fetchPrograms().then(data => {
-  console.log(data)
-})
+export { OnsenClient }
