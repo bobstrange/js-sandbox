@@ -10,7 +10,7 @@ export class OnsenClient {
     })
   }
 
-  async fetchPrograms(): Promise<OnsenProgram> {
+  async fetchPrograms(): Promise<OnsenProgram[]> {
     try {
       const response = await this.client.get('/programs')
       return response.data
@@ -20,6 +20,7 @@ export class OnsenClient {
   }
 }
 
+type Category = 'radio' | 'movie' | 'game' | 'anime' | 'new' | 'bonus' | 'premium'
 export type OnsenProgram = {
   id: number
   directory_name: string
@@ -38,7 +39,7 @@ export type OnsenProgram = {
   list: true
   delivery_interval: string
   derivery_day_of_week: number
-  category_list: ('movie'|'premium')[]
+  category_list: Category[]
   copyright: string
   sponsor_name: string
   pay: boolean
