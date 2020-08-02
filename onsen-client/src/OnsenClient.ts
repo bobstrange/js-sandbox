@@ -20,7 +20,10 @@ export class OnsenClient {
   }
 }
 
+type DeliveryDayOfWeek = 1 | 2 | 3 | 4 | 5 | 6
 type Category = 'radio' | 'movie' | 'game' | 'anime' | 'new' | 'bonus' | 'premium'
+type MediaType = 'movie' | 'sound'
+
 export type OnsenProgram = {
   id: number
   directory_name: string
@@ -38,7 +41,7 @@ export type OnsenProgram = {
   new: boolean
   list: true
   delivery_interval: string
-  derivery_day_of_week: number
+  delivery_day_of_week: DeliveryDayOfWeek
   category_list: Category[]
   copyright: string
   sponsor_name: string
@@ -53,21 +56,26 @@ export type OnsenProgram = {
     image: string
   }[]
   related_infos: []
-  related_programs: []
+  related_programs: {
+    title: string
+    directory_name: string
+    category: 'recommend'
+    image: string
+  }[]
   contents: {
     id: number
     title: string
     bonus: boolean
     sticky: boolean
     latest: boolean
-    media_type: 'movie'
+    media_type: MediaType
     premium: boolean
     program_id: number
     delivery_date: string
     movie: boolean
     poster_image_url: string
     streaming_url: string | null
-    tag_image: []
-    guests: []
+    tag_image: { url: null }[]
+    guests: string[]
   }
 }
