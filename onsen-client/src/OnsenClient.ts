@@ -12,7 +12,7 @@ export class OnsenClient {
 
   async fetchPrograms(): Promise<OnsenProgram[]> {
     try {
-      const response = await this.client.get('/programs')
+      const response = await this.client.get<OnsenProgram[]>('/programs')
       return response.data
     } catch (e) {
       return Promise.reject(e)
