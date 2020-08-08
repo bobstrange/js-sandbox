@@ -45,6 +45,8 @@ describe('OnsenClient', () => {
     expect(directory_name).toEqual('toshitai')
     expect(title).toEqual('セブン-イレブン presents 佐倉としたい大西')
     expect(delivery_interval).toEqual('毎週火曜配信 / 超！A＆G＋：23時30分～24時（動画配信） ＜音泉＞：24時～（音声配信）＋音声ダケの特別コーナー有')
+
+    await expect(client.fetchProgram('invalid')).rejects.toThrow()
  })
 })
 
