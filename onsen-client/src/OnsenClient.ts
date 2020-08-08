@@ -1,4 +1,4 @@
-import axios, {AxiosInstance} from 'axios'
+import axios, { AxiosInstance } from 'axios'
 
 export class OnsenClient {
   private client: AxiosInstance
@@ -6,7 +6,7 @@ export class OnsenClient {
 
   constructor() {
     this.client = axios.create({
-      baseURL: this.BASE_URL
+      baseURL: this.BASE_URL,
     })
   }
 
@@ -19,9 +19,13 @@ export class OnsenClient {
     }
   }
 
-  async fetchProgram(directoryName: DirectoryName): Promise<OnsenProgram> {
+  async fetchProgram(
+    directoryName: DirectoryName
+  ): Promise<OnsenProgramDetail> {
     try {
-      const response = await this.client.get<OnsenProgram>(`/programs/${directoryName}`)
+      const response = await this.client.get<OnsenProgramDetail>(
+        `/programs/${directoryName}`
+      )
       return response.data
     } catch (e) {
       return Promise.reject(e)
@@ -34,7 +38,14 @@ export class OnsenClient {
 }
 
 type DeliveryDayOfWeek = 1 | 2 | 3 | 4 | 5 | 6
-type Category = 'radio' | 'movie' | 'game' | 'anime' | 'new' | 'bonus' | 'premium'
+type Category =
+  | 'radio'
+  | 'movie'
+  | 'game'
+  | 'anime'
+  | 'new'
+  | 'bonus'
+  | 'premium'
 type MediaType = 'movie' | 'sound'
 
 type ProgramID = number
@@ -100,12 +111,12 @@ export type OnsenProgramDetail = {
   id: ProgramID
   directory_name: DirectoryName
   program_info: OnsenProgram & {
-      hashtag_list: string[]
-      premium_introduction_title: string | null
-      premium_introduction_description: string | null
-      premium: boolean
-      bonus: boolean
-    }
+    hashtag_list: string[]
+    premium_introduction_title: string | null
+    premium_introduction_description: string | null
+    premium: boolean
+    bonus: boolean
+  }
   topics: {
     title: string
     body: string
@@ -142,14 +153,14 @@ export type OnsenProgramDetail = {
           url: string
         }
       }
-    ]}
-    update_images: {
-      caption: string | null
-      link_url: string | null
-      image: {
-        url: string
-      }
-      extensible: boolean
+    ]
+  }
+  update_images: {
+    caption: string | null
+    link_url: string | null
+    image: {
+      url: string
     }
+    extensible: boolean
   }
 }
