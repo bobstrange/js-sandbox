@@ -18,15 +18,31 @@ export class OnsenClient {
       return Promise.reject(e)
     }
   }
+
+  async fetchProgram(directoryName: DirectoryName): Promise<OnsenProgram> {
+    try {
+      const response = await this.client.get<OnsenProgram>(`/programs/${directoryName}`)
+      return response.data
+    } catch (e) {
+      return Promise.reject(e)
+    }
+  }
+
+  async fetchCommercials(_id: ProgramID): Promise<never> {
+    throw 'not yet implemented'
+  }
 }
 
 type DeliveryDayOfWeek = 1 | 2 | 3 | 4 | 5 | 6
 type Category = 'radio' | 'movie' | 'game' | 'anime' | 'new' | 'bonus' | 'premium'
 type MediaType = 'movie' | 'sound'
 
+type ProgramID = number
+type DirectoryName = string
+
 export type OnsenProgram = {
-  id: number
-  directory_name: string
+  id: ProgramID
+  directory_name: DirectoryName
   display: boolean
   title: string
   image: {
@@ -77,5 +93,63 @@ export type OnsenProgram = {
     streaming_url: string | null
     tag_image: { url: null }[]
     guests: string[]
+  }
+}
+
+export type OnsenProgramDetail = {
+  id: ProgramID
+  directory_name: DirectoryName
+  program_info: OnsenProgram & {
+      hashtag_list: string[]
+      premium_introduction_title: string | null
+      premium_introduction_description: string | null
+      premium: boolean
+      bonus: boolean
+    }
+  topics: {
+    title: string
+    body: string
+    topics_links: {
+      link_url: string
+      text: string
+    }[]
+    topics_images: {
+      image: {
+        url: string
+      }
+      caption: string | null
+      link_url: string | null
+      extensible: boolean
+    }
+    starts_at: string
+  }[]
+  pickups: []
+  current_episode: {
+    twitter: string
+    title: string
+    delivery_date: string
+    comments: [
+      {
+        caption: string
+        body: string
+      }[]
+    ]
+    additional_announcements: [
+      {
+        caption: string
+        link_url: string
+        image: {
+          url: string
+        }
+      }
+    ]}
+    update_images: {
+      caption: string | null
+      link_url: string | null
+      image: {
+        url: string
+      }
+      extensible: boolean
+    }
   }
 }
