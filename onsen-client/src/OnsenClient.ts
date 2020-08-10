@@ -32,8 +32,13 @@ export class OnsenClient {
     }
   }
 
-  async fetchPerformers(): Promise<never> {
-    throw 'not yet implemented'
+  async fetchPerformers(): Promise<Performer[]> {
+    try {
+      const response = await this.client.get<Performer[]>('/performers')
+      return response.data
+    } catch (e) {
+      return Promise.reject(e)
+    }
   }
 
   async fetchCommercials(_id: ProgramID): Promise<never> {
@@ -54,6 +59,11 @@ type MediaType = 'movie' | 'sound'
 
 type ProgramID = number
 type DirectoryName = string
+
+type Performer = {
+  id: number
+  name: string
+}
 
 export type OnsenProgram = {
   id: ProgramID
@@ -78,10 +88,7 @@ export type OnsenProgram = {
   sponsor_name: string
   pay: boolean
   updated: string
-  performers: {
-    id: number
-    name: string
-  }[]
+  performers: Performer[]
   related_links: {
     link_url: string
     image: string
