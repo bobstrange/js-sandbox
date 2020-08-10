@@ -32,6 +32,10 @@ export class OnsenClient {
     }
   }
 
+  async fetchPerformers(): Promise<never> {
+    throw 'not yet implemented'
+  }
+
   async fetchCommercials(_id: ProgramID): Promise<never> {
     throw 'not yet implemented'
   }
