@@ -41,6 +41,15 @@ export class OnsenClient {
     }
   }
 
+  async fetchChangeLogs({ page, limit } = { page: 1, limit: 10 }) {
+    try {
+      const response = await this.client.get('/change_logs', { params: { page, per: limit }})
+      return response.data
+    } catch (e) {
+      return Promise.reject(e)
+    }
+  }
+
   async fetchCommercials(_id: ProgramID): Promise<never> {
     throw 'not yet implemented'
   }
