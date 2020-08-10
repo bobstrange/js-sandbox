@@ -38,7 +38,6 @@ describe('OnsenClient', () => {
     const client = new OnsenClient()
     const targetDirectoryName = 'toshitai'
     const program = await client.fetchProgram(targetDirectoryName)
-    console.log(program)
     const { id, directory_name, program_info } = program
     const { title, delivery_interval } = program_info
     expect(id).toEqual(17)
