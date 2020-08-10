@@ -47,6 +47,20 @@ describe('OnsenClient', () => {
     expect(delivery_interval).toEqual('毎週火曜配信 / 超！A＆G＋：23時30分～24時（動画配信） ＜音泉＞：24時～（音声配信）＋音声ダケの特別コーナー有')
 
     await expect(client.fetchProgram('invalid')).rejects.toThrow()
- })
+  })
+
+  test('fetchPerformers', async () => {
+    const client = new OnsenClient()
+    const performers = await client.fetchPerformers()
+    const performer = performers[0]
+
+    expect.assertions(2)
+
+    if (performer) {
+      const { id, name } = performer
+      expect(id).toEqual(1)
+      expect(name).toEqual('テスト')
+    }
+  })
 })
 
