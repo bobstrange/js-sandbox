@@ -14,7 +14,7 @@ export class OnsenClient {
     try {
       const response = await this.client.get<OnsenProgram[]>('/programs')
       return response.data
-    } catch (e) {
+    } catch (e: unknown) {
       return Promise.reject(e)
     }
   }
@@ -27,7 +27,7 @@ export class OnsenClient {
         `/programs/${directoryName}`
       )
       return response.data
-    } catch (e) {
+    } catch (e: unknown) {
       return Promise.reject(e)
     }
   }
@@ -36,7 +36,7 @@ export class OnsenClient {
     try {
       const response = await this.client.get<Performer[]>('/performers')
       return response.data
-    } catch (e) {
+    } catch (e: unknown) {
       return Promise.reject(e)
     }
   }
@@ -45,7 +45,7 @@ export class OnsenClient {
     try {
       const response = await this.client.get('/change_logs', { params: { page, per: limit }})
       return response.data
-    } catch (e) {
+    } catch (e: unknown) {
       return Promise.reject(e)
     }
   }
