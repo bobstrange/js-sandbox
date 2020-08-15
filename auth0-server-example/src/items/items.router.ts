@@ -35,6 +35,7 @@ itemsRouter.put("/", async (req: Request, res: Response) => {
   try {
     const item = req.body.item;
     const updated = await ItemService.update(item);
+    res.status(200).send(updated);
   } catch (e) {
     res.status(404).send(e.message);
   }
@@ -44,6 +45,7 @@ itemsRouter.delete("/:id", async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     await ItemService.remove(id);
+    res.sendStatus(200);
   } catch (e) {
     res.status(404).send(e.message);
   }

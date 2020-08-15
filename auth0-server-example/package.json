@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon dist/index",
+    "start": "nodemon node dist/index",
     "webpack": "webpack --config webpack.config.dev.ts"
   },
   "keywords": [],
