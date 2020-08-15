@@ -61,12 +61,11 @@ export const update = async (item: Item): Promise<Item> => {
   throw new Error(`Item id: ${item.id} not found`);
 };
 
-export const delete = async (id: string): Promise<string> => {
+export const remove = async (id: string): Promise<string> => {
   if (items[id]) {
-    delete items[id]
-    return id
+    delete items[id];
+    return id;
   }
 
-  throw new Error(`Item id: ${item.id} not found`);
-
-}
+  throw new Error(`Item id: ${id} not found`);
+};
