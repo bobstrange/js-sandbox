@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import * as ItemService from "./items.service";
+import { checkJwt } from "../middleware/auth.middleware";
 
 export const itemsRouter = express.Router();
 
@@ -20,6 +21,8 @@ itemsRouter.get("/:id", async (req: Request, res: Response) => {
     res.status(404).send(e.message);
   }
 });
+
+itemsRouter.use(checkJwt);
 
 itemsRouter.post("/", async (req: Request, res: Response) => {
   try {
