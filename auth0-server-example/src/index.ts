@@ -4,6 +4,8 @@ import cors from "cors";
 import helmet from "helmet";
 
 import { itemsRouter } from "./items/items.router";
+import { errorHandler } from "./middleware/error.middleware";
+import { notFoundHandler } from "./middleware/notFound.middleware";
 
 dotenv.config();
 
@@ -27,6 +29,8 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use("/items", itemsRouter);
+app.use(errorHandler);
+app.use(notFoundHandler);
 
 /**
  * Launch server
