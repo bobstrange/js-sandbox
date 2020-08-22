@@ -6,7 +6,9 @@
     "build": "vite build"
   },
   "dependencies": {
+    "firebase": "^7.19.0",
     "firebaseui": "^4.6.1",
+    "firebaseui-ja": "^1.0.0",
     "vue": "^3.0.0-rc.1"
   },
   "devDependencies": {
