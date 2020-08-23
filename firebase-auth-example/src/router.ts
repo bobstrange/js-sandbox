@@ -6,6 +6,11 @@ export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      path: "/home",
+      name: "home",
+      redirect: "/",
+    },
+    {
       path: "/",
       name: "index",
       component: IndexPage,
