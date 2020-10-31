@@ -1,13 +1,20 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import React, { ReactNode } from "react"
+import Link from "next/link"
+import Head from "next/head"
 
 type Props = {
   children?: ReactNode
   title?: string
+  footer?: {
+    text: string
+  }
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
+const Layout = ({
+  children,
+  title = "This is the default title",
+  footer = { text: "Default footer" },
+}: Props) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -18,22 +25,22 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <nav>
         <Link href="/">
           <a>Home</a>
-        </Link>{' '}
-        |{' '}
+        </Link>{" "}
+        |{" "}
         <Link href="/about">
           <a>About</a>
-        </Link>{' '}
-        |{' '}
+        </Link>{" "}
+        |{" "}
         <Link href="/users">
           <a>Users List</a>
-        </Link>{' '}
+        </Link>{" "}
         | <a href="/api/users">Users API</a>
       </nav>
     </header>
     {children}
     <footer>
       <hr />
-      <span>I'm here to stay (Footer)</span>
+      <span>{footer.text}</span>
     </footer>
   </div>
 )
