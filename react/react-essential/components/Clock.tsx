@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react"
+import dayjs, { Dayjs } from "dayjs"
 
 type ClockProps = {
-  targetDate: Date
+  targetDate: Dayjs
 }
 
 const Clock: React.FC<ClockProps> = ({ targetDate }) => {
   const [date, setDate] = useState(targetDate)
   useEffect(() => {
-    console.log("targetDate: " + targetDate)
     setDate(targetDate)
   }, [targetDate])
-  const time = () => date.toLocaleTimeString()
+  const time = () => date.format("YYYY/MM/DD")
   return (
     <>
       <h2>Tick, Tack</h2>

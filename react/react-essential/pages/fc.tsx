@@ -1,19 +1,27 @@
 import Link from "next/link"
+import { useState } from "react"
+import dayjs from "dayjs"
+
 import Layout from "../components/Layout"
 import Clock from "../components/Clock"
 
-import { useState } from "react"
-
 const FCPage = () => {
-  const [date, setDate] = useState(new Date())
+  const [datetime, setDatetime] = useState(dayjs())
+
   const onDateChangeHandler = (e) => {
-    const newDate = new Date(e.target.value)
-    setDate(newDate)
+    console.log(e.target.value)
+    const newDate = dayjs(e.target.value)
+
+    setDatetime(newDate)
   }
   return (
     <Layout title="Functional Component Example page">
-      <Clock targetDate={date} />
-      <input type="date" onChange={onDateChangeHandler} />
+      <Clock targetDate={datetime} />
+      <input
+        type="date"
+        onChange={onDateChangeHandler}
+        defaultValue={datetime.format("YYYY-MM-DD")}
+      />
       <p>
         <Link href="/">
           <a>Go Home</a>
