@@ -10,7 +10,7 @@ const Clock: React.FC<ClockProps> = ({ targetDate }) => {
   useEffect(() => {
     setDate(targetDate)
   }, [targetDate])
-  const time = () => date.format("YYYY/MM/DD")
+  const time = () => date.format("YYYY/MM/DD HH:mm:ss")
   return (
     <>
       <h2>Tick, Tack</h2>
