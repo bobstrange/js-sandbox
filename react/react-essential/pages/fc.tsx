@@ -1,14 +1,18 @@
 import Link from "next/link"
 import { useState } from "react"
 import dayjs from "dayjs"
+import timezone from "dayjs/plugin/timezone"
 import objectSupport from "dayjs/plugin/objectSupport"
+dayjs.extend(timezone)
 dayjs.extend(objectSupport)
 
 import Layout from "../components/Layout"
 import Clock from "../components/Clock"
 
 const FCPage = () => {
-  const [datetime, setDatetime] = useState(dayjs())
+  const [datetime, setDatetime] = useState(
+    dayjs(new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }))
+  )
 
   const onDateChangeHandler = (e) => {
     const [year, month, day] = e.target.value.split("-")
