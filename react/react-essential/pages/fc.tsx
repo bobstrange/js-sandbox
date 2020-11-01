@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { useState } from "react"
+import { ChangeEventHandler, useState } from "react"
 import dayjs from "dayjs"
 import timezone from "dayjs/plugin/timezone"
 import objectSupport from "dayjs/plugin/objectSupport"
@@ -14,7 +14,7 @@ const FCPage = () => {
     dayjs(new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }))
   )
 
-  const onDateChangeHandler = (e) => {
+  const onDateChangeHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
     const [year, month, day] = e.target.value.split("-")
     const newDate = datetime.set({
       year,
@@ -25,7 +25,7 @@ const FCPage = () => {
     newDate.isValid() && setDatetime(newDate)
   }
 
-  const onTimeChangeHandler = (e) => {
+  const onTimeChangeHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
     const [hour, minute, second] = e.target.value.split(":")
     const newDate = datetime.set({
       hour,

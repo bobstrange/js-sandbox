@@ -15,7 +15,6 @@ const Clock: React.FC<ClockProps> = ({ targetDate }) => {
 
   const tick = () => {
     setDate((prevDate) => {
-      console.log(prevDate)
       return prevDate.add({ second: 1 })
     })
   }
