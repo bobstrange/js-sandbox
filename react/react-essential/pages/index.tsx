@@ -20,6 +20,11 @@ const IndexPage = () => (
           <a>Form</a>
         </Link>
       </li>
+      <li>
+        <Link href="/state">
+          <a>State</a>
+        </Link>
+      </li>
     </ul>
   </Layout>
 )
