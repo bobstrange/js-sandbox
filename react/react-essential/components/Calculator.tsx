@@ -1,16 +1,11 @@
-import React, { ChangeEventHandler, useState } from "react"
-import { BoilingVerdict } from "./BoilingVerdict"
-export const Calculator: React.FC = () => {
-  const [temperature, setTemperature] = useState("")
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setTemperature(e.target.value)
-  }
+import React from "react"
+import { TemperatureInput } from "./TemperatureInput"
 
+export const Calculator: React.FC = () => {
   return (
-    <fieldset>
-      <legend>Enter temperature in Celsius:</legend>
-      <input type="text" value={temperature} onChange={handleChange} />
-      <BoilingVerdict temperature={parseFloat(temperature)} />
-    </fieldset>
+    <>
+      <TemperatureInput scale="c" />
+      <TemperatureInput scale="f" />
+    </>
   )
 }
