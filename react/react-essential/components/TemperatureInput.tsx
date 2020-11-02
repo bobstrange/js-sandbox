@@ -1,18 +1,17 @@
-import React, { ChangeEventHandler, useState } from "react"
-import { BoilingVerdict } from "./BoilingVerdict"
+import React, { ChangeEventHandler } from "react"
 
 const scaleNames = {
   c: "Celsius",
   f: "Fahrenheit",
 }
 
-type Props = {
+export type TemperatureInputProps = {
   scale: keyof typeof scaleNames
   temperature: string
   onTemperatureChange: (arg: string) => void
 }
 
-export const TemperatureInput: React.FC<Props> = ({
+export const TemperatureInput: React.FC<TemperatureInputProps> = ({
   scale,
   temperature,
   onTemperatureChange,
