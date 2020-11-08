@@ -23,6 +23,7 @@ const IndexPage = () => (
       <PageLink linkTo="/form" text="Form" />
       <PageLink linkTo="/state" text="State" />
       <PageLink linkTo="/children" text="Children" />
+      <PageLink linkTo="/context" text="Context" />
     </ul>
   </Layout>
 )
