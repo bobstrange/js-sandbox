@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Layout from "../components/Layout"
 import { ThemedButton } from "../components/ThemedButton"
+import { ThemeTogglerButton } from "../components/ThemeTogglerButton"
 import { ThemeContext, themes } from "../contexts/ThemeContext"
 
 type ToolbarProps = {
@@ -34,11 +35,16 @@ const ContextPage: React.FC = () => {
 
   return (
     <Layout title="Use context">
-      <ThemeContext.Provider value={theme}>
+      <ThemeContext.Provider value={{ theme }}>
         <Toolbar changeTheme={toggleTheme} />
       </ThemeContext.Provider>
       <section>
         <ThemedButton>This won't be changed</ThemedButton>
+      </section>
+      <section>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+          <ThemeTogglerButton>This can change theme</ThemeTogglerButton>
+        </ThemeContext.Provider>
       </section>
     </Layout>
   )

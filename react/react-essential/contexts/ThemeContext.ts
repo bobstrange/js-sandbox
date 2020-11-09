@@ -1,4 +1,4 @@
-import React from "react"
+import { createContext } from "react"
 
 export const themes = {
   light: {
@@ -11,6 +11,10 @@ export const themes = {
   },
 }
 
-export const ThemeContext = React.createContext(
-  themes.light // default value
-)
+export const ThemeContext = createContext<{
+  theme: typeof themes["light"]
+  toggleTheme?: () => void
+}>({
+  theme: themes.light, // default value
+  toggleTheme: () => {},
+})
