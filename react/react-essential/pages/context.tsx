@@ -1,10 +1,45 @@
-import React from "react"
+import React, { useState } from "react"
 import Layout from "../components/Layout"
+import { ThemedButton } from "../components/ThemedButton"
+import { ThemeContext, themes } from "../contexts/ThemeContext"
 
-const ContextPage = () => {
+type ToolbarProps = {
+  changeTheme: () => void
+}
+
+const Toolbar: React.FC<ToolbarProps> = ({ changeTheme }) => {
+  return (
+    <div
+      style={{
+        backgroundColor: "cyan",
+        height: 60,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-end",
+        padding: 10,
+      }}
+    >
+      <ThemedButton onClick={changeTheme}>Change Theme</ThemedButton>
+    </div>
+  )
+}
+
+const ContextPage: React.FC = () => {
+  const [theme, setTheme] = useState(themes.light)
+  const toggleTheme = () => {
+    setTheme((prevTheme) => {
+      return prevTheme === themes.dark ? themes.light : themes.dark
+    })
+  }
+
   return (
     <Layout title="Use context">
-      <h1>Context Page</h1>
+      <ThemeContext.Provider value={theme}>
+        <Toolbar changeTheme={toggleTheme} />
+      </ThemeContext.Provider>
+      <section>
+        <ThemedButton>This won't be changed</ThemedButton>
+      </section>
     </Layout>
   )
 }
