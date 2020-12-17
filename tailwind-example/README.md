@@ -29,3 +29,18 @@ Add build script to package.json
 ```
 
 `npm run build` で、public/build/tailwind.css に、tailwind の css が出力されるように。
+
+`public/index.html` を適当に編集
+
+`live-server` で自動リロード設定
+
+```shell
+npm install live-server
+```
+
+```json
+  "script": {
+    ...,
+    "server": "live-server public"
+  }
+```
