@@ -28,5 +28,4 @@ Add build script to package.json
      "build": "postcss css/tailwind.css -o public/build/tailwind.css"
 ```
 
-
-
+`npm run build` で、public/build/tailwind.css に、tailwind の css が出力されるように。

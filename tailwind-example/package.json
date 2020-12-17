@@ -4,7 +4,8 @@
   "description": "↓の写経 https://www.youtube.com/watch?list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&v=21HuwjmuS7A&index=1",
   "main": "index.js",
   "scripts": {
-     "build": "postcss css/tailwind.css -o public/build/tailwind.css"
+    "build": "postcss css/tailwind.css -o public/build/tailwind.css",
+    "server": "live-server public"
   },
   "author": "bobstrange <bob.1983.g@gmail.com> (https://github.com/bobstrange)",
   "license": "MIT",
@@ -12,5 +13,8 @@
     "autoprefixer": "^10.1.0",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
   }
 }
