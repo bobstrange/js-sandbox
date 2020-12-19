@@ -7,18 +7,32 @@
   <link rel="stylesheet" href="/build/tailwind.css">
 </head>
 <body class="bg-gray-100">
-  <div class="px-8 py-12 max-w-md mx-auto sm:max-w-xl">
-    <img class="h-16" src="img/Nexco_east_logo.svg" alt="Nexco">
-    <img class="mt-8 rounded-2xl shadow-xl sm:mt-10 sm:h-64 sm:w-full sm:object-cover sm:object-center" src="img/highway.png" alt="Highway">
-    <h1 class="mt-6 text-2xl font-semibold text-gray-800 leading-tight sm:mt-10 sm:text-3xl">
-      <span class="text-indigo-800">Tokyo midnight highway...</span>
-      There are not many but still some traffic.
-    </h1>
-    <p class="mt-6 text-gray-700 leading-snug sm:mt-10 sm:text-xl">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa tenetur perferendis quibusdam, dignissimos dolorem necessitatibus tempora suscipit magni quisquam cumque? Eveniet est, inventore voluptatem sequi consequuntur ea pariatur neque! Blanditiis.
-    </p>
-    <div class="mt-6 sm:mt-10">
-      <a href="#" class="inline-block bg-indigo-500 text-white px-6 py-3 rounded-lg shadow-lg uppercase tracking-widest text-sm sm:text-base">Click Me :-p</a>
+  <div class="flex">
+    <div class="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:w-1/2">
+      <img class="h-16" src="img/Nexco_east_logo.svg" alt="Nexco">
+      <img
+        class="mt-8 rounded-2xl shadow-xl sm:mt-10 sm:h-64 sm:w-full sm:object-cover sm:object-center lg:hidden"
+        src="img/highway.png"
+        alt="Tokyo midnight highway"
+      >
+      <h1
+        class="mt-6 text-2xl font-semibold text-gray-800 leading-tight sm:mt-10 sm:text-3xl">
+        <span class="text-indigo-800">Tokyo midnight highway...</span>
+        There are not many but still some traffic.
+      </h1>
+      <p class="mt-6 text-gray-700 leading-snug sm:mt-10 sm:text-xl">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa tenetur perferendis quibusdam, dignissimos dolorem necessitatibus tempora suscipit magni quisquam cumque? Eveniet est, inventore voluptatem sequi consequuntur ea pariatur neque! Blanditiis.
+      </p>
+      <div class="mt-6 sm:mt-10">
+        <a href="#" class="inline-block bg-indigo-500 text-white px-6 py-3 rounded-lg shadow-lg uppercase tracking-widest text-sm sm:text-base">Click Me :-p</a>
+      </div>
+    </div>
+    <div class="hidden lg:block lg:w-1/2">
+      <img
+        class=""
+        src="img/highway.png"
+        alt="Tokyo midnight highway"
+      >
     </div>
   </div>
 </body>
