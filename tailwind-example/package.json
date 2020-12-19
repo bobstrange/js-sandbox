@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "postcss css/tailwind.css -o public/build/tailwind.css",
+    "watch": "postcss css/tailwind.css -o public/build/tailwind.css --watch",
     "server": "live-server public"
   },
   "author": "bobstrange <bob.1983.g@gmail.com> (https://github.com/bobstrange)",
