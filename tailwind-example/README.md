@@ -102,3 +102,45 @@ module.exports = {
     }
 }
 ```
+
+## 部品の共通化
+
+ボタンなどの、共通の部品として使えそうな class は、tailwind.css で定義する。
+
+`@tailwind components` と `@tailwind utilities` の間に定義する
+`@tailwind utilities` の手前に定義することで、定義した部品についても、`utility` が適用できる。
+
+`@apply` で style を適用できる。
+注意点として、 `@apply` は、`variant` に対応していないので、`variant` の部分は、別で定義する必要がある。
+(hover, focus, active, sm など)
+
+また、 `@media` の代わりに、 `@screen sm {}` とすれば、breakpoint 毎の css も定義しやすい
+
+```css
+@tailwind base;
+@tailwind components;
+
+.btn {
+    @apply inline-block px-5 py-3 ...;
+}
+
+.btn:hover {
+    @apply bg-indigo-400;
+}
+
+.btn:focus {
+    ...
+}
+
+@screen sm {
+    .btn {
+        @apply text-base;
+    }
+}
+```
+
+設定は同じで、色だけ変えたいとかの場合は、
+`Multi-class component pattern` を使って
+
+共通部分を、`.btn` に、色の部分を `.btn-indigo` などに設定して、
+`class="btn btn-indigo"` のようにすれば良い。
