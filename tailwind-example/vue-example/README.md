@@ -53,3 +53,21 @@ import '../assets/styles/tailwind.css'
 ...
 ```
 
+## VSCode の設定
+
+[ref](https://www.meidev.co/blog/visual-studio-code-css-linting-with-tailwind/)
+[ref2](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+
+workspace の場合 `.vscode/settings.json` を編集
+
+```json
+{
+    "css.validate": false,
+    "scss.validate": false,
+    "tailwindCSS.includeLanguages": {
+      "plaintext": "vue"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.validate": true
+}
+```

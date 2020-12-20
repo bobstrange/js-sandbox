@@ -1,5 +1,18 @@
 {
   "vetur.validation.template": true,
   "vetur.validation.script": true,
-  "vetur.validation.style": true
+  "vetur.validation.style": true,
+  // for tailwind
+  "css.validate": false,
+  "scss.validate": false,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "vue"
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.validate": true
 }
