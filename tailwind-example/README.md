@@ -15,6 +15,12 @@ npm install tailwindcss postcss-cli autoprefixer
 npx tailwind init
 ```
 
+↓のコマンドで、全部の設定を出力することができる。
+
+```shell
+npx tailwindcss init tailwind-full.config.js --full
+```
+
 Create [postcss.config.js](./postcss.config.js)
 
 Create `css/tailwind.css`. [file](./css/tailwind.css)
@@ -144,3 +150,13 @@ module.exports = {
 
 共通部分を、`.btn` に、色の部分を `.btn-indigo` などに設定して、
 `class="btn btn-indigo"` のようにすれば良い。
+
+## 設定のカスタマイズ
+
+full config を出力して、それを逐一いじる方法もあるが、、、
+
+```shell
+npx tailwindcss init tailwind-full.config.js --full
+```
+
+
