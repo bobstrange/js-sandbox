@@ -154,9 +154,33 @@ module.exports = {
 ## 設定のカスタマイズ
 
 full config を出力して、それを逐一いじる方法もあるが、、、
+どの設定がデフォルトで、どの設定をいじったのかがわからなくなるので、おすすめできない。
 
 ```shell
 npx tailwindcss init tailwind-full.config.js --full
 ```
 
 
+tailwind.config.js に、追加していく方が良い。
+どの設定を、元の設定に対していじったかがわかるので。
+追加する場合は、`extend` に追加していくのが基本。 => そうでないと、 utility が全部上書きされるので
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        // カスタムカラーの追加
+        brand-blue: '#1992d4'
+      }
+    },
+    spacing: {
+      px: {
+        // 72 を新しく定義
+        '72': '18rem
+      }
+    }
+  },
+  ...
+}
+```
