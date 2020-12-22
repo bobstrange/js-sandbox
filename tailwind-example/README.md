@@ -29,11 +29,10 @@ Create `css/tailwind.css`. [file](./css/tailwind.css)
 Add build script to package.json
 
 ```json
-     "build": "postcss css/tailwind.css -o public/build/tailwind.css"
+json "build": "postcss css/tailwind.css -o public/build/tailwind.css"
 ```
 
-- `npm run build` で、public/build/tailwind.css に、tailwind の css が出力されるように。
-- `public/index.html` を適当に編集
+- `npm run build` で、public/build/tailwind.css に、tailwind の css が出力されるように。 `public/index.html` を適当に編集
 - `live-server` で自動リロード設定
 
 ```shell
@@ -182,5 +181,35 @@ module.exports = {
     }
   },
   ...
+}
+```
+
+## bundle サイズの縮小
+ビルド時に、使われていない utility を含めないようにすることができる。(さもないと minify して 400kB 超のサイズに :-( )
+
+[Purgecss](https://www.purgecss.com) を使う。
+
+インストール
+
+```shell
+npm install @fullhuman/postcss-purgecss
+```
+
+`postcss.config.js` を編集
+
+```js
+module.exports = {
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+    require('@fullhuman/postcss-purgecss')({
+      content: [
+        './public/**/*.html,
+        // vue の場合
+        // './src/**/*.vue'
+      ],
+      defaultExtractor: content => content.match(/[A-Za-z0-9-_:]+/g) || []
+    })
+  ]
 }
 ```
