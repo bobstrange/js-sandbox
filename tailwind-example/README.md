@@ -202,7 +202,7 @@ module.exports = {
   plugins: [
     require('tailwindcss'),
     require('autoprefixer'),
-    require('@fullhuman/postcss-purgecss')({
+    process.env.NODE_ENV === 'production' && require('@fullhuman/postcss-purgecss')({
       content: [
         './public/**/*.html,
         // vue の場合
@@ -213,3 +213,8 @@ module.exports = {
   ]
 }
 ```
+
+purge css は正規表現を多用していて重いので、production ビルドを作るときのみ走らせるのが吉
+
+[defaultExtractor](https://purgecss.com/configuration.html#options) を定義しておくことで、正規表現の定義を渡せる。
+使用していない css が大量に残っている場合は、自前で extractor を定義したほうが良い。
