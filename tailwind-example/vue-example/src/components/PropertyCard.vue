@@ -1,5 +1,20 @@
 <template>
-  <div></div>
+  <div>
+    <img :src="property.image" :alt="property.image" />
+    <h4>{{ property.text }}</h4>
+    <ul>
+      <li v-for="(tag, i) in property.tags" :key="i">
+        {{ tag }}
+      </li>
+    </ul>
+    <div>
+      {{ property.formattedPrice }}
+    </div>
+    <div>
+      {{ property.rating }}/5 stars (based on {{ property.reviewCount }} reviews
+      and {{ property.likes }} likes)
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
