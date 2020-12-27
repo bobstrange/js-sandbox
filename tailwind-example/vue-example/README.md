@@ -71,4 +71,3 @@ workspace の場合 `.vscode/settings.json` を編集
     "tailwindCSS.validate": true
 }
 ```
-
