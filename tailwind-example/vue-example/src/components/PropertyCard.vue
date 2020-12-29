@@ -1,40 +1,42 @@
 <template>
-  <div class="bg-white border rounded-lg overflow-hidden max-w-sm">
-    <div class="relative bg-red-500 pb-2/3">
+  <div class="max-w-md">
+    <div class="relative pb-5/6">
       <img
-        class="absolute bottom-0 h-full w-full object-cover"
+        class="absolute bottom-0 h-full w-full object-cover rounded-lg shadow-md"
         :src="property.image"
         :alt="property.image"
       />
     </div>
-    <div class="p-6">
-      <h4 class="font-semibold text-lg text-gray leading-tight truncate">
-        {{ property.text }}
-      </h4>
-      <ul class="mt-1">
-        <li class="inline" v-for="(tag, i) in property.tags" :key="i">
-          <span
-            class="inline-block bg-green-500 text-white font-semibold text-xs px-2 py-0.5
+    <div class="relative px-4 -mt-16">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h4 class="font-semibold text-lg text-gray leading-tight truncate">
+          {{ property.text }}
+        </h4>
+        <ul class="mt-1">
+          <li class="inline" v-for="(tag, i) in property.tags" :key="i">
+            <span
+              class="inline-block bg-blue-300 text-gray-700 font-semibold text-xs px-2 py-0.5
           rounded-full mr-1"
-          >
-            {{ tag }}
+            >
+              {{ tag }}
+            </span>
+          </li>
+        </ul>
+        <div class="mt-1">
+          <span class="inline-block text-gray-800 font-semibold text-sm">{{
+            property.formattedPrice
+          }}</span>
+          <span class="inline-block ml-1 text-gray-600 text-xs">/ wk</span>
+        </div>
+        <div class="mt-4">
+          <span class="inline-block text-indigo-600 text-sm font-semibold">
+            {{ property.rating }}/5 stars
           </span>
-        </li>
-      </ul>
-      <div class="mt-1">
-        <span class="inline-block text-gray-800 font-semibold text-sm">{{
-          property.formattedPrice
-        }}</span>
-        <span class="inline-block ml-1 text-gray-600 text-xs">/ wk</span>
-      </div>
-      <div class="mt-4">
-        <span class="text-indigo-600 text-sm font-semibold">
-          {{ property.rating }}/5 stars
-        </span>
-        <span class="text-gray-600 text-xs">
-          (based on {{ property.reviewCount }} reviews and
-          {{ property.likes }} likes)</span
-        >
+          <span class="text-gray-600 text-xs leading-tight">
+            (based on {{ property.reviewCount }} reviews and
+            {{ property.likes }} likes)</span
+          >
+        </div>
       </div>
     </div>
   </div>
