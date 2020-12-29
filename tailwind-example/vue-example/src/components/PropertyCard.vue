@@ -1,6 +1,10 @@
 <template>
   <div class="bg-white border rounded-lg overflow-hidden max-w-sm">
-    <img class="max-h-32" :src="property.image" :alt="property.image" />
+    <img
+      class="h-48 w-full object-cover"
+      :src="property.image"
+      :alt="property.image"
+    />
     <div class="p-6">
       <h4 class="font-semibold text-lg text-gray leading-tight truncate">
         {{ property.text }}
