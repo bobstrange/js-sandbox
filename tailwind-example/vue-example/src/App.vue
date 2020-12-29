@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="antialiased text-gray-900">
+  <div class="antialiased text-gray-900">
     <Navbar />
     <div class="bg-gray-200 min-h-screen p-8 flex items-center justify-center">
       <PropertyCard :property="items[0]" />
