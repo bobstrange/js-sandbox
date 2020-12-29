@@ -11,20 +11,27 @@
       <h4 class="font-semibold text-lg text-gray leading-tight truncate">
         {{ property.text }}
       </h4>
-      <ul class="text-gray-600 text-xs uppercase tracking-wider mt-1">
-        <li v-for="(tag, i) in property.tags" :key="i">
-          {{ tag }}
+      <ul class="mt-1">
+        <li class="inline" v-for="(tag, i) in property.tags" :key="i">
+          <span
+            class="inline-block bg-green-500 text-white font-semibold text-xs px-2 py-0.5
+          rounded-full mr-1"
+          >
+            {{ tag }}
+          </span>
         </li>
       </ul>
-      <div>
-        {{ property.formattedPrice }}
-        <span class="text-gray-600 text-sm">/ wk</span>
+      <div class="mt-1">
+        <span class="inline-block text-gray-800 font-semibold text-sm">{{
+          property.formattedPrice
+        }}</span>
+        <span class="inline-block ml-1 text-gray-600 text-xs">/ wk</span>
       </div>
       <div class="mt-4">
-        <span class="text-indigo-600 font-semibold">
+        <span class="text-indigo-600 text-sm font-semibold">
           {{ property.rating }}/5 stars
         </span>
-        <span class="text-gray-600 text-sm">
+        <span class="text-gray-600 text-xs">
           (based on {{ property.reviewCount }} reviews and
           {{ property.likes }} likes)</span
         >
