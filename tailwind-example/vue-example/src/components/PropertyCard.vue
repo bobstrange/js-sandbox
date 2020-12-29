@@ -1,9 +1,12 @@
 <template>
   <div class="bg-white border rounded-lg overflow-hidden max-w-sm">
-    <div
-      class="h-48 bg-cover bg-center"
-      :style="{ backgroundImage: `url('${property.image}')` }"
-    ></div>
+    <div class="relative bg-red-500 pb-2/3">
+      <img
+        class="absolute bottom-0 h-full w-full object-cover"
+        :src="property.image"
+        :alt="property.image"
+      />
+    </div>
     <div class="p-6">
       <h4 class="font-semibold text-lg text-gray leading-tight truncate">
         {{ property.text }}
