@@ -7,39 +7,41 @@
   <title>Pure React</title>
 </head>
 <body>
- <div id="app">Not rendered</div>
- <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
- <script src="https://unpkg.com/react-dom@^16/umd/react-dom.production.min.js"></script>
- <script>
-   const Address = () => {
-     return React.createElement("div", {}, [
-       React.createElement("h1", {}, "Tokyo."),
-       React.createElement("h2", {}, "Marunouchi"),
-       React.createElement("h2", {}, "Toranomon")
-     ])
-   }
+  <div id="app">Not rendered</div>
+  <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@^16/umd/react-dom.production.min.js"></script>
+  <script>
+    const Address = () => {
+      return React.createElement("div", {}, [
+        React.createElement("h1", {}, "Tokyo."),
+        React.createElement("h2", {}, "Marunouchi"),
+        React.createElement("h2", {}, "Toranomon")
+      ])
+    }
 
-   const People = (props) => {
-     return React.createElement(
-       "div",
-       {},
-       [
+    const People = (props) => {
+      return React.createElement(
+        "div",
+        {},
+        [
+          React.createElement("h1", {}, props.name),
+          React.createElement("p", {}, props.description)
+        ]
+      )
+    }
 
-       ]
-     )
-   }
-
-   const App = () => {
-     return React.createElement(
-       "div",
-       {},
-       [
-         React.createElement("h1", {}, "Adopt Me!"),
-         React.createElement(Address)
-       ]
-     )
-   }
-   ReactDOM.render(React.createElement(App), document.getElementById("app"))
- </script>
+    const App = () => {
+      return React.createElement(
+        "div",
+        {},
+        [
+          React.createElement("h1", {}, "Adopt Me!"),
+          React.createElement(People, { name: "John", description: "Live in Tokyo" }),
+          React.createElement(People, { name: "Jane", description: "Live in Hokkaido" })
+        ]
+      )
+    }
+    ReactDOM.render(React.createElement(App), document.getElementById("app"))
+  </script>
 </body>
 </html>
