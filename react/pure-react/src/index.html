@@ -11,11 +11,32 @@
  <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
  <script src="https://unpkg.com/react-dom@^16/umd/react-dom.production.min.js"></script>
  <script>
+   const Address = () => {
+     return React.createElement("div", {}, [
+       React.createElement("h1", {}, "Tokyo."),
+       React.createElement("h2", {}, "Marunouchi"),
+       React.createElement("h2", {}, "Toranomon")
+     ])
+   }
+
+   const People = (props) => {
+     return React.createElement(
+       "div",
+       {},
+       [
+
+       ]
+     )
+   }
+
    const App = () => {
      return React.createElement(
        "div",
        {},
-       React.createElement("h1", {}, "Adopt Me!")
+       [
+         React.createElement("h1", {}, "Adopt Me!"),
+         React.createElement(Address)
+       ]
      )
    }
    ReactDOM.render(React.createElement(App), document.getElementById("app"))
