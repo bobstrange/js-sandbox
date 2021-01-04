@@ -44,6 +44,13 @@ div img {
   flex: 0 0 92%;
 }
 
+.col-sm {
+  background-color: #fcc;
+}
+.col-md {
+  background-color: #ccf;
+}
+
 .col-1-2,
 .col-1-4 {
   background-color: #ffc;
@@ -64,6 +71,14 @@ div img {
 
 /* Mobile Landscape Screen Sizes */
 @media only screen and (min-width: 480px) {
+  .col-sm {
+    flex: 0 0 44%;
+  }
+  .col-md {
+    flex: 0 0 92%;
+    order: -1;
+  }
+
   .col-1-2,
   .col-2 {
     flex: 0 0 44%;
@@ -77,6 +92,14 @@ div img {
 
 /* Desktop screen Sizes */
 @media only screen and (min-width: 768px) {
+  .col-sm {
+    flex: 0 0 21%;
+  }
+  .col-md {
+    flex: 0 0 42%;
+    order: 0;
+  }
+
   .col-1-2,
   .col-1-4 {
     flex: 0 0 20%;
