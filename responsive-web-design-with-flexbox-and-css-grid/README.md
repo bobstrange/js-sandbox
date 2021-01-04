@@ -2,7 +2,6 @@
 
 [こちら](https://github.com/jen4web/fem-layout) の写経
 
-
 ## Flexbox
 
 ```css
@@ -55,6 +54,25 @@ flex-item には、`width` のプロパティではなく、`flex-basis` を設�
 
 `flex: <flex-grow> <flex=shrink> <flex-basis>` で、ショートハンド
 
+desktop
+
 ```css
-flex: 2 1 25%
+flex: 0 0 24%;
 ```
+
+tablet
+
+```css
+flex: 0 0 48%;
+```
+
+mobile
+
+```css
+flex: 0 0 96%;
+```
+
+### 学習用ゲーム
+
+https://flexboxfroggy.com/#ja
+http://www.flexboxdefense.com/
