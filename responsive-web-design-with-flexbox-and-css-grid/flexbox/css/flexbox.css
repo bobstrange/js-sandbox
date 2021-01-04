@@ -41,9 +41,11 @@ div img {
 
 [class*="col-"] {
   margin-left: 4%;
+  flex: 0 0 92%;
 }
 
-.col-1 {
+.col-1-2,
+.col-1-4 {
   background-color: #ffc;
 }
 
@@ -61,11 +63,22 @@ div img {
 
 
 /* Mobile Landscape Screen Sizes */
-@media only screen and (min-width: 480px) {}
+@media only screen and (min-width: 480px) {
+  .col-1-2,
+  .col-2 {
+    flex: 0 0 44%;
+  }
+  .col-1-4,
+  .col-3,
+  .col-4 {
+    flex: 0 0 92%;
+  }
+}
 
 /* Desktop screen Sizes */
 @media only screen and (min-width: 768px) {
-  .col-1 {
+  .col-1-2,
+  .col-1-4 {
     flex: 0 0 20%;
   }
   .col-2 {
