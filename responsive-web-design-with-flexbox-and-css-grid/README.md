@@ -79,6 +79,31 @@ http://www.flexboxdefense.com/
 
 ---
 
-## TODO
+## Responsive Image
 
-- [flexbox-bakery](./flexbox-bakery/) は WIP 状態
+- 大きなサイズの画像を取得してきて、 scale をするのはあまりよろしくない
+- Server-side で必要なサイズの画像を提供するほうが良い
+- Client Side で必要なサイズの画像を JavaScript から取得するのも良い
+- `<picture>` tag を使うのも良い
+
+### `<picture>` タグ
+
+```html
+<picture>
+    <source srcset="img/large.png" media="(min-width: 1200px)">
+    <source srcset="img/medium.png" media="(min-width: 800px)">
+
+    <!-- Fallback -->
+    <img src="img/small.png" alt="">
+</picture>
+```
+
+Cross browser 対応が必要な場合 (IE) picturefill を使う
+
+### Media query と 画像のダウンロード
+
+[参考](https://timkadlec.com/2012/04/media-query-asset-downloading-results/)
+
+> Test Five: Background Image Where Desktop Image Set with Min-Width
+
+背景画像 + min-width の media query にすると余分な画像のダウンロードが発生しない
