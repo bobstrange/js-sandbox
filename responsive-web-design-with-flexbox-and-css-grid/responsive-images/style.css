@@ -1,0 +1,20 @@
+@media (min-width: 1px) {
+  .background-image {
+    background: url(img/mom-300.jpg) no-repeat;
+    height: 50px;
+  }
+}
+
+@media (min-width: 500px) {
+  .background-image {
+    background: url(img/mom-767.jpg) no-repeat;
+    height: 100px;
+  }
+}
+
+@media (min-width: 500px) {
+  .background-image {
+    background: url(img/mom-1200.jpg) no-repeat;
+    height: 200px;
+  }
+}

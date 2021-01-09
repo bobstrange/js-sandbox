@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+  <title>Document</title>
+  <script>
+    document.createElement('picture');
+  </script>
+  <script src="js/picturefill.min.js" defer></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<!-- visit http://scottjehl.github.io/picturefill/ for picturefill source -->
-	<div class="bkgdimg"></div>
-	<div>
-		<img src="img/peace-pie-original.jpg" alt="The original giant peace pie">
-	</div>
+	<div class="background-image"></div>
+	<picture>
+    <source srcset="img/peace-pie-original.jpg" media="(min-width: 1200px)">
+    <source srcset="img/peace-pie-500.jpg" media="(min-width: 800px)">
+		<img src="img/peace-pie-150.jpg" alt="A peace pie">
+  </picture>
 </body>
 </html>
