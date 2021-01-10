@@ -136,7 +136,8 @@ row, column はサイズを気にせず単なる数
   grid-template-rows: repeat(5, auto);
 ```
 
-`grid-area`
+`grid-area` で、適用したいクラスに名前をつけることができる。
+つけた名前は、 `grid-template-areas` で使用する
 
 ```css
 .class1 {
@@ -149,10 +150,12 @@ row, column はサイズを気にせず単なる数
     grid-area: aside;
 }
 .wrapper {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
         "header header header header"
         "aside . article article";
 }
 ```
+
+空のカラムは、 `.` で表す
