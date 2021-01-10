@@ -107,3 +107,52 @@ Cross browser 対応が必要な場合 (IE) picturefill を使う
 > Test Five: Background Image Where Desktop Image Set with Min-Width
 
 背景画像 + min-width の media query にすると余分な画像のダウンロードが発生しない
+
+## CSS Grid
+
+```css
+display: grid
+```
+
+row, column はサイズを気にせず単なる数
+
+`grid-row`, `grid-column` で指定する数字は、**要素の位置ではなく、要素同士を仕切る線の位置**
+0 では無く 1　スタート
+
+`gap` で grid 自体の幅を設定
+`gap: <top-bottom> <left-right>`
+
+`grid-template-rows` `grid-template-columns` で、要素のサイズを設定
+
+```css
+  grid-template-rows: 70px 17px 60px 54px 86px 147px;
+  grid-template-columns: 304px 92px 153px 68px
+```
+
+`1fr` -> `1 fraction`
+
+```css
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, auto);
+```
+
+`grid-area`
+
+```css
+.class1 {
+    grid-area: header;
+}
+.class2 {
+    grid-area: article;
+}
+.class3 {
+    grid-area: aside;
+}
+.wrapper {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header header header header"
+        "aside . article article";
+}
+```
