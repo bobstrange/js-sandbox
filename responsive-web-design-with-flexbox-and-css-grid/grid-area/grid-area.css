@@ -34,7 +34,7 @@ aside {
 
 @media (min-width: 650px) {
   .wrapper {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
       "article article article sidebar"
@@ -44,7 +44,7 @@ aside {
 @media (min-width: 1000px) {
   .wrapper {
     grid-template-areas:
-      "sidebar header"
-      "sidebar article";
+      "sidebar header header header"
+      "sidebar article article article";
   }
 }
