@@ -87,12 +87,14 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   props: {
     msg: String
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
