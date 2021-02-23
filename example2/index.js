@@ -1,1 +1,3 @@
-const {} = require('./day')
+import { sum } from './calc'
+
+sum(1, 2)

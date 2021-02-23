@@ -1,7 +1,7 @@
-export const sum = (a, b) => {
-  return a + b
+export const sum = (firstArg, secondArg) => {
+  return firstArg + secondArg
 }
 
-export const multiply = (a, b) => {
-  return a * b
+export const subtract = (firstArg, secondArg) => {
+  return firstArg - secondArg
 }
