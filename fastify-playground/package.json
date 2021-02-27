@@ -15,11 +15,12 @@
   "author": "bobstrange <bob.1983.g@gmail.com> (https://github.com/bobstrange)",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "fastify": "^3.0.0",
-    "fastify-plugin": "^3.0.0",
     "fastify-autoload": "^3.3.1",
-    "fastify-sensible": "^3.1.0",
-    "fastify-cli": "^2.8.0"
+    "fastify-cli": "^2.8.0",
+    "fastify-plugin": "^3.0.0",
+    "fastify-sensible": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
