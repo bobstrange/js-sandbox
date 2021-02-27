@@ -8,8 +8,7 @@
   },
   "scripts": {
     "test": "tap test/**/*.test.js",
-    "start": "fastify start -l info src/app.js",
-    "dev": "fastify start -w -l info -P src/app.js",
+    "dev": "nodemon ./src --ext ts --exec 'ts-node ./src/index.ts'",
     "format": "prettier --write */**/.{js,ts}"
   },
   "keywords": [],
@@ -28,8 +27,10 @@
     "@typescript-eslint/parser": "^4.15.2",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^8.1.0",
+    "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
     "tap": "^14.11.0",
+    "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
   }
 }
