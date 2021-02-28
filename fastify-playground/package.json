@@ -9,6 +9,7 @@
   "scripts": {
     "test": "tap test/**/*.test.js",
     "dev": "nodemon ./src --ext ts --exec 'ts-node -r tsconfig-paths/register ./src/index.ts'",
+    "compile-schemas": "json2ts -i src/schemas -o src/types",
     "format": "prettier --write */**/.{js,ts}"
   },
   "keywords": [],

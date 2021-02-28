@@ -23,6 +23,7 @@
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
 
     /* Advanced Options */
     "skipLibCheck": true,
