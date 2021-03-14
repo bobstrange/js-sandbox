@@ -16,6 +16,7 @@ const headingStyles = {
 const paragraphStyles = {
   marginBottom: 48,
 }
+
 const codeStyles = {
   color: '#8A6534',
   padding: 4,
@@ -25,7 +26,7 @@ const codeStyles = {
 }
 
 // markup
-const NotFoundPage = () => {
+const NotFoundPage: React.FC = () => {
   return (
     <main style={pageStyles}>
       <title>Not found</title>
