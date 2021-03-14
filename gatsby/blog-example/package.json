@@ -10,7 +10,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js.jsx}",
+    "format": "prettier --write ./src/**/*.js",
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
