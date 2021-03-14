@@ -1,7 +1,14 @@
-import * as React from 'react'
+import React from 'react'
+import { Link } from 'gatsby'
 
-const IndexPage = () => {
-  return <h1>Hi There</h1>
+const IndexPage: React.FC = () => {
+  return (
+    <>
+      <h1>Home</h1>
+      <p>Hi there</p>
+      <Link to="/about/">About</Link>
+    </>
+  )
 }
 
 export default IndexPage
