@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "blog-example",
+    title: 'blog-example',
   },
-  plugins: [],
-};
+  plugins: ['gatsby-plugin-sass'],
+}
