@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-export default function about() {
+const About: React.FC = () => {
   return (
     <>
       <h1>About Me</h1>
@@ -10,3 +10,5 @@ export default function about() {
     </>
   )
 }
+
+export default About
