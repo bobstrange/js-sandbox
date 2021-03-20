@@ -1,3 +1,16 @@
+header {
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  // make header align content size
+  padding: 0.5rem calc((100vw - 550px)/2)
+}
+
+nav {
+  margin-top: 0;
+}
+
 .nav-link {
   color: #222;
   font-size: 1rem;
