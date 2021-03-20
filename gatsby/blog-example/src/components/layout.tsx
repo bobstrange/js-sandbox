@@ -1,10 +1,11 @@
 import React from 'react'
+import { Header } from './header'
 import './layout.scss'
 
 const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <header></header>
+      <Header />
       <main>{children}</main>
     </>
   )
