@@ -3,5 +3,5 @@ module.exports = {
     title: 'blog-example',
     description: 'An example blog built by Gatsby',
   },
-  plugins: ['gatsby-plugin-sass'],
+  plugins: ['gatsby-plugin-sass', 'gatsby-plugin-react-helmet'],
 }
