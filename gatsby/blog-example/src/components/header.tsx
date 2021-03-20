@@ -10,10 +10,10 @@ export const Header: React.FC = () => {
         Example Website
       </Link>
       <nav>
-        <Link to="/" className="nav-link">
+        <Link to="/" activeClassName="current-page" className="nav-link">
           Home
         </Link>
-        <Link to="/about/" className="nav-link">
+        <Link to="/about/" activeClassName="current-page" className="nav-link">
           About
         </Link>
       </nav>
