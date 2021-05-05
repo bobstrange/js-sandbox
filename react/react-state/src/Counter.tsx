@@ -7,25 +7,32 @@ type Props = {
   step: number
 }
 
-const getStateFromLocalStorage = (): number => {
-  const storage = localStorage.getItem('counterState')
-  console.log(storage)
-  if (storage) {
-    const state = JSON.parse(storage)
-    if (typeof state.count === 'number') {
-      return state.count
+const useLocalStorage = <T,>(
+  initialState: T,
+  key: string
+): [T, React.Dispatch<React.SetStateAction<T>>] => {
+  const get = (): T => {
+    const storage = localStorage.getItem(key)
+    if (storage) {
+      const state = JSON.parse(storage)
+      if (state.value) {
+        return state.value as T
+      }
     }
+    return initialState
   }
-  return 0
-}
 
-const storeStateInLocalStorage = (count: number) => {
-  localStorage.setItem('counterState', JSON.stringify({ count }))
-  console.log(localStorage)
+  const [value, setValue] = useState(get())
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify({ value }))
+  }, [value])
+
+  return [value, setValue]
 }
 
 export const Counter: FC<Props> = ({ max, step }) => {
-  const [count, setCount] = useState(getStateFromLocalStorage())
+  const [count, setCount] = useLocalStorage(0, 'counter')
 
   const increment = () =>
     setCount((count) => {
@@ -39,10 +46,6 @@ export const Counter: FC<Props> = ({ max, step }) => {
 
   useEffect(() => {
     document.title = `Counter: ${count}`
-  }, [count])
-
-  useEffect(() => {
-    storeStateInLocalStorage(count)
   }, [count])
 
   return (
