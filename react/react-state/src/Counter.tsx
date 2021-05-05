@@ -44,10 +44,6 @@ export const Counter: FC<Props> = ({ max, step }) => {
   const decrement = () => setCount((count) => count - step)
   const reset = () => setCount(0)
 
-  useEffect(() => {
-    document.title = `Counter: ${count}`
-  }, [count])
-
   return (
     <div className={styles.Counter}>
       <p className={styles.count}>{count}</p>
