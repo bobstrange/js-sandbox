@@ -2,11 +2,22 @@ import React, { FC, useState } from 'react'
 
 import styles from './Counter.module.scss'
 
-export const Counter: FC = () => {
+type Props = {
+  max: number
+  step: number
+}
+
+export const Counter: FC<Props> = ({ max, step }) => {
   const [count, setCount] = useState(0)
 
-  const increment = () => setCount((count) => count + 1)
-  const decrement = () => setCount((count) => count - 1)
+  const increment = () =>
+    setCount((count) => {
+      if (count > max) {
+        return count
+      }
+      return count + step
+    })
+  const decrement = () => setCount((count) => count - step)
   const reset = () => setCount(0)
 
   return (

@@ -1,0 +1,32 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.control {
+  display: flex;
+  padding: 2em;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.controlItem {
+  margin-bottom: 1em;
+}
+
+.label {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 2em;
+}
+
+.input {
+  padding: 0.5em;
+  border-radius: 5px;
+  width: 50px;
+  border-width: 0.5px;
+}
+
