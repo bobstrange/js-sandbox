@@ -1,11 +1,22 @@
 import React, { FC } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import './App.scss'
+import { HomePage } from './pages/HomePage'
 import { CounterPage } from './pages/CounterPage'
 
 const App: FC = () => {
   return (
     <div className="App">
-      <CounterPage />
+      <Router>
+        <Switch>
+          <Route path="/counter">
+            <CounterPage />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   )
 }
