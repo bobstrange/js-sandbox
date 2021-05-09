@@ -1,16 +1,24 @@
 .NewGrudge {
   display: flex;
+  margin-top: 10px;
 }
 
-.NewGrudge-input {
-  width: 100%;
+input {
+  font-size: 16px;
 }
 
-.button,
+input[type='text']{
+  padding: 0.5em;
+  border: 1px solid teal;
+  flex: 1;
+}
+
 input[type='submit'] {
   background-color: teal;
   border: 1px solid teal;
   color: white;
   padding: 0.5em;
   transition: all 0.2s;
+  width: 80px;
+  font-weight: bold;
 }

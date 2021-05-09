@@ -10,19 +10,19 @@ export const NewGrudge: FC = () => {
     <form className={styles.NewGrudge}>
       <input
         type="text"
-        className="NewGrudge-input"
+        className="hoge"
         placeholder="Person"
         onChange={(e) => setPerson(e.target.value)}
         value={person}
       />
       <input
         type="text"
-        className="NewGrudge-input"
+        className="hoge"
         placeholder="Reason"
         onChange={(e) => setReason(e.target.value)}
         value={reason}
       />
-      <input className="submit button" type="submit" />
+      <input className="submit button" type="submit" value="submit" />
     </form>
   )
 }
