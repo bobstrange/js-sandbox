@@ -1,1 +1,16 @@
-.NewGrudge {}
+.NewGrudge {
+  display: flex;
+}
+
+.NewGrudge-input {
+  width: 100%;
+}
+
+.button,
+input[type='submit'] {
+  background-color: teal;
+  border: 1px solid teal;
+  color: white;
+  padding: 0.5em;
+  transition: all 0.2s;
+}

@@ -3,6 +3,7 @@ import { Layout } from '../components/Layout'
 import { GrudgeList } from '../components/GrudgeList'
 
 import { Grudge, fetchGrudges } from '../models/grudge'
+import { NewGrudge } from '../components/NewGrudge'
 
 export const GrudgesPage: FC = () => {
   const [grudges, setGrudges] = useState<Grudge[]>([])
@@ -14,6 +15,7 @@ export const GrudgesPage: FC = () => {
   }, [])
   return (
     <Layout>
+      <NewGrudge />
       <GrudgeList grudges={grudges} />
     </Layout>
   )
