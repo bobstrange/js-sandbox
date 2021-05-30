@@ -25,10 +25,6 @@ Cypress UI の起動
 }
 ```
 
-- TODO:
-  - Linter の設定
-  - TypeScript の設定
-
 ## テストを書く
 
 `{project_root}/cypress/integration/` 配下に spec ファイルを作成する。
@@ -73,3 +69,36 @@ UI で `sample_spec.js` をクリックすると、Cypress がブラウザを起
   - `should(condition,内容)`
 - 現在の URL の取得
   - `cy.url()`
+
+## ページの読み込みなど
+
+- cypress では、ページ遷移の後の読み込み時などに、必要に応じて待受をおこなう。
+- 以前は、 DOM イベントの Lookup の為に、 4 秒間の timeout を設定していた。
+- 現在は、 `page transition event` を検知した場合は、 60 秒間まで timeout を伸ばしている。
+- この辺は、設定でいじれる。
+
+## TypeScript の設定
+
+[公式](https://docs.cypress.io/guides/tooling/typescript-support#Install-TypeScript)
+
+
+まず、TypeScript を依存に入れる (既存 PJ なら入っていると思うけど)
+
+```bash
+npm i -D typescript
+```
+
+tsconfig.json を **cypress** フォルダ配下に作る
+
+```tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress"]
+  },
+  "include": ["**/*.ts"]
+}
+```
+
+- これで、 `cypress` や、依存している `chai` などの型定義が読み込まれる状態になる。

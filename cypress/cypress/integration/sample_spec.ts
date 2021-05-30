@@ -1,5 +1,3 @@
-const { IsJWT } = require('class-validator')
-
 describe('First test', () => {
   it('compares 1 === 1', () => {
     expect(1).to.equal(1)
