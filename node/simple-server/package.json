@@ -5,5 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js"
+  },
+  "dependencies": {
+    "request": "^2.88.2"
   }
 }
