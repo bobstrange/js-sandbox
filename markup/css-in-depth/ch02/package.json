@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "dev": "live-server index.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
