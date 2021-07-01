@@ -90,12 +90,63 @@ Accessibility を考慮すると、`font-size` は相対値を指定するべき
   - border
 - em
   - ↑以外
+    - :root font-size
     - padding
     - margin
     - border radius
 - %
   - container's width
 
+### Stop thinking in pixels
+
+この本の著者は、root の font-size を .625em や、62.5% にすることは、アンチパターンだと言っている
+
+理由としては
+
+- root の font-size が 10px なので、至るところで、1.4 rem や 1.6 rem を書かなければならなくなる -> stylesheet の定義が増えてメンテナンスがしづらくなる
+- pixel ベースで考えてしまい、標準の値よりちょっと大きい、や、ちょっと小さいという考え方にならない -> Responsive にするためには、fuzzy な考え方が必要
+
+基本的な `font-size` や、他のプロパティに、`rem` や、 `rem` を使用している場合、:root の `font-size` に対して @media query を書くだけで、ある程度 responsive になるというのが、著者の主張
+
+```css
+:root {
+  font-size: 0.75em;
+}
+
+@media (min-width: 800px) {
+  :root {
+    font-size: 0.875em;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    font-size: 1em;
+  }
+}
+```
 ## Memo
 
-p31 まで
+p41 まで
+
+### direct descendant combinator
+
+descendant combinator
+
+h2 は .foo の直接の子要素でなくても (孫でもひ孫でも) selector に一致する
+
+```css
+.foo h2 {
+  font-size: 1.2rem;
+}
+```
+
+direct descendant combinator (child combinator)
+
+h2 が .foo の直接の子要素でないと selector に一致しない
+
+```css
+.foo > h2 {
+  font-size: 1.2rem;
+}
+```
