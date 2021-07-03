@@ -248,6 +248,9 @@ body * + * {
 
 float は元々それだけで、page を layout するような目的ではなかった。
 
+Flexbox があるのに、float の使い方を知る必要はあるか？
+IE は滅びたので気にしなくてよいが、 float は、画像をページの端に持っていって周りをテキストで囲むようにする唯一の方法なので、その意味では知っている必要がある。
+
 ---
 
 ## Memo
@@ -276,7 +279,7 @@ h2 が .foo の直接の子要素でないと selector に一致しない
 }
 ```
 
-### *lobotomized owl selector* (`* + *`)
+### *lobotomized owl selector* (`* + *`) (ふくろうセレクタ)
 
 *lobotomized owl selector* は universal selector に続く、隣接兄弟結合子、に続く universal selector
 
@@ -288,3 +291,9 @@ body * + * {
   margin-top: 1.5em
 }
 ```
+
+### pseudo-element
+
+ドキュメントの特定の部分をターゲットにする特別なセレクタ。
+`::` で始まる。`::before` や `::after` が、要素の前や、後ろにコンテントを挿入するために使われる。
+
