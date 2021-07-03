@@ -285,8 +285,22 @@ flexbox のサイズについては、`margin`, `width`, `height` 以外でも�
   - `flex-shrink` は `flex-grow` と同様に、flex-basis を元に、各 flex item のサイズが算出された後の不足するスペースに対応するためのプロパティ
   - `flex-shrink: 0` は、対象の flex item が縮小しないことを表す
   - `flex-shrink` に設定する値も、重みみたいなもので、大きいほど縮小しやすい
+- `flex: none`
+  - コンテンツが original の幅を確保し、拡大も縮小もしない
 
+### Flex direction
 
+`flex-direction` flex item が並ぶ方向、デフォルトは `row` -> 行方向、`column` -> 列方向。
+
+### Alignment, spacing and other details
+
+page 136 flex container property のチートシートっぽいもの
+
+- `justify-content`: main axis に対して flex item がどのように配置されるか
+- `align-items`: cross axis に対して flex item がどのように配置されるか
+
+justify -> main axis
+align -> cross axis
 
 ---
 
@@ -333,3 +347,7 @@ body * + * {
 
 ドキュメントの特定の部分をターゲットにする特別なセレクタ。
 `::` で始まる。`::before` や `::after` が、要素の前や、後ろにコンテントを挿入するために使われる。
+
+### input 要素の幅について
+
+`display: block` にしても、幅 100 % にならないので、 `width: 100%` が必要。
