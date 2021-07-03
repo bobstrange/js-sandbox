@@ -128,6 +128,21 @@ Accessibility を考慮すると、`font-size` は相対値を指定するべき
 
 使い回しをするコンポーネントへの `font-size` は、 `rem` で設定し、内部の要素について `font-size` を `em` で設定しておくことで、`large` や、`small` などのクラスでコンポーネントの `font-size` を変更することで、コンポーネントのサイズを動的に変更できる
 
+### Viewport relative units
+
+- vh: viewport の高さの 1/100
+- vw: viewport の幅の 1/100
+- vmin: viewport の高さ・幅の小さい方の 1/100
+- vmax: viewport の高さ・幅の大きい方の 1/100
+
+viewport-relative は、Hero などの画面を埋める画像に有効
+
+- vw を `font-size` に使用する
+  - 例えば font-size: 2vw にすると、1200 px の画面では、24px、タブレットなどの 768px の画面では 15px となる
+  - breakpoint が無いので、要素のサイズがスムーズに変わる
+  - 普通に使うと 24 px は大きすぎるし、iphone6 などの 384px の画面では、 7.5px になってしまうので、CSS の `calc()` で補正する必要がある
+
+
 ## Memo
 
 p41 まで
