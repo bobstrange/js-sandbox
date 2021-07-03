@@ -244,6 +244,10 @@ body * + * {
 }
 ```
 
+### Making sense of floats
+
+float は元々それだけで、page を layout するような目的ではなかった。
+
 ## Memo
 
 p41 まで
