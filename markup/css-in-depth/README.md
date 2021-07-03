@@ -4,7 +4,7 @@ CSS in Depth の写経
 
 [ref repo](https://github.com/CSSInDepth/css-in-depth)
 
-## Chapter 1
+## 01.
 
 Rule of Thumb
 
@@ -41,7 +41,7 @@ padding: 1em 2em 1em 2em;
 - "Cartesian grid" -> カーテシアン座標
   - 水平、垂直の順
 
-## Chapter 2 working with relative units
+## 02. working with relative units
 
 - smart phone から、大画面まで表示されるコンテキストは様々
   - "pixel-perfect" アプローチで対応しようとしていた
@@ -177,7 +177,7 @@ p {
 custom property は、定義されている要素の子要素、子要素にのみ適用されるように再定義できる
 (scoped variable のような振る舞いをする)
 
-## Chapter 3 Box model
+## 03. Box model
 
 ### Difficulties with element width
 
@@ -244,12 +244,49 @@ body * + * {
 }
 ```
 
-### Making sense of floats
+## 04. Making sense of floats
 
 float は元々それだけで、page を layout するような目的ではなかった。
 
 Flexbox があるのに、float の使い方を知る必要はあるか？
 IE は滅びたので気にしなくてよいが、 float は、画像をページの端に持っていって周りをテキストで囲むようにする唯一の方法なので、その意味では知っている必要がある。
+
+## 05. Flexbox
+
+### Flexbox principles
+
+主要概念
+
+- Flex Container: `{ display: flex }` の要素
+- Flex Items: Flex Container 配下の要素
+- Main axis: Flex item の並ぶ方向
+- Cross axis: Main axis と 90度ずれている方向
+
+p123 ~ Navigation Bar の Styling
+
+### Flexbox size
+
+flexbox のサイズについては、`margin`, `width`, `height` 以外でも制御できる。
+`flex` プロパティを使用する。
+
+`flex` プロパティは、`flex-grow`, `flex-shrink`, `flex-basis` のショートハンド。
+`flex` プロパティは、flex item に対して設定するプロパティ。
+`{ flex: 1 }` は `flex-grow: 1` のみ指定して、残り 2 つをデフォルト値 (1 と 0%) にしているのと同義
+
+- `flex-basis`
+  - 1 番目の flex item の初期値みたいなもの
+  - width に設定できる値だったら何でも設定可能
+- `flex-grow`
+  - flex-basis によって、各 flex item のサイズが算出された後の、余りのスペースを埋めるためのプロパティ
+  - `flex-grow: 0` は、対象の flex item が広がらないことを表す
+  - `flex-grow` に設定する値は、重みみたいなもの。
+    - 例: 残りスペースが 60 % で、要素 1 の `flex-grow: 2` 要素 2 の `flex-grow: 1` の場合は、要素 1　は 40 % 、要素 2 は 20 % 広がる。
+- `flex-shrink`
+  - `flex-shrink` は `flex-grow` と同様に、flex-basis を元に、各 flex item のサイズが算出された後の不足するスペースに対応するためのプロパティ
+  - `flex-shrink: 0` は、対象の flex item が縮小しないことを表す
+  - `flex-shrink` に設定する値も、重みみたいなもので、大きいほど縮小しやすい
+
+
 
 ---
 
