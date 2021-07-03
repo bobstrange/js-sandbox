@@ -1,4 +1,5 @@
 <!doctype html>
+
 <head>
   <style>
     :root {
@@ -22,8 +23,22 @@
       text-transform: uppercase;
     }
 
+    .dark {
+      padding: 1em;
+      background-color: #999;
+      --main-bg: #555;
+      --main-color: #fff;
+    }
+
+    .custom {
+      padding: 1em;
+      background-color: mediumseagreen;
+      --main-bg: green;
+      --main-color: #fff;
+    }
+
     .mt {
-      margin-top: 1em;
+      margin-top: 2em;
     }
 
   </style>
@@ -48,4 +63,24 @@
       </p>
     </div>
   </aside>
+
+  <aside class="custom mt">
+    <div class="panel">
+      <h2>Single Origin</h2>
+      <p class="panel-body">
+        We have built partnerships with small farms around the world to
+        hand-select beans at the peak of season. We then carefully roast in
+        small batches to maximize their potential.
+      </p>
+    </div>
+  </aside>
 </body>
+
+<script type="text/javascript">
+  const root = document.documentElement;
+  const styles = getComputedStyle(root);
+  const mainColor = styles.getPropertyValue('--main-bg');
+  console.log(String(mainColor).trim())
+
+  root.style.setProperty('--main-bg', 'blue')
+</script>

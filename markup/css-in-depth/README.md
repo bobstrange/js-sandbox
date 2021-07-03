@@ -141,7 +141,42 @@ viewport-relative は、Hero などの画面を埋める画像に有効
   - 例えば font-size: 2vw にすると、1200 px の画面では、24px、タブレットなどの 768px の画面では 15px となる
   - breakpoint が無いので、要素のサイズがスムーズに変わる
   - 普通に使うと 24 px は大きすぎるし、iphone6 などの 384px の画面では、 7.5px になってしまうので、CSS の `calc()` で補正する必要がある
+- 例えば `:root { font-size: calc(0.5em + 1vw) }` とすると
+  - 11.75 px (384 px の幅) ~ 20 px (1200 px の幅) で変わる
 
+### Unit-less numbers and height
+
+unit-less value が設定できる部分は、 unit-less な値を使用するべき
+
+### CSS variables
+
+著者は、CSS preprocessor の variable を使用して、 CSS variable を無視することを薦めないとのこと。
+(そのため、CSS variables ではなく、custom property と呼称して、違うものであることを強調しようとしている)
+
+定義は、 `--` から始める必要がある
+
+```css
+:root {
+  --main-font: Helvetica, Arial, sans-serif;
+  --brand-color: aqua;
+}
+```
+
+定義を参照するためには、`var()` を使う
+`var()` の第二引数に、対象の定義が無い場合の fallback value を指定できる
+※ 対象のプロパティに無効な値が設定された場合は、対象のプロパティは initial がセットされる。
+
+```css
+p {
+  font-family: var(--main-font);
+  color: var(--brand-color);
+  background-color: var(--secondary-color, green);
+  padding: var(--brand-color)
+}
+```
+
+custom property は、定義されている要素の子要素、子要素にのみ適用されるように再定義できる
+(scoped variable のような振る舞いをする)
 
 ## Memo
 
