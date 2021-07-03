@@ -248,6 +248,8 @@ body * + * {
 
 float は元々それだけで、page を layout するような目的ではなかった。
 
+---
+
 ## Memo
 
 p41 まで
@@ -271,5 +273,18 @@ h2 が .foo の直接の子要素でないと selector に一致しない
 ```css
 .foo > h2 {
   font-size: 1.2rem;
+}
+```
+
+### *lobotomized owl selector* (`* + *`)
+
+*lobotomized owl selector* は universal selector に続く、隣接兄弟結合子、に続く universal selector
+
+`* + *` つまり、ある要素に連続する 2 番目移行の要素全てに match するセレクタということ。
+これを使用することで、例えば body 配下の要素の上下のマージンを一律に固定するとかができる。
+
+```css
+body * + * {
+  margin-top: 1.5em
 }
 ```
