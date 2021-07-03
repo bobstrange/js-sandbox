@@ -4,7 +4,6 @@ CSS in Depth の写経
 
 [ref repo](https://github.com/CSSInDepth/css-in-depth)
 
-
 ## Chapter 1
 
 Rule of Thumb
@@ -177,6 +176,73 @@ p {
 
 custom property は、定義されている要素の子要素、子要素にのみ適用されるように再定義できる
 (scoped variable のような振る舞いをする)
+
+## Chapter 3 Box model
+
+### Difficulties with element width
+
+- `box-sizing` プロパティのデフォルトは `content-box` なので、要素の width と height は padding と border を含まない
+  - `box-sizing: border-box` とすることで、要素の width と height は padding と border を含むようになる
+  - それによって、要素のサイズの設定がやりやすくなる
+
+カラム同士の隙間を作るには、自前で計算して値を入れるのではなく、`calc()` を使用するようにした方が良い
+margin を取った分、width を狭くする例
+
+```css
+.sidebar {
+  /*... */
+  width: calc(30% - 1.5em);
+  margin-left: 1.5em;
+  /* ... */
+}
+```
+
+### Difficulties with element height
+
+基本的には、要素の高さを明示的に設定しないほうが良い。
+一般的な Document の流れは、幅は制限されていて、高さは無制限なことが多いため。
+
+要素の高さを明示的に指定した場合に、コンテンツがコンテナからはみ出す (overflowing) 場合がある。
+はみ出す際の挙動を `overflow` プロパティで制御できる。
+
+- `visible`
+- `hidden`: コンテナ + padding から、はみ出た部分が表示されない
+- `scroll`: 常に scroll bar が追加される
+- `auto`: はみ出る場合にのみ scroll bar が追加される
+
+水平方向のみ、垂直方向のみの overflow の制御は、 `overflow-x` と `overflow-y` でおこなえる。
+
+要素の高さについて
+% を高さに設定するのはよろしく無い、% を設定した場合に要素の高さはコンテナの高さから計算されるが、コンテナの高さは子要素の高さから計算されるため、循環参照になり、結局値が無視される。
+
+高さを指定したい理由の一つは、コンテナがスクリーンを覆うようにしたい為というものがあり、そのような場合は、viewport-relative を使用するべき。
+
+`min-height` と `max-height`
+Hero Image の上の Text のように、Text が短い場合でもある程度の大きさを保ちたい場合などに有用。
+
+### Negative margins
+
+Negative top / left margin は要素自身を上 / 左に引っ張る
+Negative right / bottom marging は次の要素を左 / 上に引っ張る
+
+Column layout 作成時に使えるケースがたまにあるが、基本的にはあまり使用しないほうが良い。
+
+### Spacing elements within a container
+
+コンテナ内に要素を複数配置する時の Margin について、
+個別の要素に Margin 適用していくのは、手間なので、汎用的な方法がほしい。
+
+*lobotomized owl selector* (`* + *`)を使う
+
+`* + *` -> `*` universal selector、 `+` adjacent sibling combinator (隣接兄弟結合子) 、`*` universal selector
+
+つまり、ある要素に続くどんな要素にも適用される selector ということ
+
+```css
+body * + * {
+  margin-top: 1.5em;
+}
+```
 
 ## Memo
 
