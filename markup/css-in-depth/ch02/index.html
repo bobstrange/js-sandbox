@@ -1,48 +1,9 @@
 <!doctype html>
 <head>
   <style>
-    body {
-      margin: 1.5em;
-    }
-
     :root {
-      font-size: 0.75em;
-    }
-
-    @media (min-width: 800px) {
-      :root {
-        font-size: 0.875em;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      :root {
-        font-size: 1em;
-      }
-    }
-
-    .box {
-      padding: 1em;
-      border-radius: 1em;
-      background-color: lightgray;
-    }
-
-    .box-small {
-      font-size: 12px;
-    }
-
-    .box-large {
-      font-size: 18px;
-    }
-
-    .mt-md {
-      margin-top: 2em;
-    }
-
-    .slogan {
-      font-size: 1.4em;
-      padding: 1.4em;
-      background-color: #ccc;
+      --main-bg: #fff;
+      --main-color: 000;
     }
 
     .panel {
@@ -50,6 +11,8 @@
       padding: 1em;
       border: 1px solid #999;
       border-radius: 0.5em;
+      background-color: var(--main-bg);
+      color: var(--main-color);
     }
 
     .panel > h2 {
@@ -59,36 +22,30 @@
       text-transform: uppercase;
     }
 
-    .panel.large {
-      font-size: 1.2rem;
-    }
-
-    .square {
+    .mt {
       margin-top: 1em;
-      width: 90vmin;
-      height: 90vmin;
-      background-color: aqua;
     }
 
   </style>
 </head>
 
 <body>
-  <span class="box box-small">Small</span>
-  <span class="box box-large">Large</span>
-
-  <div class="mt-md">
-    We love coffee
-    <p class="slogan">We love coffee</p>
-  </div>
-
-  <div class="panel large">
+  <div class="panel">
     <h2>Single Origin</h2>
-    <div class="panel-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus eius dolorem dolore. Ad delectus, tenetur cumque necessitatibus repudiandae consequuntur molestias temporibus soluta, voluptatem cum expedita labore ducimus error obcaecati voluptate.
-      Lorem <a href="/ipsum">ipsum</a>dolor sit amet consectetur adipisicing elit. Temporibus eius dolorem dolore. Ad delectus, tenetur cumque necessitatibus repudiandae consequuntur molestias temporibus soluta, voluptatem cum expedita labore ducimus error obcaecati voluptate.
-    </div>
+    <p class="panel-body">
+      We have built partnerships with small farms around the world to
+      hand-select beans at the peak of season. We then carefully roast in
+      small batches to maximize their potential.
+    </p>
   </div>
-
-  <div class="square"></div>
+  <aside class="dark mt">
+    <div class="panel">
+      <h2>Single Origin</h2>
+      <p class="panel-body">
+        We have built partnerships with small farms around the world to
+        hand-select beans at the peak of season. We then carefully roast in
+        small batches to maximize their potential.
+      </p>
+    </div>
+  </aside>
 </body>
