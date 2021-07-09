@@ -343,6 +343,26 @@ Fix された element は、通常の Document の flow からは外れる。
 基本的に、通常の Document は Fix された Element の背後に隠れる。
 Modal の場合はこれで良いが、サイドバー、ヘッダーなどの場合は、隠れると困るので、 margin を設定する。
 
+### Absolute positioning
+
+absolute の場合は、viewport をベースにするのではなく、直近の親のポジションに対しての位置になる。
+例えば、Modal の Close ボタンを Modal の右上に配置する場合、top と right を指定すれば良い
+
+```css
+.modal-close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  padding: 0.3em;
+  cursor: pointer;
+}
+```
+
+Close -> × に変更したいが、×に変更してしまうと、Accessibility の問題が発生する。
+そのため HTML では、Close と定義しておき、CSS で調整する。
+→ ボタンの Text を ボタンの外に配置し、overflow を hidden にする。(こんなことやるの？？？)
+
+
 ---
 
 ## Memo
