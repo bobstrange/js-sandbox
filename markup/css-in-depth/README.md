@@ -302,6 +302,47 @@ page 136 flex container property のチートシートっぽいもの
 justify -> main axis
 align -> cross axis
 
+## 07. Positioning and stacking contexts
+
+`position` プロパティについて
+
+### Fixed positioning
+
+一番理解しやすいらしい
+`position: fixed`
+
+modal の背景を画面全体に固定する例
+
+```css
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+```
+
+modal 自体を画面全体に固定する例
+
+```css
+.modal-body {
+  position: fixed;
+  top: 3em;
+  bottom: 3em;
+  right: 20%;
+  left: 20%;
+  padding: 2em 3em;
+  background-color: white;
+  overflow: auto;
+}
+```
+
+Fix された element は、通常の Document の flow からは外れる。
+基本的に、通常の Document は Fix された Element の背後に隠れる。
+Modal の場合はこれで良いが、サイドバー、ヘッダーなどの場合は、隠れると困るので、 margin を設定する。
+
 ---
 
 ## Memo
