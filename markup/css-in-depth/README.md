@@ -403,6 +403,20 @@ fixed な要素は、HTML のどの位置に配置しても問題ないが、 ab
 - Dropdown, tooltip などの動的な要素には、 absolute を使う
   - 併せて `::after` の pseudo element も使う
 
+## 08. Responsive design
+
+Desktop と Mobile で別の domain を割り当てて、別の HTML と CSS を返すアプローチ。
+-> ブラウザの viewport のサイズによって、レンダリングする内容を変更するアプローチ。 => レスポンシブルデザイン
+
+Newspaper site は特に様々なコンテンツをページ内に表示する必要があるので参考になる。www.bostonglobe.com など
+
+Responsive design のキーとなる原則
+
+1. A mobile first approach to design
+  - デスクトップのレイアウトを作る前に、 mobile 用のバージョンを作る
+2. `@media` at-rule
+3. use of fluid layouts
+
 ---
 
 ## Memo
