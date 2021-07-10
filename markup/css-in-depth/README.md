@@ -392,6 +392,17 @@ fixed な要素は、HTML のどの位置に配置しても問題ないが、 ab
 
 `z-index` は、CSS のカスタムプロパティとして登録しておくと良い
 
+### Sticky positioning
+
+`position: sticky` を設定することで、要素をスクロール時に固定することができる。
+併せて `top:` を設定して、どの位置に固定するかを設定できる。
+
+### Summary
+
+- Modal には `position: fixed` を私用する
+- Dropdown, tooltip などの動的な要素には、 absolute を使う
+  - 併せて `::after` の pseudo element も使う
+
 ---
 
 ## Memo
