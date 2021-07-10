@@ -360,7 +360,11 @@ absolute の場合は、viewport をベースにするのではなく、直近�
 
 Close -> × に変更したいが、×に変更してしまうと、Accessibility の問題が発生する。
 そのため HTML では、Close と定義しておき、CSS で調整する。
-→ ボタンの Text を ボタンの外に配置し、overflow を hidden にする。(こんなことやるの？？？)
+そのため、ボタンの Text を ボタンの外に配置(`text-indent`) し、overflow を hidden にする。(こんなことやるの？？？)
+そして、ボタンの ::after pseudo element で × を定義する。
+
+### Relative positioning
+
 
 
 ---

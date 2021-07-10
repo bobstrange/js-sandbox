@@ -88,9 +88,23 @@
     }
 
     .dropdown-label {
-      padding: 0.5em 1.5em;
+      padding: 0.5em 2em 0.5em 1.5em;
       border: 1px solid #ccc;
       background-color: var(--dd-bg-color);
+    }
+
+    .dropdown-label::after {
+      content: "";
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      border: 0.3em solid;
+      border-color: black transparent transparent transparent;
+    }
+
+    .dropdown:hover .dropdown-label::after {
+      top: 0.7em;
+      border-color: transparent transparent black transparent
     }
 
     .dropdown-menu {
@@ -105,6 +119,7 @@
     .dropdown:hover .dropdown-menu {
       display: block;
     }
+
 
     .submenu {
       padding-left: 0;
