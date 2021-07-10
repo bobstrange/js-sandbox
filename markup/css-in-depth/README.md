@@ -365,6 +365,17 @@ Close -> × に変更したいが、×に変更してしまうと、Accessibilit
 
 ### Relative positioning
 
+### Stacking contexts and z-index
+
+ブラウザがレイヤの上下を決める仕組み
+ブラウザは、HTML をパースして、DOM tree を作る、その際に render tree も作る。
+render tree は、見た目や、各要素の位置、要素が描画サれる順番を持つ。
+position を設定していない場合は、基本的には、HTML に登場する順番。
+
+position を設定している要素がある場合は、 position が設定されていない要素 -> position が設定されている要素の順番。
+
+通常は、Modal は `</body>` の直前に配置される。
+fixed な要素は、HTML のどの位置に配置しても問題ないが、 absolute や relative の場合は別のやり方を取る必要がある。 => z-index
 
 
 ---
