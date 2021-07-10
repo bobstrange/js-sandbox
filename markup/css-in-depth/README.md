@@ -377,6 +377,20 @@ position を設定している要素がある場合は、 position が設定さ�
 通常は、Modal は `</body>` の直前に配置される。
 fixed な要素は、HTML のどの位置に配置しても問題ないが、 absolute や relative の場合は別のやり方を取る必要がある。 => z-index
 
+↓の例では、 `box one` は `box two` の↓に配置されるので、`box one` 内に、`absolute` で定義している要素は、どんなに大きい z-index を指定しても、 `box two` の上には表示されない
+
+```html
+<body>
+  <div class="box one positioned">
+    one
+    <div class="absolute">nested</div>
+  </div>
+  <div class="box two positioned">two</div>
+  <div class="box three">three</div>
+</body>
+```
+
+`z-index` は、CSS のカスタムプロパティとして登録しておくと良い
 
 ---
 
