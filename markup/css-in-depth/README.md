@@ -458,12 +458,15 @@ Mobile first アプローチの場合は、media query の条件は大体 `min-w
 
 各 style を定義している部分の直後に media query を配置することで、元の style と media query の関係性がわかりやすくなる。
 
+### Fluid layouts (liquid layout)
 
 ---
 
 ## Memo
 
 p41 まで
+
+参考になりそうな[サイト](https://bradfrost.github.io/this-is-responsive/)
 
 ### direct descendant combinator
 
