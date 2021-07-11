@@ -445,6 +445,20 @@ Mobile のブラウザで表示した際に、サイトが Mobile 用の準備�
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
+### Media queries
+
+`@media` を使うことで、特定の条件でのみ適用する CSS を作成することができる。
+`min`, `max`, `width`, `height` だけでなく、`orientation` や、 `resolution` などの条件もある。
+
+```css
+@media (min-width: 560px) {}
+```
+
+Mobile first アプローチの場合は、media query の条件は大体 `min-width` になる。
+
+各 style を定義している部分の直後に media query を配置することで、元の style と media query の関係性がわかりやすくなる。
+
+
 ---
 
 ## Memo
