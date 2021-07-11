@@ -460,6 +460,25 @@ Mobile first アプローチの場合は、media query の条件は大体 `min-w
 
 ### Fluid layouts (liquid layout)
 
+### Responsive images
+
+Responsive design では、画像についてはサイズだけでなく、Mobile の回線速度の制限についても考慮しておく必要がある。
+
+- 必ず画像は圧縮しておく
+- 必要以上の解像度にしない
+
+media query で背景画像の読み込み分けをする。
+html 上の `<img>` タグについては、`srcset` 属性で対応する。
+
+```html
+<img alt="Tmp"
+     src="image-small.png"
+     srcset="image-small.png 560w,
+             image-medium.png 800w,
+             image-large.png 1280w"
+>
+```
+
 ---
 
 ## Memo
