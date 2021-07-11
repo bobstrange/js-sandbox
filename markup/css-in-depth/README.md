@@ -417,6 +417,34 @@ Responsive design のキーとなる原則
 2. `@media` at-rule
 3. use of fluid layouts
 
+### Mobile first
+
+hero の上の文字に影をつけると、文字が読みやすくなる。
+header が nav を含むのではなく、隣接させた。
+
+hamburger は unicode で "\2261"。
+元の toggle button は `overflow: hidden; text-indent: 5em;` で画面から消して、pseudo element で hamburger を表示させる。
+
+```css
+.menu-toggle::after {
+  position: absolute;
+  top: 0.2em;
+  left: 0.2em;
+  display: block;
+  content: "\2261";
+  text-indent: 0;
+}
+```
+
+Mobile の UI を作る時には、各要素をタップできるサイズにするように気をつけること。
+
+最後に↓の meta tag を追加する。
+Mobile のブラウザで表示した際に、サイトが Mobile 用の準備が出来ていることを伝えるためのもの。
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
 ---
 
 ## Memo
