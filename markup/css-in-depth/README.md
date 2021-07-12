@@ -515,6 +515,17 @@ module のバリエーション
 例えば、dropdown を light -> dark にする要件が来た場合は、
 `.page-header .dropdown` を修正するのではなく、 `.dropdown--dark` を新しく作成する。
 
+モジュール内の要素に対してのクラスの付け方は `module名__要素名` の規約になる。
+必ずしも全ての要素に対して厳格に selector を振る必要はない。
+
+例:
+`.media__body__title` を作るのではなく `.media__body > h4` で十分そうとか。
+
+これは、`h4` が、特定の状況のみ使用されるタグだからである。
+例えば、 `span` や、 `div` など様々な箇所で使われるものに対しては、個別に class を振るべきである。
+
+○: `.media__body__message` ×: `.media__body > span`
+
 ---
 
 ## Memo
