@@ -496,7 +496,24 @@ html 上の `<img>` タグについては、`srcset` 属性で対応する。
 
 [normalize.css](https://necolas.github.io/normalize.css/) を使うのを推奨
 
+### A simple module
 
+Component 化したい場合は、selector は、単一のクラスで表現する
+例えば `#sidebar .message` とすると `#sidebar` の中でしか利用できないモジュールになってしまう。
+
+module のバリエーション
+一貫性は重要だが、ケースによっては module に変化を加えたい場合がある。
+例えば、Error の場合は、背景を teal ではなく red にしたいなど。
+
+そのような場合は、module のクラス名から始まる modifier クラスを作る。
+`.message` -> `.message--success`
+
+`module名--modifier名` の規約 (BEM)
+
+**Context に依存した selector を書くべからず** Context に依存した selector を書くと、メンテナンスがとても大変になる為
+
+例えば、dropdown を light -> dark にする要件が来た場合は、
+`.page-header .dropdown` を修正するのではなく、 `.dropdown--dark` を新しく作成する。
 
 ---
 
