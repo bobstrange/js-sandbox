@@ -479,6 +479,25 @@ html 上の `<img>` タグについては、`srcset` 属性で対応する。
 >
 ```
 
+## 09. Modular CSS
+
+### Base styles: laying the ground work
+
+全てのページに適用する base style
+よくある bas style
+
+- `box-sizing: bordder-box` にする
+- デフォルトのフォントサイズとフォントファミリーを決める
+  - `body { font-family: xxx; }`
+- リンクの色
+- Heading の style
+- Margin
+  - body の margin を 0 に設定する
+
+[normalize.css](https://necolas.github.io/normalize.css/) を使うのを推奨
+
+
+
 ---
 
 ## Memo
