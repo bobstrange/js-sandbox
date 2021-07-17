@@ -550,6 +550,36 @@ module のバリエーション
     - button--red, button--blue ではなく
     - button--danger, button--success など
 
+### Utility classes
+
+Text を中央寄せする、左に floating する、 clearfix を追加するなどのシンプルなクラスを、 utility class と呼ぶ。
+
+```css
+.text-center {
+  text-align: center !important;
+}
+
+.float-left {
+  float: left;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: table;
+}
+.clearfix::after {
+  clear: both;
+}
+
+.hidden {
+  display: none !important;
+}
+```
+
+`!important` を使う数少ない箇所。
+基本的に utility class を使う -> 対象の style を当てたい なので、`!important` で必ず適用されるようにしてしまって良い。
+
 ---
 
 ## Memo
