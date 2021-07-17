@@ -526,12 +526,35 @@ module のバリエーション
 
 ○: `.media__body__message` ×: `.media__body > span`
 
+### Modules composed into larger structures
+
+- 命名
+  - module の命名はめちゃくちゃ難しい
+  - 使用されるコンテキストに依存しない命名が必要
+  - 見た目だけで命名するのも避けたほうが良い
+    - `gray-box-with-image` など
+    - 色が変わったらつかえないよね？
+  - 命名対象の module がどのような概念か？という問いに答える
+  - 単純で覚えやすい名前にする
+    - Message
+    - Media
+    - Dropdown
+    - Menu
+    - Panel
+    - Alert
+    - Collapsible-section
+    - Form-control
+    - など
+  - 1 word ではなく、2 word にすることで、汎用的過ぎない名前にできる
+  - modifier による変更をするためのクラス名も抽象的にした方が良い
+    - button--red, button--blue ではなく
+    - button--danger, button--success など
+
 ---
 
 ## Memo
 
 p41 まで
-
 参考になりそうな[サイト](https://bradfrost.github.io/this-is-responsive/)
 
 ### direct descendant combinator
