@@ -1,0 +1,14 @@
+{
+  "name": "ch10",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "build": "kss --config kss-config.json"
+  },
+  "keywords": [],
+  "author": "bobstrange <bob.1983.g@gmail.com> (https://github.com/bobstrange)",
+  "license": "MIT",
+  "devDependencies": {
+    "kss": "^3.0.1"
+  }
+}
