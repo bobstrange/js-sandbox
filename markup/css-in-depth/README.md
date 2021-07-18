@@ -668,6 +668,11 @@ offset x, y / blur radius / spread radius / color
 - `inset` 影を border の外側ではなく内側に表示するオプション。
 - box-shadow を , 区切りで定義すると複数の影を設定できる
 
+flat design
+flat design では gradient を使わないのではなく、微妙に使用する。
+例えば、blue から medium blue に gradient をかけるのではなく、blue からちょっと違う blue に するなど。
+影は、垂直方向のみに微妙につけるだけ (何故垂直方向のみなのか？)
+
 ---
 
 ## Memo
