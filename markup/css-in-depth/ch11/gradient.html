@@ -9,11 +9,29 @@
     .fade {
       height: 200px;
       width: 400px;
-      background-image: linear-gradient(to right, white, blue);
+      background-image: linear-gradient(90deg, white, blue);
+    }
+    .fade-multiple {
+      height: 200px;
+      width: 400px;
+      background-image: linear-gradient(90deg, red, white, blue);
+    }
+    .fade-multiple-2 {
+      height: 200px;
+      width: 400px;
+      background-image: linear-gradient(90deg, red 20%, white 40%, blue 100%);
+    }
+    .stripe {
+      height: 200px;
+      width: 400px;
+      background-image: linear-gradient(90deg, red 40%, white 40%, white 60%, blue 60%);
     }
   </style>
 </head>
 <body>
   <div class="fade"></div>
+  <div class="fade-multiple"></div>
+  <div class="fade-multiple-2"></div>
+  <div class="stripe"></div>
 </body>
 </html>
