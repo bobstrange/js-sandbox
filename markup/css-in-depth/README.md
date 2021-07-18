@@ -589,10 +589,11 @@ Text を中央寄せする、左に floating する、 clearfix を追加する�
 
 ### Gradients
 
-- `linear-gradient`
-  - 角度(方向)
-  - 開始の色
-  - 終了の色
+`linear-gradient`
+
+- 角度(方向)
+- 開始の色
+- 終了の色
 
 ```css
 .fade {
@@ -649,11 +650,14 @@ Text を中央寄せする、左に floating する、 clearfix を追加する�
 
 `#57b` と `#148` が 10px ずつの縞
 
+`radial-gradient` は中心から周囲への gradient
 ---
 
 ## Memo
 
-参考になりそうな[サイト](https://bradfrost.github.io/this-is-responsive/)
+- 参考になりそうなサイト
+  - https://bradfrost.github.io/this-is-responsive/
+  - https://css.tricks.com
 
 - 2021-07-17 一旦 chapter 10 は飛ばす
 

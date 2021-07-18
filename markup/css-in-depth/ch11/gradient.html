@@ -6,6 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style type="text/css">
+    .item {
+      display: flex;
+      align-items: center;
+    }
+    .item + .item {
+      margin-top: 20px;
+    }
+
+    .desc {
+      width: 200px;
+      text-align: center;
+    }
+
     .fade {
       height: 200px;
       width: 400px;
@@ -32,13 +45,62 @@
       background-image:
       repeating-linear-gradient(-45deg, #57b, #57b 10px, #148 10px, #148 20px);
     }
+    .radial {
+      height: 200px;
+      width: 400px;
+      background-image: radial-gradient(white, midnightblue);
+    }
+    .radial-circle {
+      height: 200px;
+      width: 400px;
+      background-image: radial-gradient(circle, white, midnightblue);
+    }
+    .radial-varied-center {
+      height: 200px;
+      width: 400px;
+      background-image: radial-gradient(10em at 25% 25%, white, midnightblue);
+    }
   </style>
 </head>
 <body>
-  <div class="fade"></div>
-  <div class="fade-multiple"></div>
-  <div class="fade-multiple-2"></div>
-  <div class="stripe"></div>
-  <div class="repeating"></div>
+  <div class="item">
+    <div class="fade"></div>
+    <div class="desc">Simple Linear</div>
+  </div>
+
+  <div class="item">
+    <div class="fade-multiple"></div>
+    <div class="desc">Multiple color stop</div>
+  </div>
+
+  <div class="item">
+    <div class="fade-multiple-2"></div>
+    <div class="desc">Multiple color stop with position</div>
+  </div>
+
+  <div class="item">
+    <div class="stripe"></div>
+    <div class="desc">Stripe</div>
+  </div>
+
+  <div class="item">
+    <div class="repeating"></div>
+    <div class="desc">Repeating stripe</div>
+  </div>
+
+  <div class="item">
+    <div class="radial"></div>
+    <div class="desc">Radial ellipse</div>
+  </div>
+
+  <div class="item">
+    <div class="radial-circle"></div>
+    <div class="desc">Radial Circle</div>
+  </div>
+
+  <div class="item">
+    <div class="radial-varied-center"></div>
+    <div class="desc">Radial Varied center</div>
+  </div>
 </body>
 </html>
