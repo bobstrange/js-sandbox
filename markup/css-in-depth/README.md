@@ -673,6 +673,15 @@ flat design では gradient を使わないのではなく、微妙に使用す�
 例えば、blue から medium blue に gradient をかけるのではなく、blue からちょっと違う blue に するなど。
 影は、垂直方向のみに微妙につけるだけ (何故垂直方向のみなのか？)
 
+flat design と skeuomorphism の間
+
+- button 自体には縦方向にちょっとだけ影を入れる
+  - blur はしない
+- text にほんの少しだけ影を入れる
+- active 時に y軸にちょっとだけずらす
+  - 押し込んだような動き
+- active 時に影のサイズをちょっとだけ大きくする
+
 ---
 
 ## Memo
