@@ -585,12 +585,77 @@ Text を中央寄せする、左に floating する、 clearfix を追加する�
 大きなプロジェクトでは、module の inventory をドキュメントと一緒にすることが標準的になってきた。
 -> pattern library or style guide
 
+## 11. Backgrounds, shadows and blend modes
+
+### Gradients
+
+- `linear-gradient`
+  - 角度(方向)
+  - 開始の色
+  - 終了の色
+
+```css
+.fade {
+  height: 200px;
+  width: 400px;
+  background-image: linear-gradient(to right, white, blue);
+}
+
+.fade {
+  height: 200px;
+  width: 400px;
+  background-image: linear-gradient(90deg, white, blue);
+}
+```
+
+- 方向は、to right と 90deg は両方とも左 -> 右
+- 角度は 12 時を 0 度として指定する
+  - 90 度なら 3 時の方向 つまり 左 -> 右
+  - 180 度なら 6 時の方向 つまり 上 -> 下
+
+複数の色で gradient を使用することもできる (それぞれを color stop と呼ぶ)
+
+```css
+.fade-multiple {
+  height: 200px;
+  width: 400px;
+  background-image: linear-gradient(90deg, red, white, blue);
+}
+```
+
+単にコンマで区切って色を指定した場合は、それぞれの色の幅は均等になる
+
+```css
+.fade-multiple-2 {
+  height: 200px;
+  width: 400px;
+  background-image: linear-gradient(90deg, red 20%, white 40%, blue 100%);
+}
+```
+
+上の例は、赤は 20 % の位置から 40% の位置に向かって fade、白は 40 % の位置から 100 % の位置にむかって fade する例
+(em, px などももちろん使用できる)
+
+`repeating-linear-gradient` を使うことで、縞模様を作ることができる。
+
+```css
+.repeating {
+  height: 200px;
+  width: 400px;
+  background-image:
+  repeating-linear-gradient(-45deg, #57b, #57b 10px, #148 10px, #148 20px);
+}
+```
+
+`#57b` と `#148` が 10px ずつの縞
+
 ---
 
 ## Memo
 
-p41 まで
 参考になりそうな[サイト](https://bradfrost.github.io/this-is-responsive/)
+
+- 2021-07-17 一旦 chapter 10 は飛ばす
 
 ### direct descendant combinator
 
