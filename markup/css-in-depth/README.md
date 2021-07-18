@@ -651,6 +651,23 @@ Text を中央寄せする、左に floating する、 clearfix を追加する�
 `#57b` と `#148` が 10px ずつの縞
 
 `radial-gradient` は中心から周囲への gradient
+`linear-gradient` と同じように使うことができる
+
+### Shadows
+
+```css
+box-shadow: 2px 2px 2px 1px black;
+```
+
+offset x, y / blur radius / spread radius / color
+
+- offset x, y ->
+- blur radius -> ぼかしのサイズ
+- spread radius -> 影のサイズ
+
+- `inset` 影を border の外側ではなく内側に表示するオプション。
+- box-shadow を , 区切りで定義すると複数の影を設定できる
+
 ---
 
 ## Memo
