@@ -682,6 +682,22 @@ flat design と skeuomorphism の間
   - 押し込んだような動き
 - active 時に影のサイズをちょっとだけ大きくする
 
+### Blend modes
+
+複数の背景を設定したい場合
+, 区切りで複数の背景画像を指定する => 1 つめが 2 つめの上を覆ってしまう (※ 1 つめが透明でない限り)
+-> blend mode を使うと両方を表示できる
+
+```css
+background-image: url(bear.jpg), linear-gradient(180deg, #57b, #148);
+```
+
+blend mode の実践的なユースケース
+
+- 画像に薄い色をつける (単色 or gradient)
+- 画像に texture をつける
+- 画像の上にテキストを載せる際に、画像を明るく、暗く、コントラストの変更 して、テキストを読みやすくする。
+
 ---
 
 ## Memo

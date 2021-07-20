@@ -6,17 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    .bg + .bg {
+      margin-top: 2em;
+    }
+
     .blend {
       min-height: 400px;
       background-image: url(images/bear.jpg), url(images/bear.jpg);
       background-size: cover;
       background-repeat: no-repeat;
       background-position: -30vw, 30vw;
-      background-blend-mode: multiply;
+      background-blend-mode: luminosity;
+    }
+
+    .tint-blend {
+      min-height: 400px;
+      background-image: url(images/bear.jpg);
+      background-color: #148;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-blend-mode: luminosity;
     }
   </style>
 </head>
 <body>
-  <div class="blend"></div>
+  <div class="bg blend"></div>
+  <div class="bg tint-blend"></div>
 </body>
 </html>
