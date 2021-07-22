@@ -9,9 +9,12 @@
   - `chrome://extensions` で、対象のフォルダを読み込む
 - [Getting Started](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
   - manifest.json を作る
-    - `"background"` を定義する
+    - バックグラウンドスクリプトを定義するので、 `"background": { "service_worker": "..." }` を設定する
     - `"permissions"` を定義する
       - storage などの API を使用するには権限が必要
+      - "storage", "activeTab", "scripting"
+    - "icons" は "16", "32", "48", "128" を定義する
+    - オプションを設定させたい場合は "options_page" を用意する
 
 ## メモ
 ### 型
