@@ -5,5 +5,6 @@
   "description": "Context example",
   "action": {
     "default_popup": "popup.html"
-  }
+  },
+  "permissions": ["contextMenus"]
 }
