@@ -15,3 +15,7 @@
     - `const template = await readFile(path.join(__dirname, 'template.html'))`
   - After
     - `const template = await readFile(new URL('template.html', import.meta.url))`
+- cli
+  - shebang で `#! /usr/bin/env node` を入れる
+  - binary にする場合は、`"bin": { [commandName]: "./<filepath>" }` を設定する
+    - `"main"` ではない
