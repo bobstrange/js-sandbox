@@ -4,6 +4,8 @@
 
 ## Note
 
+- promisify 使わなくて良くなってたのね
+  - `import { readFile } from 'fs/promises'`
 - VSCode で Top Level await が怒られるのどうすればよいのか？
   - import.meta も怒られる
   - jsconfig.json で `"module": "ES2020"`　とか追加したがまだエラー出る
