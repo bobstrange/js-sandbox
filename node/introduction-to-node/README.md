@@ -19,3 +19,5 @@
   - shebang で `#! /usr/bin/env node` を入れる
   - binary にする場合は、`"bin": { [commandName]: "./<filepath>" }` を設定する
     - `"main"` ではない
+  - directory 上で、`npm i -g` するとローカルの global install される
+    - bin にリンク張ってるだけなので、コードの変更もそのまま読み込まれる

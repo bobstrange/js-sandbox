@@ -22,7 +22,6 @@ if (argv.print) {
     link: ${link}
   `)
 } else {
-  console.log('link:', link)
   open(link)
 }
 
