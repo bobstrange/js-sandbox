@@ -22,6 +22,13 @@ app.get('/todo', (req, res) => {
   res.json(db)
 })
 
+app.get('/todo/:id', (req, res) => {
+  const id = req.params.id
+  console.log(`id is ${id}`)
+  const todo = db.find(todo => todo.id === id)
+  res.json({ data: todo })
+})
+
 app.listen(8080, () => {
   console.log('Server is running on port 8080')
 })
