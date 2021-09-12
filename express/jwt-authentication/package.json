@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.mjs"
+    "dev": "nodemon src/index.mjs",
+    "devAuth": "nodemon src/authServer.mjs"
   },
   "keywords": [],
   "author": "bobstrange <bob.1983.g@gmail.com> (https://github.com/bobstrange)",
