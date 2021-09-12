@@ -16,6 +16,9 @@ app.use(
     secret: process.env.SECRET,
     authRequired: false,
     auth0Logout: true,
+    routes: {
+      login: false,
+    },
   })
 )
 
@@ -23,6 +26,10 @@ app.get('/', (req, res) => {
   res.json({
     loggedIn: !!req.oidc.isAuthenticated(),
   })
+})
+
+app.get('/custom-login', (req, res) => {
+  res.oidc.login({ returnTo: '/' })
 })
 
 app.get('/profile', requiresAuth(), (req, res) => {
