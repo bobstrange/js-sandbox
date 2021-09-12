@@ -1,5 +1,4 @@
 const express = require('express')
-const path = require('path')
 const { auth } = require('express-openid-connect')
 
 require('dotenv').config()
@@ -11,10 +10,10 @@ const port =
 
 app.use(
   auth({
-    issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
+    issuerBaseURL: process.env.ISSUER_BASE_URL,
     baseURL: process.env.BASE_URL,
-    clientID: process.env.AUTH0_CLIENT_ID,
-    secret: process.env.SESSION_SECRET,
+    clientID: process.env.CLIENT_ID,
+    secret: process.env.SECRET,
     authRequired: false,
     auth0Logout: true,
   })
