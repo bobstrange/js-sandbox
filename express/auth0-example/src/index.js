@@ -1,5 +1,5 @@
 const express = require('express')
-const { auth } = require('express-openid-connect')
+const { auth, requiresAuth } = require('express-openid-connect')
 
 require('dotenv').config()
 
@@ -19,9 +19,15 @@ app.use(
   })
 )
 
-app.get('/api/hello', (req, res) => {
+app.get('/', (req, res) => {
   res.json({
-    message: 'Hi',
+    loggedIn: !!req.oidc.isAuthenticated(),
+  })
+})
+
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.json({
+    user: req.oidc.user,
   })
 })
 
