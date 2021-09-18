@@ -1,8 +1,9 @@
 import React from 'react'
 import { css } from '@emotion/react'
+import { Route, Switch } from 'react-router-dom'
 
 import { NavBar } from './components/NavBar'
-import { Route, Switch } from 'react-router-dom'
+import { Profile } from './views/Profile'
 
 const base = css`
   max-width: 80em;
@@ -11,10 +12,6 @@ const base = css`
 
 const Home: React.FC = () => {
   return <h1>Home</h1>
-}
-
-const Profile: React.FC = () => {
-  return <h1>Profile</h1>
 }
 
 const ExternalApi: React.FC = () => {
