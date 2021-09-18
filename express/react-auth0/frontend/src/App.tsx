@@ -1,11 +1,17 @@
 import React from 'react'
-import { Layout } from './Layout'
 import { css } from '@emotion/react'
+
+import { NavBar } from './components/NavBar'
+
+const base = css`
+  max-width: 80em;
+  margin: 0 auto;
+`
 
 function App() {
   return (
-    <div className="App">
-      <h1>Home</h1>
+    <div className="App" css={base}>
+      <NavBar />
     </div>
   )
 }
