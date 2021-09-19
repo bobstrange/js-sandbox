@@ -13,14 +13,22 @@ const button = css`
   padding: 0.2em 1em;
 `
 
-type LoginButtonProps = {
+type ButtonProps = {
   handler: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const LoginButton: React.FC<LoginButtonProps> = ({ handler }) => {
+const LoginButton: React.FC<ButtonProps> = ({ handler }) => {
   return (
     <button css={button} onClick={handler}>
       Login
+    </button>
+  )
+}
+
+const LogoutButton: React.FC<ButtonProps> = ({ handler }) => {
+  return (
+    <button css={button} onClick={handler}>
+      Logout
     </button>
   )
 }
@@ -33,9 +41,7 @@ export const AuthNav: React.FC = () => {
   return (
     <div>
       {isAuthenticated ? (
-        <button css={button} onClick={logoutHandler}>
-          Logout
-        </button>
+        <LogoutButton handler={logoutHandler} />
       ) : (
         <LoginButton handler={loginHandler} />
       )}
