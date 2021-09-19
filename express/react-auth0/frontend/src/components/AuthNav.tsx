@@ -26,13 +26,16 @@ const LoginButton: React.FC<LoginButtonProps> = ({ handler }) => {
 }
 
 export const AuthNav: React.FC = () => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
   const loginHandler = () => loginWithRedirect()
+  const logoutHandler = () => logout({ returnTo: window.location.origin })
 
   return (
     <div>
       {isAuthenticated ? (
-        <button css={button}>Logout</button>
+        <button css={button} onClick={logoutHandler}>
+          Logout
+        </button>
       ) : (
         <LoginButton handler={loginHandler} />
       )}
