@@ -27,7 +27,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <ProtectedRoute path="/profile" exact component={Profile} />
-          <Route path="/external-api" exact component={ExternalApi} />
+          <ProtectedRoute path="/external-api" exact component={ExternalApi} />
         </Switch>
       </div>
     </div>
