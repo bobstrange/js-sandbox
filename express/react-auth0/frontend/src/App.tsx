@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/react'
 import { Route, Switch } from 'react-router-dom'
 
+import { ProtectedRoute } from './auth/ProtectedRoute'
 import { NavBar } from './components/NavBar'
 import { Profile } from './views/Profile'
 
@@ -25,7 +26,7 @@ function App() {
       <div>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/profile" exact component={Profile} />
+          <ProtectedRoute path="/profile" exact component={Profile} />
           <Route path="/external-api" exact component={ExternalApi} />
         </Switch>
       </div>
