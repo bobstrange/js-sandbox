@@ -13,6 +13,18 @@ const button = css`
   padding: 0.2em 1em;
 `
 
+type LoginButtonProps = {
+  handler: React.MouseEventHandler<HTMLButtonElement>
+}
+
+const LoginButton: React.FC<LoginButtonProps> = ({ handler }) => {
+  return (
+    <button css={button} onClick={handler}>
+      Login
+    </button>
+  )
+}
+
 export const AuthNav: React.FC = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0()
   const loginHandler = () => loginWithRedirect()
@@ -22,9 +34,7 @@ export const AuthNav: React.FC = () => {
       {isAuthenticated ? (
         <button css={button}>Logout</button>
       ) : (
-        <button css={button} onClick={loginHandler}>
-          Login
-        </button>
+        <LoginButton handler={loginHandler} />
       )}
     </div>
   )
