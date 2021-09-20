@@ -5,6 +5,7 @@ import { Auth0Provider, AppState } from '@auth0/auth0-react'
 export const Auth0ProviderWithHistory: FC = ({ children }) => {
   const domain = import.meta.env.VITE_AUTH0_DOMAIN
   const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID
+  const audience = import.meta.env.VITE_AUTH0_AUDIENCE
 
   const history = useHistory()
 
@@ -18,6 +19,7 @@ export const Auth0ProviderWithHistory: FC = ({ children }) => {
       clientId={clientId}
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
+      audience={audience}
     >
       {children}
     </Auth0Provider>
