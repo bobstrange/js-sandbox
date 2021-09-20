@@ -2,15 +2,12 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import { ProtectedRoute } from './auth/ProtectedRoute'
-import { Profile } from './views/Profile'
 import { Layout } from './Layout'
+import { Profile } from './views/Profile'
+import { ExternalApi } from './views/ExternalApi'
 
 const Home: React.FC = () => {
   return <h1>Home</h1>
-}
-
-const ExternalApi: React.FC = () => {
-  return <h1>External API</h1>
 }
 
 function App() {
