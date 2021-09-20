@@ -10,6 +10,6 @@ export const checkJwt = jwt({
     jwksUri: `https://${domain}/.well-known/jwks.json`,
   }),
   audience,
-  issuer: `https://${domain}`,
+  issuer: `https://${domain}/`,
   algorithms: ['RS256'],
 })
