@@ -3,5 +3,5 @@ dotenv.config()
 
 import { app } from './app'
 
-const port = parseInt(process.env.PORT || '8080')
+const port = parseInt(process.env.API_PORT || '8080')
 app.listen(port)

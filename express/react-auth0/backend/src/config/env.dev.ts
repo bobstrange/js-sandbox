@@ -3,7 +3,7 @@ dotenv.config()
 
 const audience = process.env.AUTH0_AUDIENCE
 const domain = process.env.AUTH0_DOMAIN
-const serverPort = process.env.SERVER_PORT
+const apiPort = process.env.API_PORT
 const clientOriginUrl = process.env.CLIENT_ORIGIN_URL
 
 if (!audience) {
@@ -18,7 +18,7 @@ if (!domain) {
   )
 }
 
-if (!serverPort) {
+if (!apiPort) {
   throw new Error(
     '.env is missing the definition of a API_PORT environmental variable'
   )
@@ -32,4 +32,4 @@ if (!clientOriginUrl) {
 
 const clientOrigins = ['http://localhost:3000']
 
-export { audience, domain, serverPort, clientOriginUrl, clientOrigins }
+export { audience, domain, apiPort, clientOriginUrl, clientOrigins }
