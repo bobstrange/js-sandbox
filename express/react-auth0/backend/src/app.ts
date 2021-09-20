@@ -3,6 +3,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 
 import { clientOrigins } from './config/env.dev'
+import { messagesRouter } from './messages'
 
 export const app = express()
 
@@ -15,3 +16,8 @@ app.get('/', (req, res: Response) => {
     message: 'Hi',
   })
 })
+
+const apiRouter = express.Router()
+app.use('/api', apiRouter)
+
+apiRouter.use('/messages', messagesRouter)
