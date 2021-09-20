@@ -1,12 +1,18 @@
 import { css } from '@emotion/react'
 import React from 'react'
+import { NavBar } from './components/NavBar'
 
-const container = css`
-  max-width: 36em;
-  padding: 0 1em;
-  margin: 3em auto 6em;
+const base = css`
+  max-width: 80em;
+  padding: 0;
+  margin: 0 auto;
 `
 
 export const Layout: React.FC = ({ children }) => {
-  return <div css={container}>{children}</div>
+  return (
+    <div css={base}>
+      <NavBar />
+      <div>{children}</div>
+    </div>
+  )
 }
