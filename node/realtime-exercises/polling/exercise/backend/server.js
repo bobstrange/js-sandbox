@@ -1,5 +1,4 @@
 import express from 'express'
-import bodyParser from 'body-parser'
 import nanobuffer from 'nanobuffer'
 import morgan from 'morgan'
 
@@ -17,7 +16,7 @@ msg.push({
 // get express ready to run
 const app = express()
 app.use(morgan('dev'))
-app.use(bodyParser.json())
+app.use(express.json())
 app.use(express.static('frontend'))
 
 app.get('/poll', function (req, res) {
@@ -31,6 +30,6 @@ app.post('/poll', function (req, res) {
 })
 
 // start the server
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 app.listen(port)
 console.log(`listening on http://localhost:${port}`)
