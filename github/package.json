@@ -17,5 +17,6 @@
   "dependencies": {
     "@octokit/core": "^3.5.1",
     "dotenv": "^10.0.0"
-  }
+  },
+  "type": "module"
 }
