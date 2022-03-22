@@ -43,3 +43,25 @@ f の引数と g の戻り値の数と型が揃っていれば、 f と g は合
 
 [badVerify](./src/1-3-3_bad_verify.js)
 [goodVerify](./src/1-3-3_good_verify.js)
+
+## オブジェクト指向と関数型プログラミング
+
+- オブジェクト指向
+  - カプセル化
+  - オブジェクトのデータと振る舞いに強い結合
+- 関数型プログラミング
+  - データと振る舞いを分離
+  - データに対する操作はデータとは別のところに有る一般化された関数を使う
+
+```js
+// Object Oriented
+
+class Person {
+  get fullname() {
+    return [this.firstname, this.lastname].join(' ')
+  }
+}
+
+// Functional
+const fullname = (person) => [person.firstname, person.lastname].join(' ')
+```
