@@ -116,3 +116,34 @@ findStudentsBy([curry, turing, church, kleene], selector('US', 'Princeton'))
 
 関数合成により `findStudentsBy` を生成
 この関数は、`address` と `school` を備えた I/F を持つオブジェクトを受け取る
+
+## オブジェクトを値として扱う
+
+Value オブジェクトパターン
+
+```js
+const zipCode = (code, location) => {
+  let _code = code
+  let _location = location
+  return {
+    code() {
+      return _code
+    },
+    location() {
+      return _location
+    },
+    fromString(str) {
+      const parts = str.split('-')
+      return zipCode(parts[0], parts[1])
+    },
+    toString() {
+      return `${_code}-${_location}`
+    }
+  }
+}
+
+const princetonZip = zipCode('08544', '3345')
+princetonZip.toString()
+```
+
+このようにすることで、 `_location` と `_code` にアクセスできないようにすることができる。
