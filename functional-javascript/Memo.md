@@ -65,3 +65,54 @@ class Person {
 // Functional
 const fullname = (person) => [person.firstname, person.lastname].join(' ')
 ```
+
+オブジェクト指向プログラミングでの、
+与えられた Person オブジェクトと同じ国に済む全ての Person を見つける
+与えられた Student オブジェクトと同じ国に炭同じ学校に通う Student を見つける
+を行いたい場合
+
+元データ
+
+```js
+const curry = new Student('Haskell', 'Curry', '111-11-1111', 'Penn State)
+curry.address = new Address('US')
+
+const turing = new Student('Alan', 'Turing', '222-22-2222', 'Princeton')
+turing.address = new Address('England')
+
+const church = new Student('Alonzo', 'Church', '333-33-3333', 'Princeton')
+church.address = new Address('US')
+
+const kleene - new Student('Stephen', 'Kleene', '444-44-4444', 'Princeton')
+kleene.address = new Address('US')
+```
+
+オブジェクト指向で実装
+[Person](./src/2/student.js) と [Student](./src/2/student.js)
+
+```js
+church.studentsInSameCountryAndSchool([curry, turing, kleene])
+```
+
+関数型プログラミングで実装
+
+```js
+// 学生の国と、学校を比較する関数
+const selector = (country, school) => {
+  return (student) => {
+    // オブジェクトグラフを走査
+    return student.address.country === country &&
+           student.school == school
+  }
+}
+
+const findStudentsBy = (friends, selector) => {
+  // 配列
+  return friends.filter(selector)
+}
+
+findStudentsBy([curry, turing, church, kleene], selector('US', 'Princeton'))
+```
+
+関数合成により `findStudentsBy` を生成
+この関数は、`address` と `school` を備えた I/F を持つオブジェクトを受け取る
