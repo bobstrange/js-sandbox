@@ -147,3 +147,48 @@ princetonZip.toString()
 ```
 
 このようにすることで、 `_location` と `_code` にアクセスできないようにすることができる。
+
+## オブジェクトを freeze する
+
+`Object.freeze()` で、オブジェクトの状態変更を防止できる。
+TypeScript 使って readonly しておけば、コンパイルタイムで検知できるので、これはあまり要らないか。
+
+## 高階関数
+
+例: 米国在住者のリストを出力する
+
+```js
+// 命令形
+const printPeopleInUs = (people) => {
+  for (const person of people) {
+    if (person.address.country === 'US') {
+      console.log(person)
+    }
+  }
+}
+
+// 宣言型
+const printPeople = (people, action) => {
+  for (const person of people) {
+    action(person)
+  }
+}
+
+const action = (person) => {
+  if (person.address.country === 'US') {
+    console.log(person)
+  }
+}
+
+// リファクタリング宣言型
+const printPeople = (people, selector, printer) => {
+  people.forEach((person) => {
+    if (selector(person)) {
+      printer(person)
+    }
+  })
+}
+```
+
+命名が命令的ではないのは宣言型なのもあるのか？
+filter すりゃいいのにしてないのはなんか理由があるのか？
