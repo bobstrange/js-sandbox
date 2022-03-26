@@ -192,3 +192,29 @@ const printPeople = (people, selector, printer) => {
 
 命名が命令的ではないのは宣言型なのもあるのか？
 filter すりゃいいのにしてないのはなんか理由があるのか？
+
+## クロージャとスコープ
+
+クロージャとは、関数を宣言された時点の環境に bind するデータ構造
+
+```js
+const makeAddFunction = (amount) => {
+  const add = (number) => {
+    return number + amount // makeAddFunction のスコープ内なので、 amount にアクセスできる
+  }
+  return add
+}
+
+const makeExponentialFunction = (base) => {
+  const raise = (exponent) => {
+    return Math.pow(base, exponent)
+  }
+  return raise
+}
+
+const addTenTo = makeAddFunction(10)
+addTenTo(5) // => 15
+
+const raiseThreeTo = makeExponentialFunction(3)
+raiseThreeTo(2) // => 9
+```
