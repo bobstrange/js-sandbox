@@ -1,0 +1,10 @@
+{
+  "name": "getting-started",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "bobstrange <bob.1983.g@gmail.com> (https://github.com/bobstrange)",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^13.6.0"
+  }
+}
