@@ -1,30 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, createContext, useContext, useRef, useEffect, memo } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const ColorContext = createContext('black')
+
+const ColorComponent = () => {
+  const color = useContext(ColorContext)
+  const renderCount = useRef(1)
+
+  useEffect(() => {
+    renderCount.current += 1
+  })
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+    <div style={{ color }}>
+      Hello {color} (renders: {renderCount.current})
     </div>
+  )
+}
+
+const MemoedColorComponent = memo(ColorComponent)
+
+const DummyComponent = () => {
+  const renderCount = useRef(1)
+  useEffect(() => {
+    renderCount.current += 1
+  })
+  return <div>Dummy (renders: {renderCount.current})</div>
+}
+
+const MemoedDummyComponent = memo(DummyComponent)
+
+const Parent = () => {
+  return (
+    <ul>
+      <li>
+        <DummyComponent />
+      </li>
+      <li>
+        <MemoedDummyComponent />
+      </li>
+      <li>
+        <ColorComponent />
+      </li>
+      <li>
+        <MemoedColorComponent />
+      </li>
+    </ul>
+  )
+}
+
+function App() {
+  const [color, setColor] = useState('red')
+
+  return (
+    <ColorContext.Provider value={color}>
+      <input value={color} onChange={(e) => setColor(e.target.value)} />
+      <Parent />
+    </ColorContext.Provider>
   )
 }
 
