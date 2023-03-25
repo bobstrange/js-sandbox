@@ -1,14 +1,18 @@
 import { useState, createContext, useContext, useRef, useEffect, memo } from 'react'
 
+const useRenderCount = () => {
+  const renderCount = useRef(1)
+  useEffect(() => {
+    renderCount.current += 1
+  })
+  return renderCount
+}
+
 const ColorContext = createContext('black')
 
 const ColorComponent = () => {
   const color = useContext(ColorContext)
-  const renderCount = useRef(1)
-
-  useEffect(() => {
-    renderCount.current += 1
-  })
+  const renderCount = useRenderCount()
 
   return (
     <div style={{ color }}>
@@ -20,10 +24,8 @@ const ColorComponent = () => {
 const MemoedColorComponent = memo(ColorComponent)
 
 const DummyComponent = () => {
-  const renderCount = useRef(1)
-  useEffect(() => {
-    renderCount.current += 1
-  })
+  const renderCount = useRenderCount()
+
   return <div>Dummy (renders: {renderCount.current})</div>
 }
 
