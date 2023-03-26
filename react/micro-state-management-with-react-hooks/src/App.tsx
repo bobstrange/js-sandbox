@@ -2,6 +2,7 @@ import './App.css'
 
 import { ColorExample } from './components/ColorExample'
 import { CounterExample } from './components/CounterExample'
+import { GlobalContextWithMultipleContextsExample } from './components/GlobalContextWithMultipleContextsExample'
 import { GlobalCounterContextExample } from './components/GlobalCounterContextExample'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <ColorExample />
       <CounterExample />
       <GlobalCounterContextExample />
+      <GlobalContextWithMultipleContextsExample />
     </div>
   )
 }
