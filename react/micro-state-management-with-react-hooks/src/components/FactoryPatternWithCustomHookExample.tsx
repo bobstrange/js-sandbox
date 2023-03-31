@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
+import { createContext, createElement, ReactNode, useContext, useState } from 'react'
 
 const createStateContext = <Value, State>(useValue: (init?: Value) => State) => {
   const StateContext = createContext<State | null>(null)
@@ -58,14 +58,18 @@ const Parent = () => {
 }
 
 export const FactoryPatternWithCustomHookExample = () => {
+  const providers = [
+    [Count1Provider, { initialValue: 0 }],
+    [Count2Provider, { initialValue: 0 }],
+  ] as const
+
   return (
     <>
       <h2>Factory pattern with custom hook example</h2>
-      <Count1Provider initialValue={0}>
-        <Count2Provider initialValue={0}>
-          <Parent />
-        </Count2Provider>
-      </Count1Provider>
+      {providers.reduceRight(
+        (children, [Component, props]) => createElement(Component, props, children),
+        <Parent />
+      )}
     </>
   )
 }
