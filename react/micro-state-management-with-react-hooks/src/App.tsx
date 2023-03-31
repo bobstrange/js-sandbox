@@ -5,6 +5,7 @@ import { CounterExample } from './components/CounterExample'
 import { CustomHooksAndProviderComponentsExample } from './components/CustomHooksAndProviderComponentsExample'
 import { GlobalContextWithMultipleContextsExample } from './components/GlobalContextWithMultipleContextsExample'
 import { GlobalCounterContextExample } from './components/GlobalCounterContextExample'
+import { FactoryPatternWithCustomHookExample } from './components/FactoryPatternWithCustomHookExample'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <GlobalCounterContextExample />
       <GlobalContextWithMultipleContextsExample />
       <CustomHooksAndProviderComponentsExample />
+      <FactoryPatternWithCustomHookExample />
     </div>
   )
 }
