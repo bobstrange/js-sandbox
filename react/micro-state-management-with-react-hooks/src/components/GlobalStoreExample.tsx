@@ -46,11 +46,43 @@ const useStore = (store: Store<{ count: number }>) => {
 const Component1 = () => {
   const [state, setState] = useStore(store)
   const inc = () => {
-    setState((prev: { count: number }) => {
+    setState((prev) => {
       return {
         ...prev,
         count: prev.count + 1,
       }
     })
   }
+  return (
+    <div>
+      {state.count} <button onClick={inc}>+1</button>
+    </div>
+  )
+}
+
+const Component2 = () => {
+  const [state, setState] = useStore(store)
+  const inc2 = () => {
+    setState((prev) => {
+      return {
+        ...prev,
+        count: prev.count + 2,
+      }
+    })
+  }
+  return (
+    <div>
+      {state.count} <button onClick={inc2}>+2</button>
+    </div>
+  )
+}
+
+export const GlobalStoreExample = () => {
+  return (
+    <>
+      <h2>Global Store Example</h2>
+      <Component1 />
+      <Component2 />
+    </>
+  )
 }

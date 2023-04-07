@@ -6,6 +6,7 @@ import { CustomHooksAndProviderComponentsExample } from './components/CustomHook
 import { GlobalContextWithMultipleContextsExample } from './components/GlobalContextWithMultipleContextsExample'
 import { GlobalCounterContextExample } from './components/GlobalCounterContextExample'
 import { FactoryPatternWithCustomHookExample } from './components/FactoryPatternWithCustomHookExample'
+import { GlobalStoreExample } from './components/GlobalStoreExample'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <GlobalContextWithMultipleContextsExample />
       <CustomHooksAndProviderComponentsExample />
       <FactoryPatternWithCustomHookExample />
+      <GlobalStoreExample />
     </div>
   )
 }
