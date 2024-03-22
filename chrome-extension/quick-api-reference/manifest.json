@@ -11,5 +11,17 @@
   "background": {
     "service_worker": "src/service-worker.js",
     "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://developer.chrome.com/docs/extensions/reference/*"],
+      "js": ["src/content.js"]
+    }
+  ],
+  "permissions": ["storage", "alarms"],
+  "host_permissions": ["https://extension-tips.glitch.me/*"],
+  "minimum_chrome_version": "102",
+  "omnibox": {
+    "keyword": "api-search"
   }
 }
