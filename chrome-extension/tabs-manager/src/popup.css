@@ -17,6 +17,9 @@ li:nth-child(odd) {
 li:nth-child(even) {
   background: #ffffff;
 }
+a:hover {
+  cursor: pointer;
+}
 
 h3,
 p {
