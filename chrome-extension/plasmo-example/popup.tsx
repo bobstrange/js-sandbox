@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import { sendToBackground } from "@plasmohq/messaging"
+
 function IndexPopup() {
   const [data, setData] = useState("")
 
@@ -8,17 +10,23 @@ function IndexPopup() {
       style={{
         padding: 16
       }}>
-      <h2>
-        Welcome to your{" "}
-        <a href="https://www.plasmo.com" target="_blank">
-          Plasmo
-        </a>{" "}
-        Extension!
-      </h2>
-      <input onChange={(e) => setData(e.target.value)} value={data} />
-      <a href="https://docs.plasmo.com" target="_blank">
-        View Docs
-      </a>
+      <h1>Popup</h1>
+      <button
+        onClick={async () => {
+          console.log("button clicked")
+          const res = await sendToBackground({
+            name: "ping",
+            body: {
+              name: "John"
+            }
+          })
+          console.log(res)
+          setData(res.message)
+        }}>
+        {data ? "Data is set" : "Set data"}
+      </button>
+
+      <div>{data ? data : "No data"}</div>
     </div>
   )
 }
