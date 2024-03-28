@@ -1,33 +1,36 @@
-import { useState } from 'react';
-import reactLogo from '@/assets/react.svg';
-import wxtLogo from '/wxt.svg';
-import './App.css';
+import { useState } from "react";
+import { browser } from "wxt/browser";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("");
+  const [response, setResponse] = useState<string | undefined>();
 
   return (
     <>
       <div>
-        <a href="https://wxt.dev" target="_blank">
-          <img src={wxtLogo} className="logo" alt="WXT logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>WXT + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <label htmlFor="message">Message: </label>
+        <input
+          type="text"
+          name="message"
+          id="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+
+        <button
+          onClick={async () => {
+            const res = await browser.runtime.sendMessage(message);
+            setResponse(res);
+          }}
+        >
+          send message
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <div>
+          <h2>Response</h2>
+          <p>{response ?? "N/A"}</p>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the WXT and React logos to learn more
-      </p>
     </>
   );
 }
