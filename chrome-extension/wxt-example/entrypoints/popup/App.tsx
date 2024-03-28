@@ -2,34 +2,41 @@ import { useState } from "react";
 import { browser } from "wxt/browser";
 import "./App.css";
 
+type Todo = {
+  id: number;
+  userId: number;
+  title: string;
+  completed: boolean;
+};
+
 function App() {
-  const [message, setMessage] = useState("");
-  const [response, setResponse] = useState<string | undefined>();
+  const [id, setId] = useState("");
+  const [todo, setTodo] = useState<Todo | undefined>();
 
   return (
     <>
       <div>
-        <label htmlFor="message">Message: </label>
-        <input
-          type="text"
-          name="message"
-          id="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
+        <div className="todo-id-input">
+          <label htmlFor="message">Todo ID</label>
+          <input
+            type="text"
+            name="message"
+            id="message"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+            placeholder="1"
+          />
+        </div>
 
         <button
           onClick={async () => {
-            const res = await browser.runtime.sendMessage(message);
-            setResponse(res);
+            const res = await browser.runtime.sendMessage({ id });
+            setTodo(res);
           }}
         >
-          send message
+          Get Todo
         </button>
-        <div>
-          <h2>Response</h2>
-          <p>{response ?? "N/A"}</p>
-        </div>
+        <div>{todo?.id ?? "N/A"}</div>
       </div>
     </>
   );
