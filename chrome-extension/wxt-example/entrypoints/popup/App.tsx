@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { browser } from "wxt/browser";
-import "./App.css";
+import type { Todo } from "../types";
+import { sendMessage } from "../messaging";
 
-type Todo = {
-  id: number;
-  userId: number;
-  title: string;
-  completed: boolean;
-};
+import "./App.css";
 
 function App() {
   const [id, setId] = useState("");
@@ -30,8 +26,11 @@ function App() {
 
         <button
           onClick={async () => {
-            const res = await browser.runtime.sendMessage({ id });
-            setTodo(res);
+            // const res = await browser.runtime.sendMessage({ id });
+            // setTodo(res);
+
+            const result = await sendMessage("getTodo", parseInt(id, 10));
+            setTodo(result);
           }}
         >
           Get Todo

@@ -1,4 +1,17 @@
 import { browser } from "wxt/browser";
+import { onMessage } from "./messaging";
+
+onMessage("getTodo", async (id) => {
+  if (!id) {
+    console.error("No id provided");
+    return;
+  }
+
+  const todo = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${id}`
+  ).then((response) => response.json());
+  return todo;
+});
 
 export default defineBackground(() => {
   console.log("Hello background!", { id: browser.runtime.id });
