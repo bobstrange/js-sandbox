@@ -6,7 +6,11 @@
   "keywords": [],
   "author": "bobstrange <bob.1983.g@gmail.com> (https://github.com/bobstrange)",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
+    "@types/node": "^20.12.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   }
