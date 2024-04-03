@@ -5,14 +5,28 @@ class ValidationError extends Error {
   }
 }
 
-function test() {
-  throw new ValidationError("error!")
+function parseUser(json) {
+  const user = JSON.parse(json)
+
+  if (!user.age) {
+    throw new ValidationError("No field: age")
+  }
+
+  if (!user.name) {
+    throw new ValidationError("No field: name")
+  }
+
+  return user
 }
 
 try {
-  test()
+  const user = parseUser('{ "age": 30 }')
 } catch (err) {
-  console.log(`message: ${err.message}`)
-  console.log(`name: ${err.name}`)
-  console.log(`stack: ${err.stack}`)
+  if (err instanceof ValidationError) {
+    console.error(`Invalid data: ${err.message}`)
+  } else if (err instanceof SyntaxError) {
+    console.error(`Invalid data: ${err.message}`)
+  } else {
+    throw err
+  }
 }
