@@ -11,6 +11,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "nx": "18.2.4"
+  },
   "dependencies": {}
 }
