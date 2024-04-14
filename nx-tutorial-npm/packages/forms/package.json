@@ -1,5 +1,5 @@
 {
-  "name": "forms",
+  "name": "@tuskdesign/forms",
   "version": "1.2.0",
   "description": "",
   "main": "./dist/index.js",

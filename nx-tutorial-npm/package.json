@@ -1,5 +1,5 @@
 {
-  "name": "source",
+  "name": "@tuskdesign/source",
   "workspaces": [
     "packages/*",
     "apps/*"
