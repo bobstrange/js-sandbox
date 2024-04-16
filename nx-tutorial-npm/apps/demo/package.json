@@ -7,9 +7,9 @@
     "dev": "vite",
     "typecheck": "tsc",
     "prebuild": "npm run typecheck",
-    "build": "vite build",
+    "build": "nx build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "nx preview"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -32,7 +32,6 @@
   "nx": {
     "includedScripts": [
       "typecheck",
-      "build",
       "lint"
     ]
   }

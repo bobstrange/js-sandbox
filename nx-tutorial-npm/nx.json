@@ -2,8 +2,10 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build", "typecheck"],
-      "outputs": ["{projectRoot}/dist"],
+      "dependsOn": [
+        "^build",
+        "typecheck"
+      ],
       "cache": true
     },
     "typecheck": {
@@ -13,5 +15,17 @@
       "cache": true
     }
   },
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "plugins": [
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "previewTargetName": "preview",
+        "testTargetName": "test",
+        "serveTargetName": "serve",
+        "serveStaticTargetName": "serve-static"
+      }
+    }
+  ]
 }
