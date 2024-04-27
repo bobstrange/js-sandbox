@@ -11,4 +11,15 @@ export default defineBackground(() => {
       active: true,
     });
   });
+
+  browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log(message);
+
+    if (message === "ping") {
+      setTimeout(() => {
+        sendResponse("pong");
+      }, 1000);
+    }
+    return true;
+  });
 });
