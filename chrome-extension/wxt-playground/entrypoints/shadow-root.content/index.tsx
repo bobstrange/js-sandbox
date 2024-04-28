@@ -13,7 +13,10 @@ export default defineContentScript({
       position: "inline",
       anchor: "body",
       onMount: (container) => {
-        const root = ReactDOM.createRoot(container);
+        const app = document.createElement("div");
+        container.append(app);
+
+        const root = ReactDOM.createRoot(app);
         root.render(<App />);
         return root;
       },
